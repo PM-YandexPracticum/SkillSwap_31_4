@@ -1,78 +1,78 @@
-@import '@fontsource/jost/500.css';  /* 500 = Medium */
+@import '@fontsource/jost/500.css'; /* 500 = Medium */
 @import '@fontsource/roboto/400.css'; /* Regular */
-@import '@fontsource/roboto/500.css'; 
-
+@import '@fontsource/roboto/500.css';
 
 :root {
-  --font-jost: 'Jost', sans-serif;               /* Основной шрифт заголовков */
-  --font-roboto: 'Roboto', sans-serif;           /* Основной шрифт для текста и описаний */
+	--font-jost: 'Jost', sans-serif; /* Основной шрифт заголовков */
+	--font-roboto:
+		'Roboto', sans-serif; /* Основной шрифт для текста и описаний */
 
-  --color-text-primary: #253017;                  /* Основной цвет текста */
-  --color-text-caption: #69735D;                  /* Цвет для подписей и вспомогательного текста */
-  --color-text-disabled: #9CA197;                 /* Цвет текста в неактивном состоянии */
+	--color-text-primary: #253017; /* Основной цвет текста */
+	--color-text-caption: #69735d; /* Цвет для подписей и вспомогательного текста */
+	--color-text-disabled: #9ca197; /* Цвет текста в неактивном состоянии */
 
-  --color-toggle: #B2B9A9;                         /* Цвет для переключателей (toggle) */
-  --color-disabled: #E4E8DF;                       /* Цвет элементов в отключённом состоянии */
+	--color-toggle: #b2b9a9; /* Цвет для переключателей (toggle) */
+	--color-disabled: #e4e8df; /* Цвет элементов в отключённом состоянии */
 
-  --color-surface: #FFFFFF;                        /* Цвет поверхности карточек, инпутов и фоновых элементов */
+	--color-surface: #ffffff; /* Цвет поверхности карточек, инпутов и фоновых элементов */
 
-  --color-primary-pressed: #508826;                /* Цвет активной кнопки или ссылки при нажатии */
-  --color-accent: #ABD27A;                         /* Акцентный цвет для выделения элементов */
-  --color-button-hover: #DEEBC5;                   /* Цвет фона кнопки при наведении */
+	--color-primary-pressed: #508826; /* Цвет активной кнопки или ссылки при нажатии */
+	--color-accent: #abd27a; /* Акцентный цвет для выделения элементов */
+	--color-button-hover: #deebc5; /* Цвет фона кнопки при наведении */
 
-  --color-background: #F9FAF7;                     /* Основной цвет фона страницы */
+	--color-background: #f9faf7; /* Основной цвет фона страницы */
 
-  --color-alarm: #E0796E;                          /* Цвет для предупреждений и алертов */
-  --color-error: #BF3920;                          /* Цвет для ошибок */
+	--color-alarm: #e0796e; /* Цвет для предупреждений и алертов */
+	--color-error: #bf3920; /* Цвет для ошибок */
 
-  /* Цвета тегов по категориям */
-  --color-tag-business: #EEE7F7;                   /* Тег "Бизнес и карьера" */
-  --color-tag-creativity: #F7E7F2;                  /* Тег "Творчество и искусство" */
-  --color-tag-foreign-languages: #EBE5C5;           /* Тег "Иностранные языки" */
-  --color-tag-education: #E7F2F6;                    /* Тег "Образование и развитие" */
-  --color-tag-home: #F7EBE5;                         /* Тег "Дом и уют" */
-  --color-tag-health: #E9F7E7;                       /* Тег "Здоровье и лайфстайл" */
-  --color-tag-plus: #E8ECF7;                         /* Тег "Дополнительные категории" (Tag_+) */
+	/* Цвета тегов по категориям */
+	--color-tag-business: #eee7f7; /* Тег "Бизнес и карьера" */
+	--color-tag-creativity: #f7e7f2; /* Тег "Творчество и искусство" */
+	--color-tag-foreign-languages: #ebe5c5; /* Тег "Иностранные языки" */
+	--color-tag-education: #e7f2f6; /* Тег "Образование и развитие" */
+	--color-tag-home: #f7ebe5; /* Тег "Дом и уют" */
+	--color-tag-health: #e9f7e7; /* Тег "Здоровье и лайфстайл" */
+	--color-tag-plus: #e8ecf7; /* Тег "Дополнительные категории" (Tag_+) */
 }
 
 h1 {
-  font-family: var(--font-jost);
-  font-weight: 500;
-  font-size: 32px;
-  line-height: 40px;
+	font-family: var(--font-jost);
+	font-weight: 500;
+	font-size: 32px;
+	line-height: 40px;
 }
 
 h2 {
-  font-family: var(--font-jost);
-  font-weight: 500;
-  font-size: 24px;
-  line-height: 32px;
+	font-family: var(--font-jost);
+	font-weight: 500;
+	font-size: 24px;
+	line-height: 32px;
 }
 
 h3 {
-  font-family: var(--font-jost);
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 24px;
+	font-family: var(--font-jost);
+	font-weight: 500;
+	font-size: 20px;
+	line-height: 24px;
 }
 
 h4 {
-  font-family: var(--font-roboto);
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 24px;
+	font-family: var(--font-roboto);
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 24px;
 }
 
 body {
-  font-family: var(--font-roboto);
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
+	font-family: var(--font-roboto);
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 24px;
 }
 
 caption {
-  font-family: var(--font-roboto);
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 16px;
+	font-family: var(--font-roboto);
+	font-weight: 400;
+	font-size: 12px;
+	line-height: 16px;
 }
