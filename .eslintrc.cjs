@@ -30,10 +30,36 @@ module.exports = {
 	},
 	plugins: ['react-refresh'],
 	rules: {
+		"prettier/prettier": [
+      "warn",
+      {
+        "usePrettierrc": true
+      }
+    ],
+		"react/react-in-jsx-scope": "off",
+    "comma-dangle": "off",
+    "use-isnan": ["error", { "enforceForSwitchCase": true }],
+    "react/void-dom-elements-no-children": "warn",
+    "react/no-unsafe": "warn",
+    "react/no-unused-state": "warn",
+    "react/prefer-stateless-function": "warn",
+    "react/self-closing-comp": "warn",
+    "react/no-will-update-set-state": "warn",
+    "react/no-this-in-sfc": "warn",
+    "react/no-string-refs": "warn",
+    "react/no-redundant-should-component-update": "warn",
+    "react/jsx-boolean-value": ["warn", "never"],
+    "react/jsx-key": "warn",
+    "react/jsx-max-props-per-line": ["warn", { "maximum": 7 }],
+    "react/jsx-max-depth": ["warn", { "max": 8 }],
+    "arrow-body-style": ["warn", "as-needed"],
+    "dot-notation": "warn",
+    "jsx-quotes": ["warn", "prefer-single"],
+    "valid-typeof": "warn",
 		'react/function-component-definition': [
-			'error',
+			'warn',
 			{
-				namedComponents: 'arrow-function',
+				namedComponents: ['arrow-function', 'function-declaration'],
 				unnamedComponents: 'arrow-function',
 			},
 		],

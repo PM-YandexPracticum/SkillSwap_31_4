@@ -18,12 +18,13 @@
 		/* Aliases */
     "baseUrl": ".",
     "paths": {
-      "@components/*": ["src/components/*"],
-      "@ui/*": ["src/shared/ui*"],
-      "@api/*": ["src/api*"],
-			"@images/*": ["src/images*"],
-			"@icons/*": ["src/images/icons*"],
-			"@pages/*": ["src/pages*"],
+      "@components": ["src/components"],
+			"@ui-components": ["src/components/ui"],
+      "@ui": ["src/shared/ui"],
+      "@api": ["src/api"],
+			"@images": ["src/images/*"],
+			"@icons": ["src/images/icons*"],
+			"@pages": ["src/pages"],
     },
 
 		/* Linting */
