@@ -12,7 +12,7 @@ module.exports = {
 		'plugin:prettier/recommended',
 		'plugin:storybook/recommended',
 	],
-	ignorePatterns: ['dist', '.eslintrc.cjs'],
+	ignorePatterns: ['dist', '.eslintrc.cjs', 'src/stories/', 'src/shared/ui/**/*.stories.tsx'],
 	parser: '@typescript-eslint/parser',
 	parserOptions: {
 		ecmaVersion: 'latest',
@@ -37,6 +37,7 @@ module.exports = {
 				unnamedComponents: 'arrow-function',
 			},
 		],
+		'import/prefer-default-export': 'off',
 		'react/react-in-jsx-scope': 'off',
 		'react-refresh/only-export-components': [
 			'warn',

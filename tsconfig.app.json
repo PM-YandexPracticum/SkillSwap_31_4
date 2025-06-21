@@ -14,6 +14,17 @@
 		"moduleDetection": "force",
 		"noEmit": true,
 		"jsx": "react-jsx",
+		
+		/* Aliases */
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@ui/*": ["src/shared/ui*"],
+      "@api/*": ["src/api*"],
+			"@images/*": ["src/images*"],
+			"@icons/*": ["src/images/icons*"],
+			"@pages/*": ["src/pages*"],
+    },
 
 		/* Linting */
 		"strict": true,
