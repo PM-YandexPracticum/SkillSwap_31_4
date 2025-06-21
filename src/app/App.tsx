@@ -1,7 +1,8 @@
 import './App.css';
+import { AppHeader } from '@components';
 
-const App = () => {
-	return <div />;
-};
+function App() {
+	return <AppHeader />;
+}
 
 export default App;

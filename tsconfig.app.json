@@ -14,18 +14,19 @@
 		"moduleDetection": "force",
 		"noEmit": true,
 		"jsx": "react-jsx",
-		
+
 		/* Aliases */
-    "baseUrl": ".",
-    "paths": {
-      "@components": ["src/components"],
+		"baseUrl": ".",
+		"paths": {
+			"@components": ["src/components"],
 			"@ui-components": ["src/components/ui"],
-      "@ui": ["src/shared/ui"],
-      "@api": ["src/api"],
+			"@ui": ["src/shared/ui"],
+			"@api": ["src/api"],
 			"@images": ["src/images/*"],
 			"@icons": ["src/images/icons*"],
 			"@pages": ["src/pages"],
-    },
+			"@ui-pages": ["src/pages/ui"]
+		},
 
 		/* Linting */
 		"strict": true,
