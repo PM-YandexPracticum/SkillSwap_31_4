@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Logo } from '@ui';
 
 const meta = {
-	title: 'UI/Logo',
+	title: 'Shared/UI/Logo',
 	component: Logo,
 	parameters: {
 		layout: 'centered',
