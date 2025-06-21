@@ -30,6 +30,13 @@ module.exports = {
 	},
 	plugins: ['react-refresh'],
 	rules: {
+		'react/function-component-definition': [
+			'error',
+			{
+				namedComponents: 'arrow-function',
+				unnamedComponents: 'arrow-function',
+			},
+		],
 		'react/react-in-jsx-scope': 'off',
 		'react-refresh/only-export-components': [
 			'warn',
