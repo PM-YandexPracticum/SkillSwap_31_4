@@ -1,52 +1,58 @@
 .button {
-  border: none;
-  border-radius: 16px;
   padding: 12px 84.5px;
-  font-family: 'Roboto', sans-serif;
   font-weight: 400;
   font-size: 16px;
+  font-family: var(--font-roboto);
   line-height: 24px;
   letter-spacing: 2%;
-
-  &:disabled {
-    background-color: #E4E8DF;
-    color: #69735D;
-    border: none;
-  }
+  border: none;
+  border-radius: 16px;
 }
 
 .primary {
-  background-color: #ABD27A;
-  color: #253017;
+  color: var(--color-text-primary);
+  background-color: var(--color-accent);
 
   &:hover {
-    background-color: #DEEBC5;
+    background-color: var(--color-button-hover);
   }
 
   &:active {
-    background-color: #508826;
-    color: #FFFFFF;
+    color: var(--color-surface);
+    background-color: var(--color-primary-pressed);
+  }
+
+   &:disabled {
+    color: var(--color-text-caption);
+    background-color: var(--color-disabled);
+    border: none;
   }
 }
 
 .secondary {
-  background-color: #FFFFFF;
-  color: #253017;
-  border: 1px solid #ABD27A;
+  color: var(--color-text-primary);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-accent);
 
   &:hover {
-    border: none;
-    color: #69735D;
+    color: var(--color-text-caption);
+    border: 1px solid var(--color-button-hover);
   }
 
   &:active {
-    border: 1px solid #508826;
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-primary-pressed);
+  }
+
+  &:disabled {
+    color: var(--color-text-disabled);
+    border: 1px solid var(--color-disabled);
   }
 }
 
 .tertiary {
-  background-color: #FFFFFF;
-  color: #253017;
+  color: var(--color-text-primary);
+  background-color: var(--color-surface);
 }
 
 .small {

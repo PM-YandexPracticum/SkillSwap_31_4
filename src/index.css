@@ -1,6 +1,6 @@
-@import '@fontsource/jost/500.css'; /* 500 = Medium */
-@import '@fontsource/roboto/400.css'; /* Regular */
-@import '@fontsource/roboto/500.css';
+@import url('@fontsource/jost/500.css'); /* 500 = Medium */
+@import url('@fontsource/roboto/400.css'); /* Regular */
+@import url('@fontsource/roboto/500.css');
 
 :root {
 	--font-jost: 'Jost', sans-serif; /* Основной шрифт заголовков */
@@ -10,18 +10,13 @@
 	--color-text-primary: #253017; /* Основной цвет текста */
 	--color-text-caption: #69735d; /* Цвет для подписей и вспомогательного текста */
 	--color-text-disabled: #9ca197; /* Цвет текста в неактивном состоянии */
-
 	--color-toggle: #b2b9a9; /* Цвет для переключателей (toggle) */
 	--color-disabled: #e4e8df; /* Цвет элементов в отключённом состоянии */
-
 	--color-surface: #ffffff; /* Цвет поверхности карточек, инпутов и фоновых элементов */
-
 	--color-primary-pressed: #508826; /* Цвет активной кнопки или ссылки при нажатии */
 	--color-accent: #abd27a; /* Акцентный цвет для выделения элементов */
 	--color-button-hover: #deebc5; /* Цвет фона кнопки при наведении */
-
 	--color-background: #f9faf7; /* Основной цвет фона страницы */
-
 	--color-alarm: #e0796e; /* Цвет для предупреждений и алертов */
 	--color-error: #bf3920; /* Цвет для ошибок */
 
@@ -36,44 +31,44 @@
 }
 
 h1 {
-	font-family: var(--font-jost);
 	font-weight: 500;
 	font-size: 32px;
+	font-family: var(--font-jost);
 	line-height: 40px;
 }
 
 h2 {
-	font-family: var(--font-jost);
 	font-weight: 500;
 	font-size: 24px;
+	font-family: var(--font-jost);
 	line-height: 32px;
 }
 
 h3 {
-	font-family: var(--font-jost);
 	font-weight: 500;
 	font-size: 20px;
+	font-family: var(--font-jost);
 	line-height: 24px;
 }
 
 h4 {
-	font-family: var(--font-roboto);
 	font-weight: 500;
 	font-size: 16px;
+	font-family: var(--font-roboto);
 	line-height: 24px;
 }
 
 body {
-	font-family: var(--font-roboto);
 	font-weight: 400;
 	font-size: 16px;
+	font-family: var(--font-roboto);
 	line-height: 24px;
 }
 
 caption {
-	font-family: var(--font-roboto);
 	font-weight: 400;
 	font-size: 12px;
+	font-family: var(--font-roboto);
 	line-height: 16px;
 }
 
