@@ -25,6 +25,7 @@
 	padding: 10px 20px;
 	color: var(--color-text-primary);
 	font-size: inherit;
+	font-family: inherit;
 	background: none;
 	border: 1px solid var(--color-text-caption);
 	border-radius: 12px;
@@ -62,29 +63,28 @@
 	align-items: center;
 	gap: 8px;
 }
-
 .options {
-	position: absolute;
-	width: 100%;
-	margin-top: -1px; //чтобы убрать зазор, тк убрала border-bottom у кнопки
-	padding: 4px 0 8px;
-	border: 1px solid var(--color-text-caption);
-	border-top: none;
-	border-radius: 0 0 12px 12px;
-
-	.option {
-		margin-top: 4px;
-		padding: 8px 20px;
-		color: var(--color-text-primary);
-		font-size: inherit;
-		cursor: pointer;
-
-		&.selected {
-			color: var(--color-primary-pressed);
-		}
-
-		&:hover {
-			background-color: var(--color-disabled);
-		}
-	}
-}
+    position: absolute;
+    width: 100%;
+    margin-top: -1px;
+    padding: 4px 0 8px;
+    border: 1px solid var(--color-text-caption);
+    border-top: none;
+    border-radius: 0 0 12px 12px;
+  
+    li {
+      margin-top: 4px;
+      padding: 8px 20px;
+      color: var(--color-text-primary);
+      font-size: inherit;
+      cursor: pointer;
+  
+      &.selected {
+        color: var(--color-primary-pressed);
+      }
+  
+      &:hover {
+        background-color: var(--color-disabled);
+      }
+    }
+  }
