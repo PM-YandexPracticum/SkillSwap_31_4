@@ -1,58 +1,58 @@
 .button {
-	box-sizing: border-box;
-	width: 100%;
-	padding: 11px 0;
-	font-weight: 400;
-	font-size: 16px;
-	font-family: var(--font-roboto);
-	line-height: 24px;
-	border: 1px solid transparent;
-	border-radius: 12px;
-	cursor: pointer;
-}
+  width: 100%;
+  padding: 11px 0;
+  font-weight: 400;
+  font-size: 16px;
+  font-family: var(--font-roboto);
+  line-height: 24px;
+  border-radius: 12px;
+  cursor: pointer;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+} 
 
 .primary {
-	color: var(--color-text-primary);
-	background-color: var(--color-accent);
+  color: var(--color-text-primary);
+  background-color: var(--color-accent);
 
-	&:hover {
-		background-color: var(--color-button-hover);
-	}
+  &:hover {
+    background-color: var(--color-button-hover);
+  }
 
-	&:active {
-		color: var(--color-surface);
-		background-color: var(--color-primary-pressed);
-	}
+  &:active {
+    color: var(--color-surface);
+    background-color: var(--color-primary-pressed);
+  }
 
-	&:disabled {
-		color: var(--color-text-caption);
-		background-color: var(--color-disabled);
-		border-color: transparent;
-	}
+   &:disabled {
+    color: var(--color-text-caption);
+    background-color: var(--color-disabled);
+    border-color: transparent;
+  }
 }
 
 .secondary {
-	color: var(--color-text-primary);
-	background-color: var(--color-surface);
-	border: 1px solid var(--color-accent);
+  color: var(--color-text-primary);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-accent);
 
-	&:hover {
-		color: var(--color-text-caption);
-		border: 1px solid var(--color-button-hover);
-	}
+  &:hover {
+    color: var(--color-text-caption);
+    border: 1px solid var(--color-button-hover);
+  }
 
-	&:active {
-		color: var(--color-text-primary);
-		border: 1px solid var(--color-primary-pressed);
-	}
+  &:active {
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-primary-pressed);
+  }
 
-	&:disabled {
-		color: var(--color-text-disabled);
-		border: 1px solid var(--color-disabled);
-	}
+  &:disabled {
+    color: var(--color-text-disabled);
+    border: 1px solid var(--color-disabled);
+  }
 }
 
 .tertiary {
-	color: var(--color-text-primary);
-	background-color: var(--color-surface);
+  color: var(--color-text-primary);
+  background-color: var(--color-surface);
 }
