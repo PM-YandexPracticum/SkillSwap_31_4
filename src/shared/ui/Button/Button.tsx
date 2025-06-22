@@ -5,13 +5,14 @@ import styles from './Button.module.scss';
 export const ButtonUI = ({
 	onClick,
 	color,
-	size = 'large',
+	width,
 	text,
 	isDisabled = false,
 }: TButtonUIProps) => (
 	<button
 		type='button'
-		className={clsx(styles.button, styles[color], styles[size])}
+		style={{ maxWidth: width }}
+		className={clsx(styles.button, styles[color])}
 		onClick={onClick}
 		disabled={isDisabled}>
 		{text}

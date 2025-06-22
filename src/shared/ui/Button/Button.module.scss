@@ -1,13 +1,15 @@
 .button {
-  padding: 12px 84.5px;
+  width: 100%;
+  padding: 11px 0;
   font-weight: 400;
   font-size: 16px;
   font-family: var(--font-roboto);
   line-height: 24px;
-  letter-spacing: 2%;
-  border: none;
-  border-radius: 16px;
-}
+  border-radius: 12px;
+  cursor: pointer;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+} 
 
 .primary {
   color: var(--color-text-primary);
@@ -25,7 +27,7 @@
    &:disabled {
     color: var(--color-text-caption);
     background-color: var(--color-disabled);
-    border: none;
+    border-color: transparent;
   }
 }
 
@@ -53,16 +55,4 @@
 .tertiary {
   color: var(--color-text-primary);
   background-color: var(--color-surface);
-}
-
-.small {
-  padding: 8px 12px;
-}
-
-.medium {
-  padding: 12px 32px;
-}
-
-.large {
-  padding: 12px 84.5px;
 }

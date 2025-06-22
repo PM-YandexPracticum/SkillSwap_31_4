@@ -1,7 +1,7 @@
 export type TButtonUIProps = {
 	onClick?: () => void;
 	color: 'primary' | 'secondary' | 'tertiary';
-	size?: 'small' | 'medium' | 'large';
+	width?: string;
 	text: string;
 	isDisabled?: boolean;
 };

@@ -17,8 +17,14 @@ export const PrimaryButton: Story = {
   args: {
     onClick: () => alert('Primary Button Clicked'),
     color: 'primary',
-    size: 'large',
+    width: '200px',
     text: 'Primary',
     isDisabled: false
-  }
+  },
+
+  render: (args) => (
+    <div style={{width: '400px', display: 'flex', justifyContent: 'center'}}>
+      <ButtonUI {...args} />
+    </div>
+  )
 }
