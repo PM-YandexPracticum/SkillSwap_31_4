@@ -1,12 +1,8 @@
 .container {
-	width: 248px;
+	width: 436px;
 	padding: 20px;
 	color: var(--color-text-primary);
 	font-family: var(--font-roboto);
-}
-
-.multiple {
-	width: 476px;
 }
 
 .label {
@@ -19,8 +15,6 @@
 .dropdown {
 	position: relative;
 }
-
-//я так понимаю потом будет использоваться компонент кнопки и некоторые стили отпадут
 
 .button {
 	display: flex;
@@ -42,8 +36,6 @@
 	border-radius: 12px 12px 0 0;
 }
 
-/* Псевдоэлемент для эффекта серого бордера под основным бордером (может можно иначе сделать, не придумала) */
-
 .dropdown.open .button::after {
 	position: absolute;
 	inset: 1px;
@@ -59,6 +51,16 @@
 
 .arrowOpen {
 	transform: rotate(180deg);
+}
+
+.placeholder {
+	color: var(--color-text-disabled);
+}
+
+.optionContent {
+	display: flex;
+	align-items: center;
+	gap: 8px;
 }
 
 .options {
@@ -85,19 +87,4 @@
 			background-color: var(--color-disabled);
 		}
 	}
-}
-
-.placeholder {
-	color: var(--color-text-disabled);
-}
-
-.checkboxIcon {
-	width: 20px;
-	height: 20px;
-}
-
-.optionContent {
-	display: flex;
-	align-items: center;
-	gap: 8px;
 }
