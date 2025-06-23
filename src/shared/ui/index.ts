@@ -3,3 +3,4 @@ export * from './ToggleSwitch';
 export * from './VisibilityButton';
 export * from './Button';
 export * from './LikeButton';
+export * from './Dropdown';

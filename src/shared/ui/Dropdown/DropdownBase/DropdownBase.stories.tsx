@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { DropdownBaseUI } from './DropdownBase';
 
 const meta: Meta<typeof DropdownBaseUI> = {
-  title: 'Components/DropdownBaseUI',
-  component: DropdownBaseUI,
-};
+  title: 'Shared/UI/DropdownBaseUI',
+	component: DropdownBaseUI,
+	tags: ['autodocs'],
+	parameters: {
+		layout: 'centered',
+	},
+} satisfies Meta<typeof DropdownBaseUI>;
 
 export default meta;
 
@@ -32,12 +36,12 @@ export const Default: Story = {
     );
   },
   args: {
-    label: 'Выберите значение',
-    placeholder: 'Плейсхолдер',
+    label: 'Пол',
+    placeholder: 'Не указан',
     options: [ 
-	{ value: '1', text: 'Опция 1' },
-	{ value: '2', text: 'Опция 2' },
-	{ value: '3', text: 'Опция 3' },
+	{ value: '1', text: 'Не указан' },
+	{ value: '2', text: 'Женский' },
+	{ value: '3', text: 'Мужской' },
 	],
   },
 };
