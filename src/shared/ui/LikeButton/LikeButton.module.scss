@@ -7,11 +7,9 @@
 
   .icon {
     color: #253017;
-    transition: all 0.3s ease-in-out;
   }
-
-  .iconLiked {
-    color: #ABD27A;
+  
+  .icon path {
     transition: all 0.3s ease-in-out;
   }
 }

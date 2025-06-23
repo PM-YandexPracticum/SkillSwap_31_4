@@ -1,5 +1,6 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { Meta } from "@storybook/react-vite";
 import { LikeButtonUI } from "./LikeButton";
+import { useState } from "react";
 
 const meta = {
   title: 'Shared/UI/LikeButton',
@@ -11,12 +12,14 @@ const meta = {
 } satisfies Meta<typeof LikeButtonUI>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
-export const LikeButton: Story = {
-  render: () => (
-    <div>
-      <LikeButtonUI />
-    </div>
-  )
+export const LikeButton = {
+    render: () => {
+      const [isLiked, setIsLiked] = useState(false);
+      return (
+      <div>
+        <LikeButtonUI isLiked={isLiked} onClick={() => setIsLiked(!isLiked)} />
+      </div>
+    )
+  }
 }
