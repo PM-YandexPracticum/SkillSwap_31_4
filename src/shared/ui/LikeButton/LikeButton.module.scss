@@ -1,0 +1,15 @@
+.button {
+  width: 24px;
+  height: 24px;
+  background-color: transparent;
+  border: none;
+  
+  .icon {
+    color: #253017;
+  }
+  
+  .icon path {
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+  }
+}
