@@ -1,0 +1,17 @@
+.button {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+
+  .icon {
+    color: #253017;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .iconLiked {
+    color: #ABD27A;
+    transition: all 0.3s ease-in-out;
+  }
+}
