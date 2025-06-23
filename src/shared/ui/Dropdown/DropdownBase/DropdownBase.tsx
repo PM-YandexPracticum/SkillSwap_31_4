@@ -4,38 +4,55 @@ import styles from '../DropdownBase/DropdownBase.module.scss';
 import ArrowDownIcon from '../../../../images/icons/chevron-down.svg';
 
 export const DropdownBaseUI: React.FC<TDropdownBaseUIProps> = ({
-    label,
-    placeholder = '',
-    displayText,
-    isOpen,
-    onToggle,
-    isPlaceholderActive,
-    children
-  }) => {
-    return (
-      <div className={styles.container}>
-        <label className={styles.label}>{label}</label>
-        <div className={clsx(styles.dropdown, { [styles.open]: isOpen })}>
-          <button 
-          className={styles.button} 
+  label,
+  placeholder = '',
+  selectedOption,
+  isOpen,
+  onToggle,
+  options = [],
+  onSelect,
+}) => {
+  return (
+    <div className={styles.container}>
+      {label && <label className={styles.label}>{label}</label>}
+
+      <div className={clsx(styles.dropdown, { [styles.open]: isOpen })}>
+        <button
           type="button"
-          onClick={onToggle}>
-            <span
-              className={clsx({
-                [styles.placeholder]: isPlaceholderActive})}
-                >
-              {displayText || placeholder}
-            </span>
-            <img
+          className={styles.button}
+          onClick={onToggle}
+        >
+          <span
+            className={clsx({
+              [styles.placeholder]: !selectedOption,
+            })}
+          >
+            {selectedOption
+            ? options.find((opt) => opt.value === selectedOption)?.text
+            : placeholder}
+          </span>
+          <img
             src={ArrowDownIcon}
-            className={clsx(styles.arrow, { [styles.arrowOpen]: isOpen })}
+            className={clsx(styles.arrow, {
+              [styles.arrowOpen]: isOpen,
+            })}
             alt="Стрелка вниз"
           />
-          </button>
-          {isOpen && (
-          <ul
-            className={styles.options}>
-            {children}
+        </button>
+
+        {isOpen && (
+          <ul className={styles.dropdownList}>
+            {options.map((option) => (
+              <li
+                key={option.value}
+                className={clsx(styles.optionItem, {
+                  [styles.selected]: option.value === selectedOption,
+                })}
+                onClick={() => onSelect?.(option.value)}
+              >
+                {option.text}
+              </li>
+            ))}
           </ul>
         )}
       </div>

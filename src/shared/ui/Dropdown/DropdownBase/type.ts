@@ -1,9 +1,14 @@
 export type TDropdownBaseUIProps = {
-	label?: string;
-	placeholder?: string;
-  	isPlaceholderActive: boolean; //чтобы сделать пресхолдер неактивным припервом открытии стр, даже если текст совпаладет с опцией
-	isOpen: boolean;
-	onToggle: () => void;
-  	children?: React.ReactNode; //чтобы сделать базовый бропдаун и его переиспользовать
-	displayText?: string; // текст на кнопке
-};
+    label?: string;
+    placeholder?: string;
+    selectedOption?: string;
+    isOpen: boolean;
+    onToggle: () => void;
+    options: TOption[];
+    onSelect?: (value: string) => void;
+    };
+    
+    export type TOption = {
+    value: string; // идентификатор
+    text: string; //текст опции
+    };
