@@ -2,7 +2,7 @@ import styles from './LikeButton.module.scss';
 import type { LikeButtonProps } from './type';
 
 export const LikeButtonUI = ({ isLiked, onClick }: LikeButtonProps) => (
-	<button type='button' className={styles.button} onClick={() => onClick()}>
+	<button type='button' className={styles.button}>
 		<svg
 			className={styles.icon}
 			width='24'
@@ -18,6 +18,7 @@ export const LikeButtonUI = ({ isLiked, onClick }: LikeButtonProps) => (
 				strokeWidth='2'
 				strokeLinecap='round'
 				strokeLinejoin='round'
+				onClick={onClick}
 			/>
 		</svg>
 	</button>
