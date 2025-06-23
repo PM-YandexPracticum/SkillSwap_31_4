@@ -23,3 +23,13 @@ export const LikeButton = {
     )
   }
 }
+
+export const HeaderLikeButton = {
+    render: () => {
+      return (
+      <div>
+        <LikeButtonUI onClick={() => console.log('Hello')} />
+      </div>
+    )
+  }
+}
