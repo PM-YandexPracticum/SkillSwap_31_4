@@ -1,0 +1,43 @@
+.switch {
+	position: relative;
+	display: inline-block;
+	width: 32.9px;
+	height: 20px;
+}
+
+
+.checkbox {
+	width: 0;
+	height: 0;
+	opacity: 0;
+}
+
+.switch__slider {
+	position: absolute;
+	inset: 0;
+	background-color: var(--color-toggle);
+	border-radius: 100px;
+	cursor: pointer;
+	transition: 0.4s;
+}
+
+.switch__slider::before {
+	position: absolute;
+	top: 1.29px;
+	left: 1.29px;
+	width: 17.42px;
+	height: 17.42px;
+	background-color: var(--color-surface);
+	border-radius: 100px;
+	cursor: pointer;
+	transition: 0.4s;
+	content: '';
+}
+
+.checkbox:checked + .switch__slider {
+	background-color: var(--color-accent);
+}
+
+.checkbox:checked + .switch__slider::before {
+	transform: translateX(13px);
+}
