@@ -1,0 +1,41 @@
+.notificationButton {
+	position: relative;
+	box-sizing: border-box;
+	width: 24px;
+	height: 24px;
+	padding: 0 0;
+	border: 0 none transparent;
+	background-color: transparent;
+	border-radius: 100%;
+	cursor: pointer;
+}
+
+.notificationButtonFill {
+	content: '';
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	width: 12px;
+	height: 12px;
+	background-color: var(--color-alarm);
+	border-radius: 100%;
+	border: 0 none transparent;
+	cursor: pointer;
+}
+
+.notificationImage {
+	transition: 0.4s;
+	border-radius: 100%;
+
+	&:hover {
+		background-color: var(--color-button-hover);
+	}
+
+	&:active {
+		background-color: var(--color-primary-pressed);
+	}
+
+	&:disabled {
+		background-color: var(--color-disabled);
+	}
+}
