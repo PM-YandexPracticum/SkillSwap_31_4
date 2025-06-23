@@ -1,32 +1,43 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
+import React, { useState } from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { DropdownBaseUI } from './DropdownBase';
-import type { TDropdownBaseUIProps } from './type';
 
 const meta: Meta<typeof DropdownBaseUI> = {
-  title: 'Shared/UI/DropdownBaseUI',
+  title: 'Components/DropdownBaseUI',
   component: DropdownBaseUI,
-  parameters: {
-    layout: 'centered',
+};
+
+export default meta;
+
+type Story = StoryObj<typeof DropdownBaseUI>;
+
+export const Default: Story = {
+  render: (args) => {
+    const [selectedOption, setSelectedOption] = useState<string | undefined>();
+    const [isOpen, setIsOpen] = useState(false);
+
+    return (
+      <div style={{ width: 436, padding: 20 }}>
+        <DropdownBaseUI
+          {...args}
+          selectedOption={selectedOption}
+          isOpen={isOpen}
+          onToggle={() => setIsOpen((prev) => !prev)}
+          onSelect={(value) => {
+            setSelectedOption(value);
+            setIsOpen(false);
+          }}
+        />
+      </div>
+    );
+  },
+  args: {
+    label: 'Выберите значение',
+    placeholder: 'Плейсхолдер',
+    options: [ 
+	{ value: '1', text: 'Опция 1' },
+	{ value: '2', text: 'Опция 2' },
+	{ value: '3', text: 'Опция 3' },
+	],
   },
 };
-  
-  export default meta;
-  type Story = StoryObj<TDropdownBaseUIProps>;
-  
-  export const Default: Story = {
-	args: {
-	  label: 'Базовый дропдаун',
-	  placeholder: 'Выберите значение',
-	  isOpen: true,
-	  isPlaceholderActive: true,
-	  displayText: '',
-	  onToggle: () => alert('toggle!'),
-	  children: (
-		<>
-		  <li style={{ padding: 8, paddingLeft: 20 }}>Опция 1</li>
-		  <li style={{ padding: 8, paddingLeft: 20 }}>Опция 2</li>
-		  <li style={{ padding: 8, paddingLeft: 20 }}>Опция 3</li>
-		</>
-	  ),
-	},
-  };
