@@ -1,9 +1,27 @@
 .button {
+  position: relative;
+  background: transparent;
   border: none;
-  background: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+
+
+
+&::before {
+  content: '';
+  position: absolute;
+  width: 87%;
+  height: 75%;
+  border-radius: 50%;
+  clip-path: ellipse(50% 50% at 50% 50%);
+  pointer-events: auto;
   cursor: pointer;
 }
+}
 
-.image {
+.svg {
   display: block;
+  pointer-events: none;
 }
