@@ -10,9 +10,9 @@ export const VisibilityButton = ({
 	return (
 		<button className={styles.button} type='button' onClick={onClick}>
 			{isHidden ? (
-				<img src={unVisibleEye} alt='Иконка скрыто' />
+				<img className={styles.image} src={unVisibleEye} alt='Иконка скрыто' />
 			) : (
-				<img src={visibleEye} alt='Иконка не скрыто' />
+				<img className={styles.image} src={visibleEye} alt='Иконка не скрыто' />
 			)}
 		</button>
 	);
