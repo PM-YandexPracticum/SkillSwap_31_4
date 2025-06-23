@@ -1,4 +1,4 @@
 export type LikeButtonProps = {
-	isLiked: boolean;
-	onClick: () => void;
+	isLiked?: boolean;
+	onClick?: () => void;
 };
