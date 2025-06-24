@@ -6,3 +6,4 @@ export * from './LikeButton';
 export * from './CheckboxCategory';
 export * from './Dropdown';
 export * from './CheckboxSubcategory';
+export * from './ThemeToggleButton';
