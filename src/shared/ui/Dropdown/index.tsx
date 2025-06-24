@@ -1,1 +1,1 @@
-export { DropdownBaseUI } from './DropdownBase/DropdownBase';
+export { DropdownBaseUI } from './DropdownBase';
