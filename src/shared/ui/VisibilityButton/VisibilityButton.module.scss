@@ -1,27 +1,25 @@
 .button {
-  position: relative;
-  background: transparent;
-  border: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none;
+	position: relative;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	background: transparent;
+	border: none;
+	pointer-events: none;
 
-
-
-&::before {
-  content: '';
-  position: absolute;
-  width: 87%;
-  height: 75%;
-  border-radius: 50%;
-  clip-path: ellipse(50% 50% at 50% 50%);
-  pointer-events: auto;
-  cursor: pointer;
-}
+	&::before {
+		position: absolute;
+		width: 87%;
+		height: 75%;
+		border-radius: 50%;
+		cursor: pointer;
+		clip-path: ellipse(50% 50% at 50% 50%);
+		pointer-events: auto;
+		content: '';
+	}
 }
 
 .svg {
-  display: block;
-  pointer-events: none;
+	display: block;
+	pointer-events: none;
 }
