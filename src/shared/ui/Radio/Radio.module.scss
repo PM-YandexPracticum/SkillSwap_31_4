@@ -1,0 +1,50 @@
+.radioGroup {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.radioWrapper {
+	display: flex;
+	align-items: center;
+}
+
+.label {
+	display: flex;
+	align-items: center;
+	height: 24px;
+	color: var(--color-text-primary);
+	font-weight: 400;
+	font-size: 16px;
+	font-family: var(--font-roboto), serif;
+	cursor: pointer;
+}
+
+.input {
+	display: none;
+}
+
+.customCircle {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 20px;
+	height: 20px;
+	margin-right: 8px;
+	border: 1px solid #000000;
+	border-radius: 50%;
+	transition: border-color 0.3s ease;
+}
+
+.input:checked + label .customCircle {
+	border-color: var(--color-primary-pressed);
+}
+
+.input:checked + label .customCircle::before {
+	display: block;
+	width: 10px;
+	height: 10px;
+	background-color: var(--color-primary-pressed);
+	border-radius: 50%;
+	content: '';
+}
