@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import type { TDropdownBaseUIProps } from './type';
-import styles from '../DropdownBase/DropdownBase.module.scss';
+import styles from './DropdownBase.module.scss';
 import ArrowDownIcon from '../../../../images/icons/chevron-down.svg';
 
 export const DropdownBaseUI: React.FC<TDropdownBaseUIProps> = ({
