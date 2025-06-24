@@ -39,14 +39,14 @@ export const DropdownBaseUI = ({
 			{isOpen && (
 				<ul className={styles.dropdownList}>
 					{options.map((option) => (
-						<li key={option.value} className={styles.optionItem}>
+						<li key={option.value}>
 							<button
 								type='button'
-								className={clsx(styles.optionButton, {
-									[styles.selected]: option.value === selectedOption,
+								className={clsx(styles.optionItem, {
+									[styles.selected]: option.text === selectedOption,
 								})}
-								onClick={() => onSelect?.(option.value)}>
-								{option.text}
+								onClick={() => onSelect?.(option.text)}>
+								<p className={styles.itemText}>{option.text}</p>
 							</button>
 						</li>
 					))}
