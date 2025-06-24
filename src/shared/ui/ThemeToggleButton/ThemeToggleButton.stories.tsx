@@ -18,7 +18,7 @@ type TTheme = 'light' | 'dark';
 const ThemeToggleComponent = () => {
 	const [theme, setTheme] = useState<TTheme>(() => {
 		if (typeof window !== 'undefined') {
-			return (localStorage.getItem('theme') as 'light' | 'dark') || 'light';
+			return (localStorage.getItem('theme') as 'light' | 'dark') || 'dark';
 		}
 		return 'light';
 	});
@@ -29,7 +29,7 @@ const ThemeToggleComponent = () => {
 	}, [theme]);
 
 	const toggleTheme = () => {
-		setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
+		setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
 	};
 
 	return <ThemeToggleButton theme={theme} onClick={toggleTheme} />;
