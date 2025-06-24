@@ -16,6 +16,7 @@
 	},
 	"dependencies": {
 		"@fontsource/jost": "^5.2.6",
+		"@fontsource/open-sans": "^5.2.6",
 		"@fontsource/roboto": "^5.2.6",
 		"@vitejs/plugin-react": "^4.4.1",
 		"classnames": "^2.5.1",
