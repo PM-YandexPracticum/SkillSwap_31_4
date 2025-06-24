@@ -21,9 +21,7 @@ export const DropdownBaseUI: React.FC<TDropdownBaseUIProps> = ({
 					className={clsx({
 						[styles.placeholder]: !selectedOption,
 					})}>
-					{selectedOption
-						? options.find((opt) => opt.value === selectedOption)?.text
-						: placeholder}
+					{selectedOption || placeholder}
 				</span>
 				<img
 					src={ArrowDownIcon}
