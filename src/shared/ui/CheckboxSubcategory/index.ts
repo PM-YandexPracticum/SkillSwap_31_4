@@ -1,1 +1,1 @@
-export { CheckboxSubcategoryUI } from "./CheckboxSubcategory";
+export { CheckboxSubcategoryUI } from './CheckboxSubcategory';

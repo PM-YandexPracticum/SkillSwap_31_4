@@ -1,4 +1,4 @@
 export type CheckboxSubcategoryUIProps = {
-  isChecked: boolean;
-  onClick: () => void;
-}
+	isChecked: boolean;
+	onClick: () => void;
+};
