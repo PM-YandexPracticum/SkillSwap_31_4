@@ -1,17 +1,19 @@
-import { useState } from 'react';
 import { ButtonUI } from '../Button';
 import { LikeButtonUI } from '../LikeButton';
 import { SkillTags } from '../SkillTags';
 import type { TSkillTagsUIProps } from '../SkillTags/SkillTags';
 import styles from './Card.module.scss';
 
-type TUICardProps = {
+export type TUICardProps = {
 	photo: string;
 	userName: string;
 	userLocation: string;
 	userAge: number;
+	isLiked: boolean;
 	teachSkills?: TSkillTagsUIProps[];
 	learnSkills?: TSkillTagsUIProps[];
+	onClickDetails: () => void;
+	onClickLike: () => void;
 };
 
 export const Card = ({
@@ -19,10 +21,12 @@ export const Card = ({
 	userName,
 	userLocation,
 	userAge,
+	isLiked,
 	teachSkills,
 	learnSkills,
+	onClickDetails,
+	onClickLike
 }: TUICardProps) => {
-	const [isLiked, setIsLiked] = useState(false);
 	const getYearAddition = () => {
 		if (userAge >= 11 && userAge <= 14) {
 			return 'лет';
@@ -79,7 +83,7 @@ export const Card = ({
 						{userLocation}, {userAge} {getYearAddition()}
 					</span>
 				</div>
-				<LikeButtonUI isLiked={isLiked} onClick={() => setIsLiked(!isLiked)} />
+				<LikeButtonUI isLiked={isLiked} onClick={onClickLike} />
 			</div>
 			<div>
 				<div className={styles.tags}>
@@ -96,7 +100,7 @@ export const Card = ({
 				</div>
 			</div>
 			<ButtonUI
-				onClick={() => alert('Привет:)')}
+				onClick={onClickDetails}
 				width='284'
 				color='primary'
 				text='Подробнее'
