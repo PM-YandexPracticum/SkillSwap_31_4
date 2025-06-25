@@ -49,7 +49,6 @@ export const SkillTags = ({ tagText, category }: TSkillTagsUIProps) => {
 			};
 			break;
 		default:
-			tagBgColor;
 			break;
 	}
 
