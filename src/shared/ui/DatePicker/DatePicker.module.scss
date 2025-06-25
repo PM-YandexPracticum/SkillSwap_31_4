@@ -1,0 +1,44 @@
+@use '../../../index.css';
+
+.inputContainer {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	font-family: var(--font-roboto);
+}
+
+.error {
+	color: var(--color-error);
+	font-size: 12px;
+	line-height: 16px;
+	letter-spacing: 0.02em;
+}
+
+.calendarButtonOptions {
+	display: flex;
+	align-self: center;
+	gap: 8px;
+	inline-size: 100%;
+}
+
+.button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	block-size: 48px;
+	padding: 12px 24px;
+	font-size: 16px;
+	border: none;
+	border-radius: 12px;
+	cursor: pointer;
+}
+
+.buttonCancel {
+	background-color: inherit;
+	border: 1px solid var(--color-accent);
+}
+
+.buttonChoose {
+	background-color: var(--color-accent);
+}
