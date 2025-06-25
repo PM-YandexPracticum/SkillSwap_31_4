@@ -1,6 +1,6 @@
 import styles from './SkillTags.module.scss';
 
-type TSkillTagsUIProps = {
+export type TSkillTagsUIProps = {
 	tagText: string;
 	category:
 		| 'Иностранные языки'

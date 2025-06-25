@@ -1,11 +1,13 @@
 @import url('@fontsource/jost/500.css'); /* 500 = Medium */
 @import url('@fontsource/roboto/400.css'); /* Regular */
 @import url('@fontsource/roboto/500.css');
+@import url('@fontsource/open-sans/600.css');
 
 :root {
 	--font-jost: 'Jost', sans-serif; /* Основной шрифт заголовков */
 	--font-roboto:
 		'Roboto', sans-serif; /* Основной шрифт для текста и описаний */
+	--font-open-sans: 'Open Sans', sans-serif; /*Шрифт для имени в карточке пользователя */
 
 	--color-text-primary: #253017; /* Основной цвет текста */
 	--color-text-caption: #69735d; /* Цвет для подписей и вспомогательного текста */
