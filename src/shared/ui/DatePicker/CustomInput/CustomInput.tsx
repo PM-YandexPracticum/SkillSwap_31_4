@@ -2,6 +2,7 @@ import { forwardRef, type ChangeEvent } from 'react';
 import clsx from 'clsx';
 import { CalendarIcon } from './CalendarIcon';
 import styles from './CustomInput.module.scss';
+import Cleave from 'cleave.js/react';
 
 export const CustomInput = forwardRef(
 	(
@@ -18,14 +19,20 @@ export const CustomInput = forwardRef(
 				styles.inputContainer,
 				props.error && styles.errorInputContainer
 			)}>
-			<input
-				ref={ref}
-				value={props.value}
+			<Cleave
+				options={{
+					date: true,
+					datePattern: ['d', 'm', 'Y'],
+					delimiter: '.',
+					delimiterLazyShow: true,
+				}}
 				placeholder='дд.мм.гггг'
-				maxLength={10}
-				minLength={10}
-				className={styles.input}
 				onChange={props.onChange}
+				value={props.value}
+				className={styles.input}
+				htmlRef={
+					ref as ((instance: HTMLInputElement | null) => void) | undefined
+				}
 				readOnly={false}
 				required
 			/>

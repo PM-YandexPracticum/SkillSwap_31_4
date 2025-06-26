@@ -6,7 +6,6 @@ import { ru } from 'date-fns/locale';
 import 'react-datepicker/dist/react-datepicker.css';
 import './datepicker-styles.scss';
 import { ButtonUI } from '../Button';
-import clsx from 'clsx';
 import { CustomInput } from './CustomInput/CustomInput';
 
 export const DatePickerUI: React.FC<DataPickerProps> = (props) => {
