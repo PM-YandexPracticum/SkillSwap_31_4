@@ -9,3 +9,4 @@ export * from './CheckboxSubcategory';
 export * from './ThemeToggleButton';
 export * from './Notification';
 export * from './CheckboxFilterCategory';
+export * from './Search';
