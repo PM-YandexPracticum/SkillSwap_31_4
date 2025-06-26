@@ -5,7 +5,7 @@ import DatePicker from 'react-datepicker';
 import { ru } from 'date-fns/locale';
 import 'react-datepicker/dist/react-datepicker.css';
 import './datepicker-styles.scss';
-
+import { ButtonUI } from '../Button';
 import clsx from 'clsx';
 import { CustomInput } from './CustomInput/CustomInput';
 
@@ -109,16 +109,14 @@ export const DatePickerUI: React.FC<DataPickerProps> = (props) => {
 				showPopperArrow={false}
 				scrollableYearDropdown>
 				<div className={styles.calendarButtonOptions}>
-					<button
-						className={clsx(styles.buttonCancel, styles.button)}
-						onClick={onCancel}>
-						Отменить
-					</button>
-					<button
-						className={clsx(styles.buttonChoose, styles.button)}
-						onClick={onClickButtonChoose}>
-						Выбрать
-					</button>
+					<ButtonUI
+						onClick={onCancel}
+						text='Отменить'
+						color='secondary'></ButtonUI>
+					<ButtonUI
+						onClick={onClickButtonChoose}
+						text='Выбрать'
+						color='primary'></ButtonUI>
 				</div>
 			</DatePicker>
 			<span className={styles.error}>{props.error}</span>
