@@ -1,0 +1,1 @@
+export { CheckboxFilterCategoryUI } from './CheckboxFilterCategory';
