@@ -18,7 +18,7 @@ export const CheckboxFilterCategoryMain = {
 		const [isChecked, setIsChecked] = useState(false);
 
 		return (
-			<div>
+			<div style={{ width: '500px' }}>
 				<CheckboxFilterCategoryUI
 					categoryType='main'
 					text='Иностранные языки'
@@ -35,7 +35,7 @@ export const CheckboxFilterCategorySub = {
 		const [isChecked, setIsChecked] = useState(false);
 
 		return (
-			<div>
+			<div style={{ width: '500px' }}>
 				<CheckboxFilterCategoryUI
 					categoryType='sub'
 					text='Английский'
