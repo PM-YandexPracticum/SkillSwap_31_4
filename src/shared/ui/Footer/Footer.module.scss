@@ -1,0 +1,23 @@
+.footer {
+    width: 1440px;
+    background-color: var(--color-surface);
+    padding: 32px 36px;
+}
+
+.footerLinkContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 324px);
+    justify-content: end;
+    column-gap: 24px;
+    row-gap: 12px;
+    margin-block-start: 20px;
+    line-height: 24px;
+}
+
+.copyright {
+    margin-block-start: 32px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--color-text-caption);
+}
