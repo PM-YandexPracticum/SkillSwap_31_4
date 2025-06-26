@@ -5,56 +5,68 @@ export const Footer = () => {
 	return (
 		<footer className={styles.footer}>
 			<Logo />
-			<div className={styles.footerLinkContainer}>
-				<a
-					href='#'
-					style={{
-						textDecoration: 'none',
-						color: 'var(--color-text-primary)',
-					}}>
-					О проекте
-				</a>
-				<a
-					href='#'
-					style={{
-						textDecoration: 'none',
-						color: 'var(--color-text-primary)',
-					}}>
-					Контакты
-				</a>
-				<a
-					href='#'
-					style={{
-						textDecoration: 'none',
-						color: 'var(--color-text-primary)',
-					}}>
-					Политика конфиденциальности
-				</a>
-				<a
-					href='#'
-					style={{
-						textDecoration: 'none',
-						color: 'var(--color-text-primary)',
-					}}>
-					Все навыки
-				</a>
-				<a
-					href='#'
-					style={{
-						textDecoration: 'none',
-						color: 'var(--color-text-primary)',
-					}}>
-					Блог
-				</a>
-				<a
-					href='#'
-					style={{
-						textDecoration: 'none',
-						color: 'var(--color-text-primary)',
-					}}>
-					Пользовательское соглашение
-				</a>
-			</div>
+			<ul className={styles.footerLinkContainer}>
+				<li>
+					<a
+						href='#'
+						style={{
+							textDecoration: 'none',
+							color: 'var(--color-text-primary)',
+						}}>
+						О проекте
+					</a>
+				</li>
+				<li>
+					<a
+						href='#'
+						style={{
+							textDecoration: 'none',
+							color: 'var(--color-text-primary)',
+						}}>
+						Контакты
+					</a>
+				</li>
+				<li>
+					<a
+						href='#'
+						style={{
+							textDecoration: 'none',
+							color: 'var(--color-text-primary)',
+						}}>
+						Политика конфиденциальности
+					</a>
+				</li>
+				<li>
+					<a
+						href='#'
+						style={{
+							textDecoration: 'none',
+							color: 'var(--color-text-primary)',
+						}}>
+						Все навыки
+					</a>
+				</li>
+				<li>
+					<a
+						href='#'
+						style={{
+							textDecoration: 'none',
+							color: 'var(--color-text-primary)',
+						}}>
+						Блог
+					</a>
+				</li>
+				<li>
+					<a
+						href='#'
+						style={{
+							textDecoration: 'none',
+							color: 'var(--color-text-primary)',
+						}}>
+						Пользовательское соглашение
+					</a>
+				</li>
+			</ul>
 			<p className={styles.copyright}>SkillSwap - 2025</p>
 		</footer>
 	);
