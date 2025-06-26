@@ -1,4 +1,3 @@
-import { CheckboxCategoryUI } from '../CheckboxCategory';
 import type { CheckboxFilterCategoryUIProps } from './type';
 import styles from './CheckboxFilterCategory.module.scss';
 import { CheckboxSubcategoryUI } from '../CheckboxSubcategory';
@@ -6,17 +5,12 @@ import { CheckboxSubcategoryUI } from '../CheckboxSubcategory';
 export const CheckboxFilterCategoryUI = ({
 	isChecked,
 	text,
-	categoryType,
+	id,
 	onChange,
-}: CheckboxFilterCategoryUIProps) => {
-	const Checkbox =
-		categoryType === 'main' ? CheckboxCategoryUI : CheckboxSubcategoryUI;
+}: CheckboxFilterCategoryUIProps) => (
+	<div className={styles.input} id={id}>
+		<CheckboxSubcategoryUI isChecked={isChecked} onClick={onChange} />
 
-	return (
-		<div className={styles.input}>
-			<Checkbox isChecked={isChecked} onClick={onChange} />
-
-			<span className={styles.text}>{text}</span>
-		</div>
-	);
-};
+		<span className={styles.text}>{text}</span>
+	</div>
+);

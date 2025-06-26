@@ -13,35 +13,41 @@ const meta = {
 
 export default meta;
 
-export const CheckboxFilterCategoryMain = {
+export const CheckboxFilterCategory = {
 	render: () => {
-		const [isChecked, setIsChecked] = useState(false);
+		const items = [
+			{ id: '1', text: 'Английский' },
+			{ id: '2', text: 'Испанский' },
+			{ id: '3', text: 'Японский' },
+		];
 
-		return (
-			<div style={{ width: '500px' }}>
-				<CheckboxFilterCategoryUI
-					categoryType='main'
-					text='Иностранные языки'
-					isChecked={isChecked}
-					onChange={() => setIsChecked(!isChecked)}
-				/>
-			</div>
+		const [isChecked, setIsChecked] = useState<{ [key: string]: boolean }>(
+			() => {
+				return items.reduce<{ [key: string]: boolean }>((acc, item) => {
+					acc[item.id] = false;
+					return acc;
+				}, {});
+			}
 		);
-	},
-};
 
-export const CheckboxFilterCategorySub = {
-	render: () => {
-		const [isChecked, setIsChecked] = useState(false);
+		const handleChange = (id: string) => {
+			setIsChecked((prev) => ({
+				...prev,
+				[id]: !prev[id],
+			}));
+		};
 
 		return (
 			<div style={{ width: '500px' }}>
-				<CheckboxFilterCategoryUI
-					categoryType='sub'
-					text='Английский'
-					isChecked={isChecked}
-					onChange={() => setIsChecked(!isChecked)}
-				/>
+				{items.map((item) => (
+					<CheckboxFilterCategoryUI
+						key={item.id}
+						id={item.id}
+						text={item.text}
+						isChecked={isChecked[item.id]}
+						onChange={() => handleChange(item.id)}
+					/>
+				))}
 			</div>
 		);
 	},
