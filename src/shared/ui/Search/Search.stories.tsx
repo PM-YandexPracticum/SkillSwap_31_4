@@ -3,7 +3,7 @@ import type { Meta, StoryFn } from '@storybook/react';
 import { Search } from './Search';
 
 const meta = {
-	title: 'Shared/Search',
+	title: 'Shared/UI/Search',
 	component: Search,
 } satisfies Meta<typeof Search>;
 
