@@ -8,3 +8,4 @@ export * from './Dropdown';
 export * from './CheckboxSubcategory';
 export * from './ThemeToggleButton';
 export * from './Notification';
+export * from './CheckboxFilterCategory';
