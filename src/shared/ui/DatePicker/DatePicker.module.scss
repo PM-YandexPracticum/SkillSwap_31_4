@@ -1,0 +1,23 @@
+@use '../../../index.scss';
+
+.inputContainer {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	font-family: var(--font-roboto);
+}
+
+.error {
+	color: var(--color-error);
+	font-size: 12px;
+	line-height: 16px;
+	letter-spacing: 0.02em;
+}
+
+.calendarButtonOptions {
+	display: flex;
+	align-self: center;
+	gap: 8px;
+	inline-size: 100%;
+}
