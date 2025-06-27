@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { DropdownBaseUI } from './DropdownBase';
 
 const meta: Meta<typeof DropdownBaseUI> = {
-	title: 'Shared/UI/DropdownBaseUI',
+	title: 'Shared/UI/Dropdown/DropdownBaseUI',
 	component: DropdownBaseUI,
 	tags: ['autodocs'],
 	parameters: {
@@ -19,12 +19,16 @@ export const Default: Story = {
 	render: (args) => {
 		const [selectedOption, setSelectedOption] = useState<string | undefined>();
 		const [isOpen, setIsOpen] = useState(false);
+		const selectedOptionText = args.options.find(
+			(opt) => opt.value === selectedOption
+		)?.text;
 
 		return (
 			<div style={{ width: 436, padding: 20 }}>
 				<DropdownBaseUI
 					{...args}
 					selectedOption={selectedOption}
+					displayText={selectedOptionText}
 					isOpen={isOpen}
 					onToggle={() => setIsOpen((prev) => !prev)}
 					onSelect={(value) => {
