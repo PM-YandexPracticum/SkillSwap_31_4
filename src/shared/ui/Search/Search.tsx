@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
+import clsx from 'clsx';
 import styles from './Search.module.scss';
 
 interface SearchProps {
-	placeholder: string;
+	placeholder?: string;
 	value: string;
 	onChange: (value: string) => void;
+	onSelect?: (value: string) => void;
+	options?: string[];
 	className?: string;
 }
 
@@ -51,17 +54,60 @@ export const Search: React.FC<SearchProps> = ({
 	placeholder = 'Искать навык',
 	value,
 	onChange,
+	onSelect,
+	options = [],
 	className = '',
-}) => (
-	<div className={`${styles.search} ${className}`}>
-		<SearchIcon />
-		<input
-			type='text'
-			placeholder={placeholder}
-			value={value}
-			onChange={(e) => onChange(e.target.value)}
-			className={styles.search__input}
-		/>
-		{value && <ClearIcon onClick={() => onChange('')} />}
-	</div>
-);
+}) => {
+	const [isOpen, setIsOpen] = useState(false);
+
+	const filteredOptions = options.filter((option) =>
+		option.toLowerCase().startsWith(value.toLowerCase())
+	);
+
+	const handleSelect = (option: string) => {
+		onChange(option);
+		onSelect?.(option);
+		setIsOpen(false);
+	};
+
+	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		onChange(e.target.value);
+		setIsOpen(true);
+	};
+
+	return (
+		<div className={clsx(styles.searchWrapper, className)}>
+			<div className={styles.search}>
+				<SearchIcon />
+				<input
+					type='text'
+					placeholder={placeholder}
+					value={value}
+					onChange={handleInputChange}
+					onFocus={() => setIsOpen(true)}
+					className={styles.search__input}
+				/>
+				{value && <ClearIcon onClick={() => onChange('')} />}
+			</div>
+
+			{isOpen && value && options.length > 0 && (
+				<ul className={styles.dropdown}>
+					{filteredOptions.length > 0 ? (
+						filteredOptions.slice(0, 10).map((option) => (
+							<li key={option}>
+								<button
+									type='button'
+									className={styles.dropdownItem}
+									onClick={() => handleSelect(option)}>
+									{option}
+								</button>
+							</li>
+						))
+					) : (
+						<li className={styles.dropdownEmpty}>Не найдено</li>
+					)}
+				</ul>
+			)}
+		</div>
+	);
+};

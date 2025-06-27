@@ -9,13 +9,35 @@ const meta = {
 
 export default meta;
 
+const options = [
+	'Москва',
+	'Ростов-на-Дону',
+	'Омск',
+	'Мурманск',
+	'Волгоград',
+	'Рязань',
+	'Минск',
+	'Махачкала',
+	'Анапа',
+	'Сочи',
+	'Севастополь',
+];
+
 const Template: StoryFn<typeof Search> = (args) => {
 	const [value, setValue] = React.useState('');
 
-	return <Search {...args} value={value} onChange={setValue} />;
+	return (
+		<div>
+			<Search {...args} value={value} onChange={setValue} />
+		</div>
+	);
 };
 
 export const Default = Template.bind({});
 Default.args = {
-	placeholder: 'Искать навык',
+	placeholder: 'Введите город',
+	options,
+	onSelect: (option: string) => {
+		console.log('Выбран элемент:', option);
+	},
 };
