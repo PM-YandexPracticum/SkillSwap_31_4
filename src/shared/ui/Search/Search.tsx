@@ -77,7 +77,12 @@ export const Search: React.FC<SearchProps> = ({
 
 	return (
 		<div className={clsx(styles.searchWrapper, className)}>
-			<div className={styles.search}>
+			<div
+				className={clsx(
+					styles.search,
+					isOpen && value && options.length > 0 && styles.search_open
+				)}
+			>
 				<SearchIcon />
 				<input
 					type='text'
@@ -98,7 +103,8 @@ export const Search: React.FC<SearchProps> = ({
 								<button
 									type='button'
 									className={styles.dropdownItem}
-									onClick={() => handleSelect(option)}>
+									onClick={() => handleSelect(option)}
+								>
 									{option}
 								</button>
 							</li>
