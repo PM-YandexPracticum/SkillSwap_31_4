@@ -8,9 +8,8 @@ export const CheckboxFilterCategoryUI = ({
 	id,
 	onChange,
 }: CheckboxFilterCategoryUIProps) => (
-	<div className={styles.input} id={id}>
-		<CheckboxSubcategoryUI isChecked={isChecked} onClick={onChange} />
-
+	<button id={id} type='button' onClick={onChange} className={styles.button}>
+		<CheckboxSubcategoryUI isChecked={isChecked} />
 		<span className={styles.text}>{text}</span>
-	</div>
+	</button>
 );
