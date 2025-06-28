@@ -1,17 +1,17 @@
 import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { DropdownCategory } from './DropdownCategory';
+import { DropdownCategoryUI } from './DropdownCategory';
 import type { Option } from '../Dropdown/MultiSelectDropdown/type';
 
-const meta: Meta<typeof DropdownCategory> = {
+const meta: Meta<typeof DropdownCategoryUI> = {
 	title: 'Shared/UI/DropdownCategory',
-	component: DropdownCategory,
+	component: DropdownCategoryUI,
 	tags: ['autodocs'],
 	parameters: { layout: 'centered' },
 };
 
 export default meta;
-type Story = StoryObj<typeof DropdownCategory>;
+type Story = StoryObj<typeof DropdownCategoryUI>;
 
 export const Default: Story = {
 	render: () => {
@@ -42,7 +42,7 @@ export const Default: Story = {
 
 		return (
 			<div>
-				<DropdownCategory
+				<DropdownCategoryUI
 					isChecked={isChecked}
 					onChange={handleCheckboxChange}
 					options={options}

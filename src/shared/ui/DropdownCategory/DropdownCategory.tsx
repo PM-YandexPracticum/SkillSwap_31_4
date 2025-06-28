@@ -3,7 +3,7 @@ import { CheckboxCategoryUI } from '../CheckboxCategory';
 import type { DropdownCategoryUIProps } from './type';
 import styles from './DropdownCategory.module.scss';
 
-export const DropdownCategory = ({
+export const DropdownCategoryUI = ({
 	isChecked,
 	onChange,
 	options,
@@ -12,7 +12,7 @@ export const DropdownCategory = ({
 	variant,
 	isOpen,
 }: DropdownCategoryUIProps) => (
-	<div className={styles.dropdownCategory}>
+	<div className={styles.dropdownCategoryWrapper}>
 		<CheckboxCategoryUI isChecked={isChecked} onClick={onChange} />
 		<MultiSelectDropdownUI
 			options={options}
