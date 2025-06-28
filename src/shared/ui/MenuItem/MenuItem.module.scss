@@ -1,0 +1,22 @@
+.menuItem {
+	inline-size: 244px;
+	block-size: 48px;
+	padding: 12px 20px;
+	display: flex;
+	gap: 12px;
+	align-items: center;
+	background-color: inherit;
+	transition: background-color 0.1s ease-in-out;
+	border-radius: 12px;
+	color: var(--color-text-primary);
+	text-decoration: none;
+	font-size: 16px;
+}
+
+.menuItem:hover {
+	background-color: var(--color-disabled);
+}
+
+.menuItemActive {
+	background-color: var(--color-button-hover);
+}
