@@ -19,7 +19,7 @@ export const SuccessModalUI = () => (
 			/>
 		</svg>
 
-		<p className={styles.title}>Ваше предложение создано</p>
+		<h2 className={styles.title}>Ваше предложение создано</h2>
 		<p className={styles.subtitle}>Теперь вы можете предложить обмен</p>
 		<ButtonUI color='primary' text='Готово' width='436px' />
 	</div>
