@@ -4,8 +4,16 @@ import styles from './CheckboxSubcategory.module.scss';
 export const CheckboxSubcategoryUI = ({
 	isChecked,
 	onClick,
+	id,
 }: CheckboxSubcategoryUIProps) => (
-	<button type='button' className={styles.button} onClick={onClick}>
+	<label className={styles.label}>
+		<input
+			type='checkbox'
+			checked={isChecked}
+			onChange={onClick}
+			className={styles.checkbox}
+			id={id}
+		/>
 		<svg
 			width='24'
 			height='24'
@@ -23,5 +31,5 @@ export const CheckboxSubcategoryUI = ({
 				fill={isChecked ? 'var(--color-accent)' : 'transparent'}
 			/>
 		</svg>
-	</button>
+	</label>
 );
