@@ -1,7 +1,6 @@
 import { DropdownBaseUI } from '../DropdownBase/DropdownBase';
-import { CheckboxSubcategoryUI } from '../../CheckboxSubcategory';
-import styles from './MultiSelectDropdown.module.scss'
-import type {MultiSelectDropdownUIProps} from './type'
+import type { MultiSelectDropdownUIProps } from './type';
+import { CheckboxFilterCategoryUI } from '../../CheckboxFilterCategory';
 
 export const MultiSelectDropdownUI = ({
 	label,
@@ -10,31 +9,27 @@ export const MultiSelectDropdownUI = ({
 	isOpen,
 	onToggle,
 	onSelect,
-    displayText,
-    variant
-}: MultiSelectDropdownUIProps) => {
-
-	return (
-		<DropdownBaseUI
-			label={label}
-			placeholder={placeholder}
-            displayText={displayText}
-			isOpen={isOpen}
-			onToggle={onToggle}
-			onSelect={onSelect}
-			options={options.map((opt) => ({
-				value: opt.value,
-				text: (
-					<div className={styles.optionWrapper}>
-						<CheckboxSubcategoryUI
-							isChecked={opt.checked}
-							onClick={() => onSelect(opt.value)}
-						/>
-						<span>{opt.text}</span>
-					</div>
-				),
-			}))}
-            variant={variant}
-		/>
-	);
-};
+	displayText,
+	variant,
+}: MultiSelectDropdownUIProps) => (
+	<DropdownBaseUI
+		label={label}
+		placeholder={placeholder}
+		displayText={displayText}
+		isOpen={isOpen}
+		onToggle={onToggle}
+		onSelect={onSelect}
+		variant={variant} // стили для кнопки
+		options={options.map((item) => ({
+			value: item.id,
+			text: (
+				<CheckboxFilterCategoryUI
+					id={item.id}
+					text={item.text}
+					isChecked={item.checked}
+					onChange={() => onSelect(item.id)}
+				/>
+			),
+		}))}
+	/>
+);

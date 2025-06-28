@@ -28,7 +28,7 @@ export const Default: Story = {
 		);
 	},
 	args: {
-		name: 'gender',
+		nameRadio: 'gender',
 		options: [
 			{ value: 'all', label: 'Все' },
 			{ value: 'women', label: 'Женский' },

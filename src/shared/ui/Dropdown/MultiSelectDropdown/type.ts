@@ -1,8 +1,8 @@
-import type { ReactNode } from "react";
+import type { ReactNode } from 'react';
 
 export type Option = {
 	text: string;
-	value: string;
+	id: string;
 	checked: boolean;
 };
 
@@ -14,5 +14,5 @@ export type MultiSelectDropdownUIProps = {
 	onToggle: () => void;
 	onSelect: (value: string) => void;
 	displayText?: ReactNode;
-    variant?: 'default' | 'no-border'
+	variant?: 'default' | 'no-border';
 };
