@@ -1,5 +1,5 @@
 import type { Meta } from '@storybook/react-vite';
-import { SuccessModalUI } from '../ModalWithContent';
+import { ModalWithContentUI } from '../ModalWithContent';
 import { ModalUI } from './Modal';
 import { useState } from 'react';
 import { ButtonUI } from '../Button';
@@ -27,7 +27,14 @@ export const ModalDefault = {
 				{isOpen && (
 					<ModalUI
 						onClose={modalToggle}
-						children={<SuccessModalUI onClose={modalToggle} />}
+						children={
+							<ModalWithContentUI
+								title='Ваше предложение создано'
+								subtitle='Теперь вы можете предложить обмен'
+								svg='/svg/user-circle.svg'
+								onClose={modalToggle}
+							/>
+						}
 					/>
 				)}
 			</div>
