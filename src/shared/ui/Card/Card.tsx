@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import { ButtonUI } from '../Button';
 import { LikeButtonUI } from '../LikeButton';
 import { SkillTags } from '../SkillTags';
@@ -10,8 +11,8 @@ export type TUICardProps = {
 	userLocation: string;
 	userAge: number;
 	isLiked: boolean;
-	teachSkills?: TSkillTagsUIProps[];
-	learnSkills?: TSkillTagsUIProps[];
+	teachSkills: TSkillTagsUIProps[];
+	learnSkills: TSkillTagsUIProps[];
 	onClickDetails: () => void;
 	onClickLike: () => void;
 };

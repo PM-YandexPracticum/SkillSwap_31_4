@@ -4,9 +4,9 @@
 	justify-content: space-between;
 	width: 324px;
 	height: 368px;
+	padding: 20px;
 	background-color: var(--color-surface);
 	border-radius: 12px;
-	padding: 20px;
 }
 
 .user {
@@ -23,13 +23,13 @@
 .userInfo {
 	display: flex;
 	flex-direction: column;
-	gap: 4px;
 	align-self: center;
+	gap: 4px;
+	max-width: 172px;
 	font-weight: 400;
 	font-size: 12px;
 	font-family: var(--font-roboto), serif;
 	line-height: 16px;
-	max-width: 172px;
 	word-break: break-all;
 }
 
