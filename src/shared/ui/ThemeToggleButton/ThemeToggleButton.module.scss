@@ -1,31 +1,31 @@
 .button {
-	background: none;
-	border: none;
 	position: relative;
 	display: inline-flex;
-	align-items: center;
 	justify-content: center;
+	align-items: center;
+	background: none;
+	border: none;
 	pointer-events: none;
 }
 
 .dark::before {
-	content: '';
 	position: absolute;
 	width: 87%;
 	height: 86%;
 	border-radius: 67% 50% 50% 77%;
+	cursor: pointer;
 	clip-path: ellipse(50% 50% at 50% 50%);
 	pointer-events: auto;
-	cursor: pointer;
+	content: '';
 }
 
 .light::before {
-	content: '';
 	position: absolute;
 	width: 89%;
 	height: 85%;
 	border-radius: 50%;
+	cursor: pointer;
 	clip-path: ellipse(50% 50% at 50% 50%);
 	pointer-events: auto;
-	cursor: pointer;
+	content: '';
 }

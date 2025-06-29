@@ -1,4 +1,4 @@
-import { forwardRef, useState, useEffect } from 'react';
+import { forwardRef, useState, useEffect, useRef } from 'react';
 import type { InputHTMLAttributes } from 'react';
 import styles from './Input.module.scss';
 import { VisibilityButton } from '../VisibilityButton';
@@ -23,6 +23,19 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 		},
 		ref
 	) => {
+		const innerRef = useRef<HTMLInputElement>(null);
+		const combinedRef = (node: HTMLInputElement | null) => {
+			const externalRef = ref;
+
+			if (typeof externalRef === 'function') {
+				externalRef(node);
+			} else if (externalRef && 'current' in externalRef) {
+				externalRef.current = node;
+			}
+
+			innerRef.current = node;
+		};
+
 		const [showPassword, setShowPassword] = useState(false);
 		const [isEditing, setIsEditing] = useState(false);
 		const [localValue, setLocalValue] = useState(propValue || '');
@@ -30,6 +43,12 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 		useEffect(() => {
 			setLocalValue(propValue || '');
 		}, [propValue]);
+
+		useEffect(() => {
+			if (variant === 'editable' && isEditing) {
+				innerRef.current?.focus();
+			}
+		}, [isEditing, variant]);
 
 		const inputType = type === 'password' && showPassword ? 'text' : type;
 
@@ -57,7 +76,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 				)}
 				<div className={styles.inputContainer}>
 					<input
-						ref={ref}
+						ref={combinedRef}
 						id={id}
 						type={inputType}
 						value={displayValue}
@@ -65,7 +84,10 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 						onBlur={handleBlur}
 						className={`${styles.input} ${error ? styles.error : ''}`}
 						readOnly={variant === 'editable' && !isEditing}
-						{...props}
+						placeholder={props.placeholder}
+						name={props.name}
+						disabled={props.disabled}
+						autoComplete={props.autoComplete}
 					/>
 
 					{variant === 'password' && (
