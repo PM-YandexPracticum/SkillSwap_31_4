@@ -1,0 +1,1 @@
+export { SwiperArrows } from './SwiperArrows';
