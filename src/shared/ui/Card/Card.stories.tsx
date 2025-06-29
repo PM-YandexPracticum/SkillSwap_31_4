@@ -45,7 +45,7 @@ export const UICard = {
 					]}
 					isLiked={isLiked}
 					onClickLike={() => setIsLiked(!isLiked)}
-					onClickDetails={() => alert("Подробности не подробны:)")}
+					onClickDetails={() => alert('Подробности не подробны:)')}
 				/>
 			</div>
 		);

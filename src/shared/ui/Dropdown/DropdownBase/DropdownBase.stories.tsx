@@ -27,6 +27,7 @@ export const Default: Story = {
 			<div style={{ width: 436, padding: 20 }}>
 				<DropdownBaseUI
 					{...args}
+					idDropdown='baseDrop'
 					selectedOption={selectedOption}
 					displayText={selectedOptionText}
 					isOpen={isOpen}

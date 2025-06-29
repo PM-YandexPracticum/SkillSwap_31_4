@@ -1,22 +1,10 @@
-.button {
-	position: relative;
+.label {
+	display: block;
 	width: 24px;
 	height: 24px;
 	background-color: transparent;
-	border: none;
-
-	&::before {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		width: 20px;
-		height: 20px;
-		background: transparent;
-		cursor: pointer;
-		transform: translate(-50%, -50%);
-		pointer-events: auto;
-		content: '';
-	}
+	border-radius: 25%;
+	cursor: pointer;
 
 	.icon {
 		color: var(--color-text-primary);
@@ -26,4 +14,8 @@
 	.icon path {
 		transition: all 0.3s ease-in-out;
 	}
+}
+
+.checkbox {
+	display: none;
 }

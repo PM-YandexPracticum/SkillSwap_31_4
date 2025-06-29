@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 
 export type DropdownBaseUIProps = {
+	idDropdown: string;
 	label?: string;
 	placeholder?: string;
 	selectedOption?: string;

@@ -4,6 +4,7 @@ import styles from './DropdownBase.module.scss';
 import ArrowDownIcon from '../../../../images/icons/chevron-down.svg';
 
 export const DropdownBaseUI = ({
+	idDropdown,
 	label,
 	placeholder,
 	selectedOption,
@@ -24,6 +25,7 @@ export const DropdownBaseUI = ({
 		<div className={clsx(styles.dropdown, { [styles.open]: isOpen })}>
 			<button
 				type='button'
+				id={idDropdown}
 				className={clsx(styles.button, {
 					[styles.noBorderButton]: variant === 'no-border',
 				})}
@@ -45,19 +47,18 @@ export const DropdownBaseUI = ({
 
 			{isOpen && (
 				<ul
+					id={`${idDropdown}-listbox`}
 					className={clsx(styles.dropdownList, {
 						[styles.noBorderDropdownList]: variant === 'no-border',
 					})}>
 					{options.map((option) => (
-						<li key={option.value}>
-							<button
-								type='button'
-								className={clsx(styles.optionItem, {
-									[styles.selected]: option.value === selectedOption,
-								})}
-								onClick={() => onSelect?.(option.value)}>
-								<p className={styles.itemText}>{option.text}</p>
-							</button>
+						<li
+							key={option.value}
+							className={clsx(styles.optionItem, {
+								[styles.selected]: option.value === selectedOption,
+							})}
+							onClick={() => onSelect?.(option.value)}>
+							<div className={styles.itemText}>{option.text}</div>
 						</li>
 					))}
 				</ul>

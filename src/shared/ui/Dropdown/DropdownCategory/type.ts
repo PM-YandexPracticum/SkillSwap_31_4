@@ -1,4 +1,4 @@
-import type { Option } from '../Dropdown/MultiSelectDropdown/type';
+import type { Option } from '../MultiSelectDropdown/type';
 
 export type DropdownCategoryUIProps = {
 	isChecked: boolean;
@@ -8,4 +8,5 @@ export type DropdownCategoryUIProps = {
 	variant?: 'default' | 'no-border';
 	displayText: string;
 	isOpen: boolean;
+	idDropdown: string;
 };

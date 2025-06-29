@@ -1,2 +1,2 @@
 export { DropdownBaseUI } from './DropdownBase/DropdownBase';
-export { MultiSelectDropdownUI } from './MultiSelectDropdown/MultiSelectDropdown';
+export { DropdownCityUI } from './DropdownCity/DropdownCity';

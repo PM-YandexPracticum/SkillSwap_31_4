@@ -11,8 +11,10 @@ export const MultiSelectDropdownUI = ({
 	onSelect,
 	displayText,
 	variant,
+	idDropdown,
 }: MultiSelectDropdownUIProps) => (
 	<DropdownBaseUI
+		idDropdown={idDropdown}
 		label={label}
 		placeholder={placeholder}
 		displayText={displayText}
