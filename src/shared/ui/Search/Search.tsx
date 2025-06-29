@@ -2,12 +2,17 @@ import React, { useState } from 'react';
 import clsx from 'clsx';
 import styles from './Search.module.scss';
 
+interface SkillOption {
+	id: string;
+	label: string;
+}
+
 interface SearchProps {
 	placeholder?: string;
 	value: string;
 	onChange: (value: string) => void;
-	onSelect?: (value: string) => void;
-	options?: string[];
+	onSelect?: (option: SkillOption) => void;
+	options?: SkillOption[];
 	className?: string;
 }
 
@@ -61,11 +66,11 @@ export const Search: React.FC<SearchProps> = ({
 	const [isOpen, setIsOpen] = useState(false);
 
 	const filteredOptions = options.filter((option) =>
-		option.toLowerCase().startsWith(value.toLowerCase())
+		option.label.toLowerCase().startsWith(value.toLowerCase())
 	);
 
-	const handleSelect = (option: string) => {
-		onChange(option);
+	const handleSelect = (option: SkillOption) => {
+		onChange(option.label);
 		onSelect?.(option);
 		setIsOpen(false);
 	};
@@ -81,8 +86,7 @@ export const Search: React.FC<SearchProps> = ({
 				className={clsx(
 					styles.search,
 					isOpen && value && options.length > 0 && styles.search_open
-				)}
-			>
+				)}>
 				<SearchIcon />
 				<input
 					type='text'
@@ -99,13 +103,12 @@ export const Search: React.FC<SearchProps> = ({
 				<ul className={styles.dropdown}>
 					{filteredOptions.length > 0 ? (
 						filteredOptions.slice(0, 10).map((option) => (
-							<li key={option}>
+							<li key={option.id}>
 								<button
 									type='button'
 									className={styles.dropdownItem}
-									onClick={() => handleSelect(option)}
-								>
-									{option}
+									onClick={() => handleSelect(option)}>
+									{option.label}
 								</button>
 							</li>
 						))
