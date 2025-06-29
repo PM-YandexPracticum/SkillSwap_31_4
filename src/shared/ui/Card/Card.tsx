@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import { ButtonUI } from '../Button';
 import { LikeButtonUI } from '../LikeButton';
 import { SkillTags } from '../SkillTags';
@@ -10,8 +11,8 @@ export type TUICardProps = {
 	userLocation: string;
 	userAge: number;
 	isLiked: boolean;
-	teachSkills?: TSkillTagsUIProps[];
-	learnSkills?: TSkillTagsUIProps[];
+	teachSkills: TSkillTagsUIProps[];
+	learnSkills: TSkillTagsUIProps[];
 	onClickDetails: () => void;
 	onClickLike: () => void;
 };
@@ -25,7 +26,7 @@ export const Card = ({
 	teachSkills,
 	learnSkills,
 	onClickDetails,
-	onClickLike
+	onClickLike,
 }: TUICardProps) => {
 	const getYearAddition = () => {
 		if (userAge >= 11 && userAge <= 14) {
@@ -76,7 +77,8 @@ export const Card = ({
 					style={{
 						backgroundImage: `url(${photo})`,
 						backgroundSize: 'cover',
-					}}></div>
+					}}
+				/>
 				<div className={styles.userInfo}>
 					<span className={styles.userName}>{userName}</span>
 					<span>

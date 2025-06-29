@@ -1,0 +1,1 @@
+export { SuccessModalUI } from './SuccessModal';
