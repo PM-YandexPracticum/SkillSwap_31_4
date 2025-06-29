@@ -3,7 +3,7 @@ import { SwiperArrows } from '../SwiperArrows/SwiperArrows';
 import { Card } from '../Card';
 
 export default {
-	title: 'Components/CardSwiper',
+	title: 'Shared/UI/SwiperArrows',
 	component: Card,
 };
 
@@ -26,7 +26,7 @@ const mockCardData = new Array(10).fill(null).map((_, index) => ({
 	onClickLike: () => alert('Лайк'),
 }));
 
-export const Default = () => {
+export const CardSlider = () => {
 	const [index, setIndex] = useState(0);
 	const visibleCount = 3;
 
@@ -130,26 +130,13 @@ const PhotoGallery = ({ photos }: { photos: string[] }) => {
 					alt='Большое фото'
 					style={{ width: '100%', height: '100%', objectFit: 'cover' }}
 				/>
-
 				{/* Стрелки UI-компонентом */}
-				<div
-					style={{
-						position: 'absolute',
-						top: '50%',
-						left: 0,
-						right: 0,
-						transform: 'translateY(-50%)',
-						pointerEvents: 'none',
-					}}>
-					<div style={{ pointerEvents: 'auto' }}>
-						<SwiperArrows
-							onPrev={handlePrev}
-							onNext={handleNext}
-							disabledPrev={false}
-							disabledNext={false}
-						/>
-					</div>
-				</div>
+				<SwiperArrows
+					onPrev={handlePrev}
+					onNext={handleNext}
+					disabledPrev={false}
+					disabledNext={false}
+				/>
 			</div>
 
 			{/* Маленькие фото */}
@@ -204,7 +191,7 @@ const PhotoGallery = ({ photos }: { photos: string[] }) => {
 	);
 };
 
-export const Gallery = () => {
+export const GallerySlider = () => {
 	return (
 		<div
 			style={{

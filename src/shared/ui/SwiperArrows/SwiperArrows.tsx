@@ -1,12 +1,6 @@
 import Arrow from '@images/icons/chevron-right.svg';
 import styles from './SwiperArrows.module.scss';
-
-type SwiperArrowsProps = {
-	onPrev: () => void;
-	onNext: () => void;
-	disabledPrev: boolean;
-	disabledNext: boolean;
-};
+import type { SwiperArrowsProps } from './type';
 
 export const SwiperArrows = ({
 	onPrev,
@@ -20,14 +14,14 @@ export const SwiperArrows = ({
 			onClick={onPrev}
 			disabled={disabledPrev}
 			className={`${styles.swiper__button} ${styles.swiper__button_left}`}>
-			<img src={Arrow} alt='Previous' />
+			<img src={Arrow} alt='Стрелка лево' />
 		</button>
 		<button
 			type='button'
 			onClick={onNext}
 			disabled={disabledNext}
 			className={styles.swiper__button}>
-			<img src={Arrow} alt='Next' />
+			<img src={Arrow} alt='Стрелка право' />
 		</button>
 	</div>
 );
