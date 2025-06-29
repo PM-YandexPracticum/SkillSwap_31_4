@@ -10,5 +10,6 @@ export * from './ThemeToggleButton';
 export * from './Notification';
 export * from './CheckboxFilterCategory';
 export * from './SuccessModal';
+export * from './SwiperArrows';
 export * from './Search'
 export * from './Modal';
