@@ -1,7 +1,11 @@
 import { ButtonUI } from '../Button';
 import styles from './SuccessModal.module.scss';
 
-export const SuccessModalUI = () => (
+type SuccessModalUIProps = {
+	onClose: () => void;
+};
+
+export const SuccessModalUI = ({ onClose }: SuccessModalUIProps) => (
 	<div className={styles.modal}>
 		<svg
 			className={styles.icon}
@@ -21,6 +25,6 @@ export const SuccessModalUI = () => (
 
 		<h2 className={styles.title}>Ваше предложение создано</h2>
 		<p className={styles.subtitle}>Теперь вы можете предложить обмен</p>
-		<ButtonUI color='primary' text='Готово' width='436px' />
+		<ButtonUI color='primary' text='Готово' width='436px' onClick={onClose} />
 	</div>
 );
