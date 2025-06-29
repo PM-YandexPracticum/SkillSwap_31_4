@@ -10,7 +10,7 @@ export const CustomInput = forwardRef(
 			onClickOpen: () => void;
 			onChange: (event: ChangeEvent) => void;
 			value: string;
-			error?: string;
+			error: boolean;
 		},
 		ref: React.ForwardedRef<HTMLInputElement>
 	) => (
@@ -40,3 +40,5 @@ export const CustomInput = forwardRef(
 		</label>
 	)
 );
+
+CustomInput.displayName = 'CustomInput';

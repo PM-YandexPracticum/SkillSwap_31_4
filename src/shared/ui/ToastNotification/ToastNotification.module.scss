@@ -1,0 +1,85 @@
+@keyframes show-animation {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+.notification {
+	position: relative;
+	z-index: 1;
+	width: 340px;
+	margin: 0;
+	padding: 0;
+	font-family: var(--font-roboto), serif;
+	background-color: var(--color-button-hover);
+	border-radius: 12px;
+}
+
+.showElement {
+	animation: show-animation 0.5s ease-in-out;
+}
+
+.hiddenElement {
+	visibility: hidden;
+	opacity: 0;
+	transition:
+		visibility 0s 0.5s,
+		opacity 0.5s ease-in-out;
+}
+
+.showAbsolute {
+	content: '';
+	position: fixed;
+	bottom: 24px;
+	left: 24px;
+}
+
+.buttonNavigate {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	min-height: 72px;
+	margin: 0;
+	padding: 8px;
+	background-color: transparent;
+	border: 0 none transparent;
+	cursor: pointer;
+}
+
+.buttonClose {
+	position: absolute;
+	top: 4px;
+	right: 4px;
+	z-index: 2;
+	width: 24px;
+	height: 24px;
+	background-color: transparent;
+	border: 0 none transparent;
+	cursor: pointer;
+	content: '';
+}
+
+.cross {
+	align-content: center;
+	align-items: center;
+}
+
+.idea {
+	width: 24px;
+	height: 24px;
+	margin-right: 8px;
+}
+
+.message {
+	max-width: 270px;
+	overflow: hidden;
+	color: var(--color-text-primary);
+	white-space: wrap;
+	text-align: left;
+	text-overflow: ellipsis;
+}

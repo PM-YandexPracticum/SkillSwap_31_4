@@ -39,7 +39,7 @@ export const DropdownCityUI = ({
 					<input
 						type='text'
 						className={styles.inputSearch}
-						value={selectedOption}
+						value={selectedOption || ''}
 						placeholder={placeholder}
 						onChange={onInputChange}
 						onClick={onClick}
