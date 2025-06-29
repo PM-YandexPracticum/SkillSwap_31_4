@@ -41,6 +41,7 @@ module.exports = {
 				usePrettierrc: true,
 			},
 		],
+		'react/require-default-props': 'off',
 		'react/react-in-jsx-scope': 'off',
 		'comma-dangle': 'off',
 		'use-isnan': ['error', { enforceForSwitchCase: true }],
