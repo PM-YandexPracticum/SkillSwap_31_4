@@ -4,30 +4,37 @@
 	align-items: center;
 	width: 556px;
 	height: 420px;
-	padding: 0 60px;
+	padding: 62px 60px;
 	text-align: center;
 	background-color: var(--color-surface);
 	border-radius: 12px;
 }
 
 .icon {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	width: 100px;
 	height: 100px;
-	margin: 62px 0 52px;
+	margin-block-end: 52px;
 }
 
 .title {
+	max-width: 436px;
 	margin-bottom: 12px;
 	font-weight: 500;
 	font-size: 24px;
 	font-family: var(--font-jost);
 	line-height: 28px;
+	word-break: break-all;
 }
 
 .subtitle {
+	max-width: 436px;
 	margin-bottom: 32px;
 	font-weight: 400;
 	font-size: 16px;
 	font-family: var(--font-roboto);
 	line-height: 24px;
+	word-break: break-all;
 }

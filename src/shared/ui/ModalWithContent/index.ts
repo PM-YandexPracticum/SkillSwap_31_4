@@ -1,0 +1,1 @@
+export { ModalWithContentUI } from './ModalWithContent';

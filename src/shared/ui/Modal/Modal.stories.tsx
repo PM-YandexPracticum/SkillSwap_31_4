@@ -1,5 +1,5 @@
 import type { Meta } from '@storybook/react-vite';
-import { SuccessModalUI } from '../SuccessModal';
+import { SuccessModalUI } from '../ModalWithContent';
 import { ModalUI } from './Modal';
 import { useState } from 'react';
 import { ButtonUI } from '../Button';
