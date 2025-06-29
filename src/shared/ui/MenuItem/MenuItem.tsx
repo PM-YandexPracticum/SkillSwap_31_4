@@ -1,9 +1,11 @@
-import type MenuItemUIProps from './type';
-import styles from './MenuItem.module.scss';
 import { NavLink } from 'react-router-dom';
 import clsx from 'clsx';
+import type MenuItemUIProps from './type';
+import styles from './MenuItem.module.scss';
 
-export const MenuItemUI: React.FC<MenuItemUIProps> = (props) => {
+export const MenuItemUI: React.FC<MenuItemUIProps> = (
+	props: MenuItemUIProps
+) => {
 	const { to, logoUrl, svg, text, onClick, isActiveHardCoded } = props;
 	return (
 		<NavLink
@@ -15,7 +17,7 @@ export const MenuItemUI: React.FC<MenuItemUIProps> = (props) => {
 			}
 			onClick={onClick}>
 			<div className={styles.menuItemIcon}>
-				{svg ? svg : <img src={logoUrl} alt={`Перейти в ${text}`} />}
+				{svg || <img src={logoUrl} alt={`Перейти в ${text}`} />}
 			</div>
 			<span className={styles.menuItemText}>{text}</span>
 		</NavLink>

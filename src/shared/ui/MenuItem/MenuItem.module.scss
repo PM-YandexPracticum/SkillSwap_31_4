@@ -1,16 +1,16 @@
 .menuItem {
+	display: flex;
+	align-items: center;
+	gap: 12px;
 	inline-size: 244px;
 	block-size: 48px;
 	padding: 12px 20px;
-	display: flex;
-	gap: 12px;
-	align-items: center;
-	background-color: inherit;
-	transition: background-color 0.1s ease-in-out;
-	border-radius: 12px;
 	color: var(--color-text-primary);
-	text-decoration: none;
 	font-size: 16px;
+	text-decoration: none;
+	background-color: inherit;
+	border-radius: 12px;
+	transition: background-color 0.1s ease-in-out;
 }
 
 .menuItem:hover {
