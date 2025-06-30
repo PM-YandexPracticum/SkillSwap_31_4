@@ -23,7 +23,7 @@ export const SuccessModalDefault = {
 				alignItems: 'center',
 				justifyContent: 'center',
 			}}>
-			<SuccessModalUI />
+			<SuccessModalUI onClose={() => console.log('Click')} />
 		</div>
 	),
 };

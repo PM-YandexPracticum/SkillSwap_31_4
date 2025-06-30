@@ -25,6 +25,8 @@ export const SuccessModalUI = ({ onClose }: SuccessModalUIProps) => (
 
 		<h2 className={styles.title}>Ваше предложение создано</h2>
 		<p className={styles.subtitle}>Теперь вы можете предложить обмен</p>
-		<ButtonUI color='primary' text='Готово' width='436px' onClick={onClose} />
+		<ButtonUI color='primary' width='436px' onClick={onClose}>
+			Готово
+		</ButtonUI>
 	</div>
 );
