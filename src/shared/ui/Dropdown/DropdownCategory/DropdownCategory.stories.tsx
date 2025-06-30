@@ -37,15 +37,6 @@ export const Default: Story = {
 					isChecked: !prev[id].isChecked,
 					isOpen: !prev[id].isOpen,
 				};
-				// Закрываем все остальные дропдауны
-				Object.keys(newState).forEach((key) => {
-					if (key !== id) {
-						newState[key] = {
-							...newState[key],
-							isOpen: false,
-						};
-					}
-				});
 				return newState;
 			});
 		};
