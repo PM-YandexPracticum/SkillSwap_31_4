@@ -1,17 +1,20 @@
 import clsx from 'clsx';
-import type { TDropdownBaseUIProps } from './type';
+import type { DropdownBaseUIProps } from './type';
 import styles from './DropdownBase.module.scss';
 import ArrowDownIcon from '../../../../images/icons/chevron-down.svg';
 
 export const DropdownBaseUI = ({
+	idDropdown,
 	label,
-	placeholder = '',
+	placeholder,
 	selectedOption,
 	isOpen,
 	onToggle,
 	options = [],
 	onSelect,
-}: TDropdownBaseUIProps) => (
+	displayText,
+	variant,
+}: DropdownBaseUIProps) => (
 	<div className={styles.container}>
 		{label && (
 			<label htmlFor='dropdown' className={styles.label}>
@@ -20,12 +23,18 @@ export const DropdownBaseUI = ({
 		)}
 
 		<div className={clsx(styles.dropdown, { [styles.open]: isOpen })}>
-			<button type='button' className={styles.button} onClick={onToggle}>
+			<button
+				type='button'
+				id={idDropdown}
+				className={clsx(styles.button, {
+					[styles.noBorderButton]: variant === 'no-border',
+				})}
+				onClick={onToggle}>
 				<span
 					className={clsx({
-						[styles.placeholder]: !selectedOption,
+						[styles.placeholder]: !selectedOption && !displayText,
 					})}>
-					{selectedOption || placeholder}
+					{displayText || placeholder}
 				</span>
 				<img
 					src={ArrowDownIcon}
@@ -37,17 +46,19 @@ export const DropdownBaseUI = ({
 			</button>
 
 			{isOpen && (
-				<ul className={styles.dropdownList}>
+				<ul
+					id={`${idDropdown}-listbox`}
+					className={clsx(styles.dropdownList, {
+						[styles.noBorderDropdownList]: variant === 'no-border',
+					})}>
 					{options.map((option) => (
-						<li key={option.value}>
-							<button
-								type='button'
-								className={clsx(styles.optionItem, {
-									[styles.selected]: option.text === selectedOption,
-								})}
-								onClick={() => onSelect?.(option.text)}>
-								<p className={styles.itemText}>{option.text}</p>
-							</button>
+						<li
+							key={option.value}
+							className={clsx(styles.optionItem, {
+								[styles.selected]: option.value === selectedOption,
+							})}
+							onClick={() => onSelect?.(option.value)}>
+							<div className={styles.itemText}>{option.text}</div>
 						</li>
 					))}
 				</ul>
