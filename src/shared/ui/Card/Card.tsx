@@ -101,12 +101,9 @@ export const Card = ({
 					</div>
 				</div>
 			</div>
-			<ButtonUI
-				onClick={onClickDetails}
-				width='284'
-				color='primary'
-				text='Подробнее'
-			/>
+			<ButtonUI onClick={onClickDetails} width='284' color='primary'>
+				Подробнее
+			</ButtonUI>
 		</article>
 	);
 };
