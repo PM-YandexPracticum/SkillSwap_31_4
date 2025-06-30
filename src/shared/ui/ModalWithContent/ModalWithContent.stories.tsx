@@ -18,7 +18,7 @@ export const ModalWithContentDefault: Story = {
 		title: 'Ваше предложение создано',
 		subtitle: 'Теперь вы можете предложить обмен',
 		onClose: () => alert('Закрытие модалки'),
-		svg: 'src/images/icons/user-circle.svg',
+		icon: 'src/images/icons/user-circleModal.svg',
 	},
 	render: (args) => (
 		<div

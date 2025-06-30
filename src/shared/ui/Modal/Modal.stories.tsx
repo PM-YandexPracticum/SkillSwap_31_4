@@ -31,7 +31,7 @@ export const ModalDefault = {
 							<ModalWithContentUI
 								title='Ваше предложение создано'
 								subtitle='Теперь вы можете предложить обмен'
-								svg='/svg/user-circle.svg'
+								icon='src/images/icons/user-circleModal.svg'
 								onClose={modalToggle}
 							/>
 						}

@@ -5,27 +5,19 @@ type ModalWithContentUIProps = {
 	title: string;
 	subtitle: string;
 	onClose: () => void;
-	svg: string;
+	icon: string;
 };
 
 export const ModalWithContentUI = ({
 	title,
 	subtitle,
 	onClose,
-	svg,
+	icon,
 }: ModalWithContentUIProps) => (
 	<div className={styles.modal}>
 		<div className={styles.icon}>
-			<div
-				style={{
-					width: '100%',
-					height: '100%',
-					backgroundSize: 'cover',
-					backgroundImage: `url("${svg}")`,
-				}}
-			/>
+			<img src={icon} alt='icon' />
 		</div>
-
 		<h2 className={styles.title}>{title}</h2>
 		<p className={styles.subtitle}>{subtitle}</p>
 		<ButtonUI color='primary' text='Готово' width='436px' onClick={onClose} />
