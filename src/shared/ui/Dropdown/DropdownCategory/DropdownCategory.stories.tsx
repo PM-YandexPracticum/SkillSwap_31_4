@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { DropdownCategoryUI } from './DropdownCategory';
 import type { Option } from '../MultiSelectDropdown/type';
@@ -15,7 +15,15 @@ type Story = StoryObj<typeof DropdownCategoryUI>;
 
 export const Default: Story = {
 	render: () => {
-		const [options, setOptions] = useState<Option[]>([
+		const [options1, setOptions1] = useState<Option[]>([
+			{ text: 'Английский', id: 'en', checked: false },
+			{ text: 'Испанский', id: 'es', checked: false },
+			{ text: 'Французский', id: 'fr', checked: false },
+			{ text: 'Немецкий', id: 'de', checked: false },
+			{ text: 'Китайский', id: 'zh', checked: false },
+		]);
+
+		const [options2, setOptions2] = useState<Option[]>([
 			{ text: 'Английский', id: 'en', checked: false },
 			{ text: 'Испанский', id: 'es', checked: false },
 			{ text: 'Французский', id: 'fr', checked: false },
@@ -29,35 +37,42 @@ export const Default: Story = {
 			categoryDrop: { isChecked: false, isOpen: false },
 			cakskll: { isChecked: false, isOpen: false },
 		});
+
 		const handleCheckboxChange = (id: string) => {
-			setDropdownsState((prev) => {
-				const newState = { ...prev };
-				// Устанавливаем состояние только для кликнутого дропдауна
-				newState[id] = {
+			setDropdownsState((prev) => ({
+				...prev,
+				[id]: {
 					isChecked: !prev[id].isChecked,
 					isOpen: !prev[id].isOpen,
-				};
-				return newState;
-			});
+				},
+			}));
 		};
 
-		const handleSelect = (value: string) => {
-			setOptions((prev) =>
-				prev.map((opt) =>
-					opt.id === value ? { ...opt, checked: !opt.checked } : opt
-				)
-			);
+		const handleSelect = (
+			idDropdown: string,
+			setOptions: React.Dispatch<React.SetStateAction<Option[]>>
+		) => {
+			return (value: string) => {
+				setOptions((prev) => {
+					const updated = prev.map((opt) =>
+						opt.id === value ? { ...opt, checked: !opt.checked } : opt
+					);
+					const selectedItem = updated.find((opt) => opt.id === value);
+					console.log(`[${idDropdown}] Вы выбрали:`, selectedItem);
+					return updated;
+				});
+			};
 		};
 
 		return (
 			<div style={{ display: 'inline-flex', gap: 20 }}>
 				<div>
 					<DropdownCategoryUI
-						idDropdown='cateforyDrop'
+						idDropdown='categoryDrop'
 						isChecked={dropdownsState['categoryDrop'].isChecked}
 						onChange={() => handleCheckboxChange('categoryDrop')}
-						options={options}
-						onSelect={handleSelect}
+						options={options1}
+						onSelect={handleSelect('categoryDrop', setOptions1)}
 						displayText='Иностранный язык'
 						variant='no-border'
 						isOpen={dropdownsState['categoryDrop'].isOpen}
@@ -68,8 +83,8 @@ export const Default: Story = {
 						idDropdown='cakskll'
 						isChecked={dropdownsState['cakskll'].isChecked}
 						onChange={() => handleCheckboxChange('cakskll')}
-						options={options}
-						onSelect={handleSelect}
+						options={options2}
+						onSelect={handleSelect('cakskll', setOptions2)}
 						displayText='Иностранный язык'
 						variant='no-border'
 						isOpen={dropdownsState['cakskll'].isOpen}

@@ -35,6 +35,10 @@ export const Default: Story = {
 					onSelect={(value) => {
 						setSelectedOption(value);
 						setIsOpen(false);
+						const selectedOptionObj = args.options.find(
+							(opt) => opt.value === value
+						);
+						console.log('Выбранный объект:', selectedOptionObj);
 					}}
 				/>
 			</div>
@@ -44,9 +48,9 @@ export const Default: Story = {
 		label: 'Пол',
 		placeholder: 'Не указан',
 		options: [
-			{ value: '1', text: 'Не указан' },
-			{ value: '2', text: 'Женский' },
-			{ value: '3', text: 'Мужской' },
+			{ value: 'notGender', text: 'Не указан' },
+			{ value: 'Women<3', text: 'Женский' },
+			{ value: 'Men', text: 'Мужской' },
 		],
 	},
 };

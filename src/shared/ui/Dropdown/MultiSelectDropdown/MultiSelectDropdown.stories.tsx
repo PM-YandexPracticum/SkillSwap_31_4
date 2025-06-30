@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { MultiSelectDropdownUI } from './MultiSelectDropdown';
 import type { Option } from '../MultiSelectDropdown/type';
@@ -34,6 +34,14 @@ export const Default: Story = {
 				)
 			);
 		};
+
+		//логируем выбранный объект после обновления options
+		useEffect(() => {
+			const selectedItems = options.filter((opt) => opt.checked);
+			if (selectedItems.length > 0) {
+				console.log('Выбраны:', selectedItems);
+			}
+		}, [options]);
 
 		const selected = options.filter((opt) => opt.checked);
 
@@ -78,6 +86,14 @@ export const Categories: Story = {
 				)
 			);
 		};
+
+		//логируем после обновления
+		useEffect(() => {
+			const selectedItems = suboptions.filter((opt) => opt.checked);
+			if (selectedItems.length > 0) {
+				console.log('Выбраны:', selectedItems);
+			}
+		}, [suboptions]);
 
 		return (
 			<div style={{ width: 252 }}>
