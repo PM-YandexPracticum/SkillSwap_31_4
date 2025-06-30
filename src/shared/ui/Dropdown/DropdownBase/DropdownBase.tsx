@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import clsx from 'clsx';
 import type { DropdownBaseUIProps } from './type';
 import styles from './DropdownBase.module.scss';
