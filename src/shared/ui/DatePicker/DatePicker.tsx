@@ -110,12 +110,12 @@ export const DatePickerUI: React.FC<DataPickerProps> = (
 				showPopperArrow={false}
 				scrollableYearDropdown>
 				<div className={styles.calendarButtonOptions}>
-					<ButtonUI onClick={onCancel} text='Отменить' color='secondary' />
-					<ButtonUI
-						onClick={onClickButtonChoose}
-						text='Выбрать'
-						color='primary'
-					/>
+					<ButtonUI onClick={onCancel} color='secondary'>
+						Отменить
+					</ButtonUI>
+					<ButtonUI onClick={onClickButtonChoose} color='primary'>
+						Выбрать
+					</ButtonUI>
 				</div>
 			</DatePicker>
 			<span className={styles.error}>{error}</span>
