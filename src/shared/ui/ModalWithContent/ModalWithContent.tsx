@@ -5,7 +5,7 @@ type ModalWithContentUIProps = {
 	title: string;
 	subtitle: string;
 	onClose: () => void;
-	svg?: string;
+	svg: string;
 };
 
 export const ModalWithContentUI = ({
@@ -16,9 +16,14 @@ export const ModalWithContentUI = ({
 }: ModalWithContentUIProps) => (
 	<div className={styles.modal}>
 		<div className={styles.icon}>
-			<svg width={75} height={75} viewBox='0 0 78 78'>
-				<use href={svg} />
-			</svg>
+			<div
+				style={{
+					width: '100%',
+					height: '100%',
+					backgroundSize: 'cover',
+					backgroundImage: `url("${svg}")`,
+				}}
+			/>
 		</div>
 
 		<h2 className={styles.title}>{title}</h2>
