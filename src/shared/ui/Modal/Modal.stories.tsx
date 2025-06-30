@@ -23,7 +23,9 @@ export const ModalDefault = {
 
 		return (
 			<div>
-				<ButtonUI onClick={modalToggle} text='Открыть' color='primary' />
+				<ButtonUI onClick={modalToggle} color='primary'>
+					Открыть
+				</ButtonUI>
 				{isOpen && (
 					<ModalUI
 						onClose={modalToggle}

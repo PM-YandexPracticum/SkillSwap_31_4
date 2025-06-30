@@ -10,5 +10,7 @@ export * from './ThemeToggleButton';
 export * from './Notification';
 export * from './CheckboxFilterCategory';
 export * from './ModalWithContent';
+export * from './SwiperArrows';
 export * from './Search';
 export * from './Modal';
+export * from './Input';

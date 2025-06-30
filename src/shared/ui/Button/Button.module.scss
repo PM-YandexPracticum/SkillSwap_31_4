@@ -1,6 +1,10 @@
 .button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	box-sizing: border-box;
 	width: 100%;
+	height: 48px;
 	padding: 11px 0;
 	font-weight: 400;
 	font-size: 16px;
@@ -14,6 +18,7 @@
 .primary {
 	color: var(--color-text-primary);
 	background-color: var(--color-accent);
+	transition: all 0.3s ease-in-out;
 
 	&:hover {
 		background-color: var(--color-button-hover);
@@ -35,6 +40,7 @@
 	color: var(--color-text-primary);
 	background-color: var(--color-surface);
 	border: 1px solid var(--color-accent);
+	transition: all 0.3s ease-in-out;
 
 	&:hover {
 		color: var(--color-text-caption);
@@ -55,4 +61,9 @@
 .tertiary {
 	color: var(--color-text-primary);
 	background-color: var(--color-surface);
+	transition: all 0.3s ease-in-out;
+
+	&:hover {
+		border-color: var(--color-text-primary);
+	}
 }

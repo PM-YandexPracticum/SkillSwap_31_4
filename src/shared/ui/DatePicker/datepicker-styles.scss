@@ -1,6 +1,6 @@
 /* НУЖЕН ДЛЯ ПРАВИЛЬНОЙ РАБОТЫ СТИЛЕЙ КАЛЕНДАРЯ ИЗ БИБЛИОТЕКИ react-datepicker */
 
-@use '../../../index.scss';
+@use '../../../index';
 
 .react-datepicker {
 	display: flex;
@@ -8,15 +8,15 @@
 	justify-content: space-between;
 	align-items: center;
 	box-sizing: border-box;
-	inline-size: 280px;
-	block-size: 360px;
-	padding: 16px;
-	font-size: 12px;
-	background-color: var(--color-surface);
 	border: 1px solid var(--color-text-caption);
 	border-radius: 12px;
+	padding: 16px;
 	color: var(--color-text-primary);
 	font-family: var(--font-roboto);
+	font-size: 12px;
+	background-color: var(--color-surface);
+	inline-size: 280px;
+	block-size: 360px;
 }
 
 .react-datepicker__current-month {
@@ -25,19 +25,19 @@
 
 .react-datepicker__header {
 	margin: 0;
+	border-block-end: none;
 	padding: 0;
 	background-color: inherit;
-	border-block-end: none;
 }
 
 .react-datepicker__header__dropdown {
 	display: flex;
 	justify-content: center;
-	block-size: 40px;
 	font-weight: 400;
 	font-size: 16px;
 	line-height: 24px;
 	letter-spacing: 0.02em;
+	block-size: 40px;
 }
 
 .react-datepicker__navigation {
@@ -49,20 +49,20 @@
 }
 
 .react-datepicker__day {
-	inline-size: 32px;
-	block-size: 32px;
 	margin: 0;
+	border-radius: 1rem;
 	padding: 0;
+	vertical-align: middle;
 	color: var(--color-text-primary);
 	font-weight: 400;
 	text-align: center;
-	vertical-align: middle;
-	border-radius: 1rem;
+	inline-size: 32px;
+	block-size: 32px;
 }
 
 .react-datepicker__day:hover {
-	background-color: var(--color-button-hover) !important;
 	border-radius: 1rem !important;
+	background-color: var(--color-button-hover) !important;
 }
 
 .react-datepicker__day--outside-month {
@@ -71,11 +71,11 @@
 }
 
 .react-datepicker__day-name {
-	inline-size: 32px;
-	block-size: 32px;
 	margin: 0;
 	padding: 0;
 	color: var(--color-primary-pressed);
+	inline-size: 32px;
+	block-size: 32px;
 }
 
 .react-datepicker__day--keyboard-selected {
@@ -84,8 +84,8 @@
 }
 
 .react-datepicker__day--keyboard-selected:hover {
-	background-color: var(--color-primary-pressed) !important;
 	border-radius: 1rem !important;
+	background-color: var(--color-primary-pressed) !important;
 }
 
 .react-datepicker__day--selected {
@@ -94,8 +94,8 @@
 }
 
 .react-datepicker__day--selected:hover {
-	background-color: var(--color-accent) !important;
 	border-radius: 1rem !important;
+	background-color: var(--color-accent) !important;
 }
 
 .react-datepicker__children-container {
@@ -109,21 +109,21 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	inline-size: 100%;
 	margin: 0;
 	padding: 8px 16px;
+	inline-size: 100%;
 }
 
 .react-datepicker__month-read-view--down-arrow,
 .react-datepicker__year-read-view--down-arrow {
 	position: absolute;
-	inset-inline-start: calc(100% - 24px);
 	display: block;
+	border: none;
+	background-image: url('../../../images/icons/chevron-down.svg');
+	transform: none;
+	inset-inline-start: calc(100% - 24px);
 	inline-size: 24px;
 	block-size: 24px;
-	background-image: url('../../../images/icons/chevron-down.svg');
-	border: none;
-	transform: none;
 }
 
 .react-datepicker__month-read-view,

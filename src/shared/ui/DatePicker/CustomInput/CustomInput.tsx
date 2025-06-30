@@ -1,8 +1,8 @@
 import { forwardRef, type ChangeEvent } from 'react';
 import clsx from 'clsx';
+import Cleave from 'cleave.js/react';
 import { CalendarIcon } from './CalendarIcon';
 import styles from './CustomInput.module.scss';
-import Cleave from 'cleave.js/react';
 
 export const CustomInput = forwardRef(
 	(
@@ -10,7 +10,7 @@ export const CustomInput = forwardRef(
 			onClickOpen: () => void;
 			onChange: (event: ChangeEvent) => void;
 			value: string;
-			error?: string;
+			error: boolean;
 		},
 		ref: React.ForwardedRef<HTMLInputElement>
 	) => (
@@ -40,3 +40,5 @@ export const CustomInput = forwardRef(
 		</label>
 	)
 );
+
+CustomInput.displayName = 'CustomInput';

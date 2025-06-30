@@ -1,0 +1,37 @@
+.swiperArrows {
+	position: absolute;
+	top: 50%;
+	right: 20px;
+	left: 20px;
+	z-index: 10;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	transform: translateY(-50%);
+}
+
+.swiper__button {
+	width: 32px;
+	height: 32px;
+	background-color: var(--color-disabled);
+	border: none;
+	border-radius: 100%;
+	visibility: visible;
+	cursor: pointer;
+}
+
+.swiper__button_left {
+	transform: rotate(180deg);
+}
+
+.swiper__button:hover {
+	background-color: var(--color-button-hover);
+}
+
+.swiper__button:active {
+	background-color: var(--color-primary-pressed);
+}
+
+.swiper__button:disabled {
+	visibility: hidden;
+}

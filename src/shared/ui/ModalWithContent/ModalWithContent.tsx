@@ -20,6 +20,8 @@ export const ModalWithContentUI = ({
 		</div>
 		<h2 className={styles.title}>{title}</h2>
 		<p className={styles.subtitle}>{subtitle}</p>
-		<ButtonUI color='primary' text='Готово' width='436px' onClick={onClose} />
+		<ButtonUI color='primary' width='436px' onClick={onClose}>
+			Готово
+		</ButtonUI>
 	</div>
 );
