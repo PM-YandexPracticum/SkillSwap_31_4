@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 
 export type DropdownBaseUIProps = {
 	idDropdown: string;
+	isAbsolute: boolean;
 	label?: string;
 	placeholder?: string;
 	selectedOption?: string;
