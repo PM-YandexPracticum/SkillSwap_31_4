@@ -7,4 +7,5 @@ export type TButtonUIProps = {
 	children?: ReactNode;
 	isDisabled?: boolean;
 	htmlType?: 'button' | 'submit' | 'reset';
+	className?: string;
 };
