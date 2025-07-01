@@ -7,7 +7,7 @@ export const StepInfoBlockUI = ({
 	subtitle,
 }: StepInfoBlockUIProps) => (
 	<div className={styles.onboarding}>
-		<img src={urlIcon} alt='Light Icon' style={{ marginBottom: '40px' }} />
+		<img src={urlIcon} alt='Onboarding Icon' style={{ marginBottom: '40px' }} />
 		<h2 className={styles.title} style={{ marginBottom: '12px' }}>
 			{title}
 		</h2>
