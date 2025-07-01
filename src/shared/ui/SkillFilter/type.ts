@@ -2,6 +2,7 @@ export type TSkillFilterUIProps = {
 	label?: string;
 	isAllOpen: boolean;
 	textAllOpen: string;
+	textAllCLose: string;
 	options: TOption[];
 	onChangeSingle: (id: string) => void;
 	onOpenAll: () => void;

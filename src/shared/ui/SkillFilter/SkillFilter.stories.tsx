@@ -59,6 +59,7 @@ export const Default: Story = {
 	args: {
 		label: 'Навыки',
 		textAllOpen: 'Все категории',
+		textAllCLose: 'Свернуть',
 		options: [
 			{
 				id: '1',

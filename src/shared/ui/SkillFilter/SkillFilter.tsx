@@ -10,6 +10,7 @@ export const SkillFilterUI = ({
 	options,
 	isAllOpen,
 	textAllOpen,
+	textAllCLose,
 	onChangeSingle,
 	onOpenAll,
 	onChangeGroup,
@@ -62,7 +63,7 @@ export const SkillFilterUI = ({
 			</div>
 			{textAllOpen && filterParent(options, options.length).length > 6 && (
 				<div className={clsx(styles.allOptions)} onClick={onOpenAll}>
-					<span>{textAllOpen}</span>
+					<span>{!isAllOpen ? textAllOpen : textAllCLose}</span>
 					<img
 						src={ArrowDownIcon}
 						className={clsx(styles.arrow, {
