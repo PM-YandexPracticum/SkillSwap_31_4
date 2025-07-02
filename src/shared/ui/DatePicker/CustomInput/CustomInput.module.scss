@@ -1,0 +1,25 @@
+@use '../../../../index';
+
+.inputContainer {
+	z-index: 1;
+	display: flex;
+	align-items: center;
+	box-sizing: border-box;
+	border: 1px solid var(--color-text-caption);
+	border-radius: 12px;
+	padding: 12px 20px;
+	color: var(--color-text-primary);
+	inline-size: 208px;
+	block-size: 48px;
+}
+
+.errorInputContainer {
+	border: 1px solid var(--color-error);
+}
+
+.input {
+	border: none;
+	outline: none;
+	font-size: 16px;
+	inline-size: 100%;
+}

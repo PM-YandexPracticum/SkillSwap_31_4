@@ -6,15 +6,24 @@ export const ButtonUI = ({
 	onClick,
 	color,
 	width,
-	text,
+	children,
 	isDisabled = false,
+	icon,
+	iconPosition = 'left',
+	htmlType = 'button',
 }: TButtonUIProps) => (
 	<button
-		type='button'
+		type={htmlType}
 		style={{ maxWidth: width }}
 		className={clsx(styles.button, styles[color])}
 		onClick={onClick}
 		disabled={isDisabled}>
-		{text}
+		{icon && iconPosition === 'left' && (
+			<span className={styles.icon}>{icon}</span>
+		)}
+		{children}
+		{icon && iconPosition === 'right' && (
+			<span className={styles.icon}>{icon}</span>
+		)}
 	</button>
 );

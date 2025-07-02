@@ -41,6 +41,7 @@ module.exports = {
 				usePrettierrc: true,
 			},
 		],
+		'react/require-default-props': 'off',
 		'react/react-in-jsx-scope': 'off',
 		'comma-dangle': 'off',
 		'use-isnan': ['error', { enforceForSwitchCase: true }],
@@ -74,5 +75,9 @@ module.exports = {
 			'warn',
 			{ allowConstantExport: true },
 		],
+		'jsx-a11y/label-has-associated-control': 'off',
+		'jsx-a11y/no-static-element-interactions': 'off',
+		'jsx-a11y/click-events-have-key-events': 'off',
+		'react/button-has-type': 'off',
 	},
 };
