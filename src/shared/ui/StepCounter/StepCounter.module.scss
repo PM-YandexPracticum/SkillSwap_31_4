@@ -1,0 +1,35 @@
+.stepCounter {
+	width: 212px;
+	text-align: center;
+}
+
+.stepText {
+	margin-bottom: 12px;
+	color: var(--color-text-primary);
+	font-weight: 500;
+	font-size: 24px;
+	font-family: var(--font-jost), serif;
+	line-height: 28px;
+}
+
+.stepBars {
+	display: flex;
+	justify-content: center;
+	gap: 16px;
+}
+
+.stepBar {
+	width: 60px;
+	height: 4px;
+	background-color: var(--color-disabled);
+	border-radius: 4px;
+	transition: background-color 0.3s ease;
+}
+
+.active {
+	background-color: var(--color-accent);
+}
+
+.inactive {
+	background-color: var(--color-disabled);
+}
