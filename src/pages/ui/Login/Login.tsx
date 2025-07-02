@@ -1,6 +1,7 @@
 import { ButtonUI, Input } from '@ui';
-import lightBulb from '../../../images/light-bulb.png';
+import lightIcon from '@images/light-bulb.png';
 import styles from './Login.module.scss';
+import { StepInfoBlockUI } from '../../../widgets/StepInfoBlock/StepInfoBlock';
 import type { LoginUIProps } from './type';
 
 export const LoginUI = ({ handleSubmit }: LoginUIProps) => (
@@ -79,19 +80,11 @@ export const LoginUI = ({ handleSubmit }: LoginUIProps) => (
 					</a>
 				</div>
 			</form>
-			<div className={styles.onboarding}>
-				<img
-					src={lightBulb}
-					alt='Light Icon'
-					style={{ marginBottom: '40px' }}
-				/>
-				<h2 className={styles.title} style={{ marginBottom: '12px' }}>
-					С возвращением в SkillSwap!
-				</h2>
-				<p className={styles.subtitle}>
-					Обменивайтесь знаниями и навыками с другими людьми
-				</p>
-			</div>
+			<StepInfoBlockUI
+				urlIcon={lightIcon}
+				title='С возвращением в SkillSwap!'
+				subtitle='Обменивайтесь знаниями и навыками с другими людьми'
+			/>
 		</div>
 	</div>
 );
