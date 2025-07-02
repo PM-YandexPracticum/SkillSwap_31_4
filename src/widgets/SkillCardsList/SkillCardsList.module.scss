@@ -1,0 +1,19 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
+}
+
+.titleContainer {
+	font-weight: 500;
+	font-size: 32px;
+	line-height: 40px;
+	letter-spacing: -0.01em;
+}
+
+.listContainer {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	place-content: center center;
+	gap: 24px;
+}
