@@ -75,7 +75,7 @@
 	}
 }
 
-.optionItem:hover {
+.dropdownListAbsolute > .optionItem:hover {
 	background-color: var(--color-disabled);
 }
 
@@ -95,15 +95,22 @@
 	border-radius: 0 0 12px 12px;
 
 	.itemText {
+		overflow: hidden;
+		white-space: nowrap;
 		text-align: left;
+		text-overflow: ellipsis;
 	}
+}
+
+.dropdownListAbsolute {
+	position: absolute;
 }
 
 .noBorderDropdownList {
 	padding: 12px 0;
 	border: none;
 
-	.optionItem {
+	.dropdownListAbsolute > .optionItem {
 		width: 100%;
 		padding: 0;
 

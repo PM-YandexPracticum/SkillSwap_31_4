@@ -9,6 +9,7 @@ export type Option = {
 
 export type MultiSelectDropdownUIProps = {
 	idDropdown: string;
+	isAbsolute: boolean;
 	label?: string;
 	placeholder?: string;
 	options: Option[];

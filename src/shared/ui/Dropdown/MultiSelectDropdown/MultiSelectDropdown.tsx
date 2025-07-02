@@ -12,9 +12,11 @@ export const MultiSelectDropdownUI = ({
 	displayText,
 	variant,
 	idDropdown,
+	isAbsolute,
 }: MultiSelectDropdownUIProps) => (
 	<DropdownBaseUI
 		idDropdown={idDropdown}
+		isAbsolute={isAbsolute}
 		label={label}
 		placeholder={placeholder}
 		displayText={displayText}
