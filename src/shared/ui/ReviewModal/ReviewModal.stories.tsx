@@ -5,7 +5,7 @@ import ImageMain from '../../../images/ImageMain-ModalSkills.jpg';
 import image1 from '../../../images/Image1-ModalSkills.jpg';
 import image2 from '../../../images/Image2-ModalSkills.jpg';
 import image3 from '../../../images/Image3-ModalSkills.jpg';
-import image4 from '../../../images/Image3-ModalSkills.jpg';
+import image4 from '../../../images/Image2-ModalSkills.jpg';
 import image5 from '../../../images/Image3-ModalSkills.jpg';
 
 const meta = {
