@@ -6,6 +6,7 @@ import ArrowDownIcon from '../../../../images/icons/chevron-down.svg';
 
 export const DropdownBaseUI = ({
 	idDropdown,
+	isAbsolute,
 	label,
 	placeholder,
 	selectedOption,
@@ -49,9 +50,15 @@ export const DropdownBaseUI = ({
 			{isOpen && (
 				<ul
 					id={`${idDropdown}-listbox`}
-					className={clsx(styles.dropdownList, {
-						[styles.noBorderDropdownList]: variant === 'no-border',
-					})}>
+					className={clsx(
+						styles.dropdownList,
+						{
+							[styles.noBorderDropdownList]: variant === 'no-border',
+						},
+						{
+							[styles.dropdownListAbsolute]: isAbsolute,
+						}
+					)}>
 					{options.map((option) => (
 						<li
 							key={option.value}

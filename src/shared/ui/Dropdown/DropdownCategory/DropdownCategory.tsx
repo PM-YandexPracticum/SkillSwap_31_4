@@ -5,6 +5,7 @@ import styles from './DropdownCategory.module.scss';
 
 export const DropdownCategoryUI = ({
 	idDropdown, // уникальный айди дропдауна
+	isAbsolute,
 	isChecked,
 	onChange,
 	options,
@@ -24,6 +25,7 @@ export const DropdownCategoryUI = ({
 			<CheckboxCategoryUI isChecked={effectiveChecked} onClick={onChange} />
 			<MultiSelectDropdownUI
 				idDropdown={idDropdown}
+				isAbsolute={isAbsolute}
 				options={options}
 				isOpen={isOpen}
 				onToggle={onChange}
