@@ -181,16 +181,19 @@ export const Default: Story = {
 			}));
 		}, [optionsSubCategory]);
 
+		useEffect(() => {
+			if (userData.userName !== '') {
+				setIsEnabled(true);
+			} else {
+				setIsEnabled(false);
+			}
+		}, [userData]);
+
 		const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 			setUserData((prev) => ({
 				...prev,
 				userName: e.target.value,
 			}));
-			if (e.currentTarget.value !== '') {
-				setIsEnabled(true);
-			} else {
-				setIsEnabled(false);
-			}
 			setIsOpenCity(false);
 			setIsOpenGender(false);
 			setIsOpenCategory(false);

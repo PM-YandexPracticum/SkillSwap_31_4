@@ -66,6 +66,7 @@ export const StepTwoUI = ({
 				maxDate={new Date()}
 			/>
 			<DropdownBaseUI
+				isAbsolute
 				label='Пол'
 				placeholder='Не указан'
 				idDropdown='baseDrop'
@@ -93,6 +94,7 @@ export const StepTwoUI = ({
 			label='Категория навыка, которому хотите научиться'
 			placeholder='Выберите категорию'
 			variant='default'
+			isAbsolute
 			isOpen={isOpenCategory}
 			options={category}
 			onToggle={onToggleCategory}
@@ -104,6 +106,7 @@ export const StepTwoUI = ({
 			}
 		/>
 		<MultiSelectDropdownUI
+			isAbsolute
 			idDropdown='category2'
 			label='Подкатегория навыка, которому хотите научиться'
 			placeholder='Выберите подкатегорию'
