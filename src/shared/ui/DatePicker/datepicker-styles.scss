@@ -19,6 +19,11 @@
 	block-size: 360px;
 }
 
+.react-datepicker-popper {
+	z-index: 5;
+	line-height: 0;
+}
+
 .react-datepicker__current-month {
 	display: none;
 }
