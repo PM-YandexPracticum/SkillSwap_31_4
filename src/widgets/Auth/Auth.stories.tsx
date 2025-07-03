@@ -1,25 +1,30 @@
 import type { Meta } from '@storybook/react-vite';
 import type { SyntheticEvent } from 'react';
-import { LoginUI } from './Login';
+import { MemoryRouter } from 'react-router-dom';
+import { Auth } from './Auth';
 
 const meta = {
-	title: 'Shared/UI/LoginUI',
-	component: LoginUI,
+	title: 'widgets/Auth',
+	component: Auth,
 	tags: ['autodocs'],
 	parameters: {
 		layout: 'centered',
 	},
-} satisfies Meta<typeof LoginUI>;
+} satisfies Meta<typeof Auth>;
 
 export default meta;
 
-export const Login = {
+export const AuthDefault = {
 	render: () => {
 		const handleSubmit = (e: SyntheticEvent) => {
 			e.preventDefault();
 			console.log(e);
 		};
 
-		return <LoginUI handleSubmit={handleSubmit} />;
+		return (
+			<MemoryRouter>
+				<Auth handleSubmit={handleSubmit} />
+			</MemoryRouter>
+		);
 	},
 };
