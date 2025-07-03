@@ -125,7 +125,11 @@ export const StepTwoUI = ({
 			<ButtonUI onClick={onBack} color='secondary' isDisabled={false}>
 				Назад
 			</ButtonUI>
-			<ButtonUI onClick={onNext} color='primary' isDisabled={!isEnabled}>
+			<ButtonUI
+				htmlType='submit'
+				onClick={onNext}
+				color='primary'
+				isDisabled={!isEnabled}>
 				Продолжить
 			</ButtonUI>
 		</div>
