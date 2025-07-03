@@ -9,4 +9,5 @@ export type TButtonUIProps = {
 	icon?: ReactNode;
 	iconPosition?: 'left' | 'right';
 	htmlType?: 'button' | 'submit' | 'reset';
+	className?: string;
 };
