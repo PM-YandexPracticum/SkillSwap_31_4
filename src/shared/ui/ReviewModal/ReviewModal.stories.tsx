@@ -5,8 +5,6 @@ import ImageMain from '../../../images/ImageMain-ModalSkills.jpg';
 import image1 from '../../../images/Image1-ModalSkills.jpg';
 import image2 from '../../../images/Image2-ModalSkills.jpg';
 import image3 from '../../../images/Image3-ModalSkills.jpg';
-import image4 from '../../../images/Image2-ModalSkills.jpg';
-import image5 from '../../../images/Image3-ModalSkills.jpg';
 
 const meta = {
 	title: 'Shared/UI/ReviewModal',
@@ -32,8 +30,8 @@ const mockImage1 = ImageMain;
 const mockImage2 = image1;
 const mockImage3 = image2;
 const mockImage4 = image3;
-const mockImage5 = image4;
-const mockImage6 = image5;
+const mockImage5 = image3;
+const mockImage6 = image3;
 
 const mockData = {
 	title: 'Игра на барабанах',
@@ -55,7 +53,6 @@ export const Default: Story = {
 	args: {
 		data: mockData,
 		onClose: () => alert(`Закрыли`),
-		onSave: (updated) =>
-			alert(`Сохранено новое описание:\n\n${updated.description}`),
+		onSave: () => alert(`Сохранено`),
 	},
 };
