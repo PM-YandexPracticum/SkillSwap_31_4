@@ -1,14 +1,20 @@
-export type TDropdownBaseUIProps = {
+import type { ReactNode } from 'react';
+
+export type DropdownBaseUIProps = {
+	idDropdown: string;
+	isAbsolute: boolean;
 	label?: string;
 	placeholder?: string;
 	selectedOption?: string;
 	isOpen: boolean;
 	onToggle: () => void;
-	options: TOption[];
-	onSelect?: (value: string) => void;
+	options: Option[];
+	onSelect: (value: string) => void;
+	displayText?: ReactNode;
+	variant?: 'default' | 'no-border';
 };
 
-export type TOption = {
+export type Option = {
 	value: string; // идентификатор
-	text: string; // текст опции
+	text: ReactNode; // текст опции
 };

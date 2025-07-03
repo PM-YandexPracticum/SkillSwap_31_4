@@ -41,6 +41,8 @@ module.exports = {
 				usePrettierrc: true,
 			},
 		],
+		"react/prop-types": "off",
+    	"react/jsx-props-no-spreading": "off",
 		'react/require-default-props': 'off',
 		'react/react-in-jsx-scope': 'off',
 		'comma-dangle': 'off',
@@ -76,5 +78,8 @@ module.exports = {
 			{ allowConstantExport: true },
 		],
 		'jsx-a11y/label-has-associated-control': 'off',
+		'jsx-a11y/no-static-element-interactions': 'off',
+		'jsx-a11y/click-events-have-key-events': 'off',
+		'react/button-has-type': 'off',
 	},
 };

@@ -1,14 +1,16 @@
-import styles from './DatePicker.module.scss';
-import type DataPickerProps from './type';
 import { useState, useRef } from 'react';
 import DatePicker from 'react-datepicker';
 import { ru } from 'date-fns/locale';
+import type DataPickerProps from './type';
+import styles from './DatePicker.module.scss';
 import 'react-datepicker/dist/react-datepicker.css';
 import './datepicker-styles.scss';
 import { ButtonUI } from '../Button';
 import { CustomInput } from './CustomInput/CustomInput';
 
-export const DatePickerUI: React.FC<DataPickerProps> = (props) => {
+export const DatePickerUI: React.FC<DataPickerProps> = (
+	props: DataPickerProps
+) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const { onInput, title, error, maxDate, minDate } = props;
 	const [datePicker, setDatePicker] = useState(new Date());
@@ -16,11 +18,11 @@ export const DatePickerUI: React.FC<DataPickerProps> = (props) => {
 
 	const saveInputValue = (value: string) => {
 		const dateArray = value.split('.');
-		const day = parseInt(dateArray[0]);
-		const month = parseInt(dateArray[1]) - 1;
-		const year = parseInt(dateArray[2]);
+		const day = parseInt(dateArray[0], 10);
+		const month = parseInt(dateArray[1], 10) - 1;
+		const year = parseInt(dateArray[2], 10);
 
-		if (isNaN(day) || isNaN(month) || isNaN(year)) {
+		if (Number.isNaN(day) || Number.isNaN(month) || Number.isNaN(year)) {
 			setSavedDate(new Date());
 			return;
 		}
@@ -78,7 +80,7 @@ export const DatePickerUI: React.FC<DataPickerProps> = (props) => {
 						onClickOpen={onClickIcon}
 						onChange={() => {}}
 						value=''
-						error={error}
+						error={Boolean(error)}
 						ref={inputRef}
 					/>
 				}
@@ -108,17 +110,15 @@ export const DatePickerUI: React.FC<DataPickerProps> = (props) => {
 				showPopperArrow={false}
 				scrollableYearDropdown>
 				<div className={styles.calendarButtonOptions}>
-					<ButtonUI
-						onClick={onCancel}
-						text='Отменить'
-						color='secondary'></ButtonUI>
-					<ButtonUI
-						onClick={onClickButtonChoose}
-						text='Выбрать'
-						color='primary'></ButtonUI>
+					<ButtonUI onClick={onCancel} color='secondary'>
+						Отменить
+					</ButtonUI>
+					<ButtonUI onClick={onClickButtonChoose} color='primary'>
+						Выбрать
+					</ButtonUI>
 				</div>
 			</DatePicker>
-			<span className={styles.error}>{props.error}</span>
+			<span className={styles.error}>{error}</span>
 		</div>
 	);
 };

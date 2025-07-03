@@ -6,15 +6,16 @@ export const ButtonUI = ({
 	onClick,
 	color,
 	width,
-	text,
+	children,
 	isDisabled = false,
+	htmlType = 'button',
 }: TButtonUIProps) => (
 	<button
-		type='button'
+		type={htmlType}
 		style={{ maxWidth: width }}
 		className={clsx(styles.button, styles[color])}
 		onClick={onClick}
 		disabled={isDisabled}>
-		{text}
+		{children}
 	</button>
 );
