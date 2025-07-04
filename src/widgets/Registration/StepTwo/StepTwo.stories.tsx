@@ -182,11 +182,25 @@ export const Default: Story = {
 		}, [optionsSubCategory]);
 
 		useEffect(() => {
-			if (userData.userName !== '') {
-				setIsEnabled(true);
-			} else {
-				setIsEnabled(false);
-			}
+			const hasUserName = userData.userName.trim() !== '';
+			const hasCity = userData.city.trim() !== '';
+			const hasGender = userData.gender.trim() !== '';
+			const hasCategory = userData.wantsToLearnCat.length > 0;
+			const hasSubCategory = userData.wantsToLearnSubCat.length > 0;
+
+			const today = new Date();
+			const isNotToday =
+				today.toDateString() !== userData.dateBirthday.toDateString();
+
+			const isFormValid =
+				hasUserName &&
+				hasCity &&
+				hasGender &&
+				hasCategory &&
+				hasSubCategory &&
+				isNotToday;
+
+			setIsEnabled(isFormValid);
 		}, [userData]);
 
 		const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -310,7 +324,9 @@ export const Default: Story = {
 		};
 
 		const handleToggleSubCategory = () => {
-			setIsOpenSubCategory((prev) => !prev);
+			if (optionsCategory.some((opt) => opt.checked)) {
+				setIsOpenSubCategory((prev) => !prev);
+			}
 			setIsOpenCity(false);
 			setIsOpenGender(false);
 			setIsOpenCategory(false);
