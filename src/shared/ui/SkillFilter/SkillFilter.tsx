@@ -33,7 +33,7 @@ export const SkillFilterUI = ({
 		<div className={styles.container}>
 			{label && <h3 className={clsx(styles.label)}>{label}</h3>}
 			<div className={clsx(styles.skills)}>
-				{filterParent(options, 6).map((option) => {
+				{filterParent(options, 5).map((option) => {
 					if (option.parentId === '') {
 						return (
 							<CheckboxFilterCategoryUI
@@ -61,7 +61,7 @@ export const SkillFilterUI = ({
 					);
 				})}
 			</div>
-			{textAllOpen && filterParent(options, options.length).length > 6 && (
+			{textAllOpen && filterParent(options, options.length).length > 5 && (
 				<div className={clsx(styles.allOptions)} onClick={onOpenAll}>
 					<span>{!isAllOpen ? textAllOpen : textAllCLose}</span>
 					<img
