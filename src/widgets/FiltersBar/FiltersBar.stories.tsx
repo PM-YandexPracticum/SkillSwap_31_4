@@ -10,6 +10,11 @@ interface User {
 	  name: string;
 	  categoryName: string;
 	}[];
+	wantsToLearn: {
+		_id: string;
+		name: string;
+		categoryName: string;
+	  }[];
   }
 
 const meta: Meta<typeof FiltersBar> = {
@@ -30,47 +35,55 @@ const transformData = (users: User[]) => {
 
 	let categoryCounter = 1; //для генерации уникальных айди
 
-	users.forEach(user => { //добавляем город каждого пользователя в citySet
-		citySet.add(user.city);
-
-		user.canTeach.forEach (skill => { //для каждого навыка, которым может обучать пользователь - сохраняем имя категории
+	const processSkills = (skills: User['canTeach'] | User['wantsToLearn']) => {
+		skills.forEach(skill => {
 			const categoryName = skill.categoryName;
 
-			//создаём категорию, если её ещё нет
+			// Если категория еще не добавлена — добавляем
 			if (!categoriesMap.has(categoryName)) {
-				const categoryId = `cat-${categoryCounter++}`;//уник айди категории
+				const categoryId = `cat-${categoryCounter}`;
+				categoryCounter += 1;
 				categoriesMap.set(categoryName, categoryId);
 
 				skillsMap.set(categoryId, {
-					id: categoryId,  
-					parentId: categoryId, 
+					id: categoryId,
+					parentId: categoryId, // родитель сам себе
 					text: categoryName,
 					checked: false,
 					isOpen: false,
 				});
 			}
 
-			const categoryId = categoriesMap.get(categoryName)!; //получаем айди категории, к которой относится текущий навык
+			const categoryId = categoriesMap.get(categoryName)!;
 
-			// добавляем сам навык как "ребёнка" категории
-			skillsMap.set(skill._id, {
-				id: skill._id,
-				parentId: categoryId, //чтобы попадал в filterChild
-				text: skill.name,
-				checked: false,
-				isOpen: false,
-			});
+			// Навык как дочерний элемент категории
+			if (!skillsMap.has(skill._id)) {
+				skillsMap.set(skill._id, {
+					id: skill._id,
+					parentId: categoryId,
+					text: skill.name,
+					checked: false,
+					isOpen: false,
+				});
+			}
 		});
+	};
+
+	// Обход всех пользователей
+	users.forEach(user => {
+		citySet.add(user.city);
+		processSkills(user.canTeach);
+		processSkills(user.wantsToLearn);
 	});
 
-	// итоговые списки
-	const skillsList = Array.from(skillsMap.values()); //получаем все категории и подкатегории
-	const cityList: CityItem[] = Array.from(citySet).map((city, i) => ({ //получаем все города
+	const skillsList = Array.from(skillsMap.values());
+
+	const cityList: CityItem[] = Array.from(citySet).map((city, i) => ({
 		id: i.toString(),
 		city,
 	}));
 
-	return { skillsList, cityList }; 
+	return { skillsList, cityList };
 };
 
 export const FiltersBarDefault: Story = {
