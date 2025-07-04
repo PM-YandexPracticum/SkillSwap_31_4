@@ -88,6 +88,7 @@ export const ReviewModalUI = ({
 							<div className={styles.thumbs}>
 								{otherImages.slice(0, 2).map((img) => (
 									<img
+										key={typeof img === 'string' ? img : img.name}
 										className={styles.thumb}
 										src={getImageSrc(img)}
 										alt='Изображение навыка'
@@ -95,7 +96,7 @@ export const ReviewModalUI = ({
 								))}
 
 								{otherImages.length > 2 && (
-									<div className={styles.overlayWrapper}>
+									<div className={styles.overlayWrapper} key='overlay-thumb'>
 										<img
 											className={styles.thumb}
 											src={getImageSrc(otherImages[2])}
