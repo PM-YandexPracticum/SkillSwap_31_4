@@ -29,6 +29,8 @@ export const CityFilterDefault = {
 		const [checkedItems, setIsChecked] = useState<Record<string, boolean>>(
 			items.reduce((acc, item) => ({ ...acc, [item.id]: false }), {})
 		);
+		const [showAllCities, setShowAllCities] = useState(false)
+
 
 		const handleChange = (id: string) => {
 			setIsChecked((prev) => ({
@@ -43,6 +45,8 @@ export const CityFilterDefault = {
 					items={items}
 					checkedItems={checkedItems}
 					onChange={handleChange}
+					isAllOpen={showAllCities}
+  					onOpenAll={() => setShowAllCities((prev) => !prev)}
 				/>
 			</div>
 		);

@@ -14,3 +14,11 @@
 .button:hover {
 	color: var(--color-accent);
 }
+
+.arrow {
+	transition: transform 0.2s;
+}
+
+.arrowOpen {
+	transform: rotate(180deg);
+}
