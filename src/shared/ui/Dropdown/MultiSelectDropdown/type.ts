@@ -4,6 +4,7 @@ export type Option = {
 	text: string;
 	id: string;
 	checked: boolean;
+	parentId?: string;
 };
 
 export type MultiSelectDropdownUIProps = {
