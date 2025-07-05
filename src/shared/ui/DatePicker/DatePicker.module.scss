@@ -4,7 +4,6 @@
 	position: relative;
 	display: flex;
 	flex-direction: column;
-	gap: 4px;
 	font-family: var(--font-roboto);
 }
 
@@ -20,4 +19,11 @@
 	align-self: center;
 	gap: 8px;
 	inline-size: 100%;
+}
+
+.labelDate {
+	display: flex;
+	align-items: center;
+	height: 24px;
+	margin-bottom: 4px;
 }
