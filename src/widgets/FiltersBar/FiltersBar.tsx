@@ -92,7 +92,13 @@ export const FiltersBar = ({ skills, cities }: FiltersBarProps) => {
 	};
 
 	const countSelectedOptions = () => {
-		const selectedSkillsCount = skillsState.filter((s) => s.checked).length;
+		const selectedSkillsCount = skillsState.reduce((acc, skill) => {
+			// Считаем только поднавыки (не группы)
+			if (skill.checked && skill.id !== skill.parentId) {
+				return acc + 1;
+			}
+			return acc;
+		}, 0);
 		const selectedCitiesCount =
 			Object.values(checkedCities).filter(Boolean).length;
 		const selectedGenderCount = selectedGender !== 'not' ? 1 : 0;
