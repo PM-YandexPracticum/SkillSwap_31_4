@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import clsx from 'clsx';
 import { CheckboxFilterCategoryUI } from '../CheckboxFilterCategory';
 import style from './CityFilter.module.scss';
+import ArrowDownIcon from '@images/icons/chevron-down.svg';
 
 type TCityItem = {
 	id: string;
@@ -11,44 +12,40 @@ type TCityFilterProps = {
 	items: TCityItem[];
 	checkedItems: Record<string, boolean>;
 	onChange: (id: string) => void;
+	isAllOpen: boolean;
+  	onOpenAll: () => void;
 };
 export const CityFilter = ({
 	items,
 	checkedItems,
 	onChange,
+	isAllOpen,
+  	onOpenAll,
 }: TCityFilterProps) => {
-	const [fullFilter, setFullFilter] = useState(false);
+	
 	return (
 		<div style={{ width: '500px' }}>
-			{items.slice(0, fullFilter ? items.length : 5).map((item) => (
+			{(isAllOpen ? items : items.slice(0, 5)).map((item) => (
 				<CheckboxFilterCategoryUI
 					key={item.id}
 					id={item.id}
 					text={item.city}
-					isChecked={checkedItems[item.id]}
+					isChecked={!!checkedItems[item.id]}
 					onChange={() => onChange(item.id)}
 				/>
 			))}
 			<button
 				className={style.button}
 				type='button'
-				onClick={() => setFullFilter(!fullFilter)}>
-				{fullFilter ? 'Свернуть' : 'Все города'}
-				{fullFilter ? (
-					<img
-						src='src/images/icons/chevron-up.svg'
-						alt='Стрелка вверх'
-						width={24}
-						height={24}
-					/>
-				) : (
-					<img
-						src='src/images/icons/chevron-down.svg'
+				onClick={onOpenAll}>
+				 {isAllOpen ? 'Свернуть' : 'Все города'}
+				<img
+						src={ArrowDownIcon}
+						className={clsx(style.arrow, {
+							[style.arrowOpen]: isAllOpen,
+						})}
 						alt='Стрелка вниз'
-						width={24}
-						height={24}
 					/>
-				)}
 			</button>
 		</div>
 	);
