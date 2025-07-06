@@ -4,10 +4,12 @@ export type Option = {
 	text: string;
 	id: string;
 	checked: boolean;
+	parentId?: string;
 };
 
 export type MultiSelectDropdownUIProps = {
 	idDropdown: string;
+	isAbsolute: boolean;
 	label?: string;
 	placeholder?: string;
 	options: Option[];

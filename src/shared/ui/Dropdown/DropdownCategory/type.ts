@@ -9,4 +9,5 @@ export type DropdownCategoryUIProps = {
 	displayText: string;
 	isOpen: boolean;
 	idDropdown: string;
+	isAbsolute: boolean;
 };

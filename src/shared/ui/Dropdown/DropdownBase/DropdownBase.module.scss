@@ -1,4 +1,5 @@
 .container {
+	width: 100%;
 	color: var(--color-text-primary);
 	font-family: var(--font-roboto), serif;
 }
@@ -15,6 +16,7 @@
 }
 
 .button {
+	position: relative;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -38,9 +40,9 @@
 .dropdown.open .button::after {
 	position: absolute;
 	inset: 1px;
-	z-index: -1;
+	z-index: 0;
+	border-bottom: 1px solid var(--color-disabled);
 	border-radius: 11px;
-	outline: 1px solid var(--color-disabled);
 	content: '';
 }
 
@@ -61,53 +63,45 @@
 	align-items: center;
 	width: 100%;
 	height: 32px;
-	padding: 0 20px;
+	padding-left: 20px;
 	color: var(--color-text-primary);
 	font-size: inherit;
 	font-family: inherit;
 	background-color: transparent;
 	border: none;
 	cursor: pointer;
-
-	&.selected {
-		color: var(--color-primary-pressed);
-	}
 }
 
-.optionItem:hover {
-	background-color: var(--color-disabled);
-}
-
-.dropdownList {
-	position: absolute;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 4px;
-	width: 100%;
-	margin-top: -1px;
-	padding: 4px 0 8px;
-	border: 1px solid var(--color-text-caption);
-	border-top: none;
-	border-radius: 0 0 12px 12px;
-
-	.itemText {
-		text-align: left;
-	}
+.optionItem.selected {
+	color: var(--color-primary-pressed);
 }
 
 .noBorderDropdownList {
+	gap: 0;
 	padding: 12px 0;
 	border: none;
+}
 
-	.optionItem {
-		width: 100%;
-		padding: 0;
+.noBorderDropdownList .optionItem {
+	height: auto;
+	padding: 0;
+}
 
-		&:hover {
-			background-color: var(--color-disabled);
-		}
-	}
+.dropdownListAbsolute {
+	position: absolute;
+}
+
+.dropdownListAbsolute > .optionItem:hover {
+	background-color: var(--color-disabled);
+}
+
+.noBorderDropdownList .dropdownListAbsolute > .optionItem {
+	width: 100%;
+	padding: 0;
+}
+
+.noBorderDropdownList .dropdownListAbsolute > .optionItem:hover {
+	background-color: var(--color-disabled);
 }
 
 .noBorderButton {
@@ -115,8 +109,8 @@
 	height: 24px;
 	padding: 0;
 	border: none;
+}
 
-	&::after {
-		outline: none !important;
-	}
+.noBorderButton::after {
+	border: none !important;
 }

@@ -70,6 +70,7 @@ export const Default: Story = {
 				<div>
 					<DropdownCategoryUI
 						idDropdown='categoryDrop'
+						isAbsolute={true}
 						isChecked={dropdownsState['categoryDrop'].isChecked}
 						onChange={() => handleCheckboxChange('categoryDrop')}
 						options={options1}
@@ -82,6 +83,7 @@ export const Default: Story = {
 				<div>
 					<DropdownCategoryUI
 						idDropdown='cakskll'
+						isAbsolute={true}
 						isChecked={dropdownsState['cakskll'].isChecked}
 						onChange={() => handleCheckboxChange('cakskll')}
 						options={options2}

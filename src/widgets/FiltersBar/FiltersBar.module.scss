@@ -1,0 +1,41 @@
+.filterBar {
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
+	width: 324px;
+	padding: 20px;
+	background-color: #ffffff;
+	border-radius: 12px;
+}
+
+h3 {
+	margin-bottom: 16px;
+}
+
+.reset {
+	display: flex;
+	gap: 4px;
+	padding: 10px 0 4px;
+	color: var(--color-primary-pressed);
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 24px;
+	background: transparent;
+	border: none;
+	cursor: pointer;
+}
+
+.reset:hover {
+	color: var(--color-accent);
+}
+
+.title {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.icon {
+	width: 24px;
+	height: 24px;
+}

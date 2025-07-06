@@ -28,6 +28,7 @@ export const Default: Story = {
 				<DropdownBaseUI
 					{...args}
 					idDropdown='baseDrop'
+					isAbsolute={true}
 					selectedOption={selectedOption}
 					displayText={selectedOptionText}
 					isOpen={isOpen}

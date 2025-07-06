@@ -49,6 +49,7 @@ export const Default: Story = {
 			<div style={{ width: 436, padding: 20 }}>
 				<MultiSelectDropdownUI
 					idDropdown='categoryForExample'
+					isAbsolute={true}
 					label='Категория навыка, которому хотите научиться'
 					placeholder='Выберите категорию'
 					isOpen={isOpen}
@@ -99,6 +100,7 @@ export const Categories: Story = {
 			<div style={{ width: 252 }}>
 				<MultiSelectDropdownUI
 					idDropdown='langDrop'
+					isAbsolute={true}
 					isOpen={isOpen}
 					onToggle={() => setIsOpen((prev) => !prev)}
 					options={suboptions}

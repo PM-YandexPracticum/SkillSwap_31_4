@@ -71,7 +71,7 @@ export const DatePickerUI: React.FC<DataPickerProps> = (
 
 	return (
 		<div className={styles.inputContainer}>
-			{title}
+			<div className={styles.labelDate}>{title}</div>
 			<DatePicker
 				dateFormat='dd.MM.yyyy'
 				open={isOpen}

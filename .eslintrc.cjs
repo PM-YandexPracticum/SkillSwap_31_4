@@ -80,5 +80,6 @@ module.exports = {
 		'jsx-a11y/click-events-have-key-events': 'off',
 		'react/button-has-type': 'off',
 		'no-underscore-dangle': 'off',
+		'react/jsx-props-no-spreading': 'off',
 	},
 };

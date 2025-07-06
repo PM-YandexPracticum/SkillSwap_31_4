@@ -1,0 +1,33 @@
+.container {
+	color: var(--color-text-primary);
+	font-family: var(--font-roboto), serif;
+}
+
+.label {
+	display: flex;
+	align-items: center;
+	height: 24px;
+	margin-bottom: 16px;
+}
+
+.skills {
+	position: relative;
+	width: 284px;
+}
+
+.allOptions {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	margin-top: 10px;
+	color: var(--color-primary-pressed);
+	cursor: pointer;
+}
+
+.arrow {
+	transition: transform 0.2s;
+}
+
+.arrowOpen {
+	transform: rotate(180deg);
+}
