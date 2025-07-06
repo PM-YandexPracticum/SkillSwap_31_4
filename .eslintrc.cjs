@@ -41,6 +41,8 @@ module.exports = {
 				usePrettierrc: true,
 			},
 		],
+		'react/prop-types': 'off',
+		'react/jsx-props-no-spreading': 'off',
 		'react/require-default-props': 'off',
 		'react/react-in-jsx-scope': 'off',
 		'comma-dangle': 'off',
@@ -79,7 +81,8 @@ module.exports = {
 		'jsx-a11y/no-static-element-interactions': 'off',
 		'jsx-a11y/click-events-have-key-events': 'off',
 		'react/button-has-type': 'off',
-		'no-underscore-dangle': 'off',
 		'react/jsx-props-no-spreading': 'off',
+		'react/jsx-no-useless-fragment': 'off',
+		'no-underscore-dangle': ['error', { allow: ['_id'] }],
 	},
 };
