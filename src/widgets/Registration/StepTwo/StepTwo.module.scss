@@ -1,0 +1,63 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 16px;
+	width: 556px;
+	padding: 40px 60px;
+	font-family: var(--font-roboto), serif;
+	background-color: var(--color-surface);
+	border-radius: 12px;
+}
+
+.userCircleButton {
+	position: relative;
+	display: flex;
+	box-sizing: border-box;
+	margin: 9px;
+	padding: 0;
+	background-color: transparent;
+	border: 0 none transparent;
+	border-radius: 100%;
+	cursor: pointer;
+}
+
+.userCircle {
+	z-index: 1;
+	width: 54px;
+	height: 54px;
+	background-color: transparent;
+	border: 0 none transparent;
+	border-radius: 100%;
+}
+
+.userCirclePlus {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	z-index: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 16px;
+	height: 16px;
+	color: var(--color-surface);
+	font-size: 16px;
+	background-color: var(--color-accent);
+	border: 0 none transparent;
+	border-radius: 100%;
+	cursor: pointer;
+	content: '';
+}
+
+.containerDouble {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 24px;
+	width: 100%;
+}
+
+.addMargin {
+	margin-top: 16px;
+}
