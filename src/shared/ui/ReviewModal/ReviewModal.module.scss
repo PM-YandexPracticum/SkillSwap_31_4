@@ -1,0 +1,106 @@
+.modal {
+	width: 1024px;
+	margin: 0 auto;
+	background: #ffffff;
+	border-radius: 12px;
+}
+
+.heading {
+	padding: 44px 60px 8px;
+	color: var(--color-text-primary);
+	text-align: center;
+}
+
+.subheading {
+	color: inherit;
+	font-size: 14px;
+	font-family: var(--font-roboto);
+	text-align: center;
+}
+
+.content {
+	display: grid;
+	grid-template-columns: minmax(420px, 1fr) 1fr;
+	gap: 44px;
+	padding: 40px 60px 72px;
+}
+
+.left {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.right {
+	display: grid;
+	grid-template-columns: auto 92px;
+	gap: 24px;
+}
+
+.title {
+	margin-bottom: 4px;
+	color: inherit;
+	font-size: 32px;
+	font-family: var(--font-jost);
+	line-height: 40px;
+}
+
+.category {
+	color: var(--color-text-caption);
+	font-size: 12px;
+	line-height: 16px;
+}
+
+.description {
+	color: inherit;
+	font-size: 16px;
+	font-family: inherit;
+	line-height: 24px;
+	letter-spacing: 0.32px;
+	white-space: pre-wrap;
+}
+
+.actions {
+	display: flex;
+	gap: 12px;
+	margin-top: auto;
+}
+
+.mainImage {
+	width: 324px;
+	height: 324px;
+	object-fit: cover;
+	border-radius: 12px;
+}
+
+.thumbs {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+}
+
+.thumb,
+.overlayWrapper img {
+	width: 92px;
+	height: 92px;
+	object-fit: cover;
+	border-radius: 12px;
+}
+
+.overlayWrapper {
+	position: relative;
+	overflow: hidden;
+}
+
+.overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	background: #ffffff80;
+	border-radius: 12px;
+}

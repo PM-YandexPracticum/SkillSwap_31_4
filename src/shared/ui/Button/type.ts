@@ -6,5 +6,8 @@ export type TButtonUIProps = {
 	width?: string;
 	children?: ReactNode;
 	isDisabled?: boolean;
+	icon?: ReactNode;
+	iconPosition?: 'left' | 'right';
 	htmlType?: 'button' | 'submit' | 'reset';
+	className?: string;
 };
