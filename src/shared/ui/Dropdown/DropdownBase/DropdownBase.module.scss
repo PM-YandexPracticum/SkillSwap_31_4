@@ -58,6 +58,10 @@
 	color: var(--color-text-caption);
 }
 
+.dropdownListAbsolute {
+	position: absolute;
+}
+
 .optionItem {
 	display: flex;
 	align-items: center;
@@ -70,38 +74,55 @@
 	background-color: transparent;
 	border: none;
 	cursor: pointer;
+
+	&:hover {
+		background-color: var(--color-disabled);
+	}
+
+	&.selected {
+		color: var(--color-primary-pressed);
+	}
 }
 
-.optionItem.selected {
-	color: var(--color-primary-pressed);
+.dropdownList {
+	z-index: 4;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 4px;
+	width: 100%;
+	margin-top: -1px;
+	padding: 4px 0 8px;
+	background-color: var(--color-surface);
+	border: 1px solid var(--color-text-caption);
+	border-top: none;
+	border-radius: 0 0 12px 12px;
+
+	.itemText {
+		overflow: hidden;
+		text-align: left;
+		text-overflow: ellipsis;
+	}
 }
 
 .noBorderDropdownList {
 	gap: 0;
 	padding: 12px 0;
 	border: none;
-}
 
-.noBorderDropdownList .optionItem {
-	height: auto;
-	padding: 0;
-}
+	.optionItem {
+		height: auto;
+		padding: 0;
+	}
 
-.dropdownListAbsolute {
-	position: absolute;
-}
+	.dropdownListAbsolute > .optionItem {
+		width: 100%;
+		padding: 0;
 
-.dropdownListAbsolute > .optionItem:hover {
-	background-color: var(--color-disabled);
-}
-
-.noBorderDropdownList .dropdownListAbsolute > .optionItem {
-	width: 100%;
-	padding: 0;
-}
-
-.noBorderDropdownList .dropdownListAbsolute > .optionItem:hover {
-	background-color: var(--color-disabled);
+		&:hover {
+			background-color: var(--color-disabled);
+		}
+	}
 }
 
 .noBorderButton {
@@ -109,8 +130,8 @@
 	height: 24px;
 	padding: 0;
 	border: none;
-}
 
-.noBorderButton::after {
-	border: none !important;
+	&::after {
+		border: none !important;
+	}
 }
