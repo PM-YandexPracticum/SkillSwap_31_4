@@ -1,21 +1,8 @@
-/* eslint-disable react/no-array-index-key */
-import { ButtonUI } from '../Button';
-import { LikeButtonUI } from '../LikeButton';
+import { ButtonUI, LikeButtonUI } from '@ui';
 import { SkillTags } from '../SkillTags';
-import type { TSkillTagsUIProps } from '../SkillTags/SkillTags';
 import styles from './Card.module.scss';
-
-export type TUICardProps = {
-	photo: string;
-	userName: string;
-	userLocation: string;
-	userAge: number;
-	isLiked: boolean;
-	teachSkills: TSkillTagsUIProps[];
-	learnSkills: TSkillTagsUIProps[];
-	onClickDetails: () => void;
-	onClickLike: () => void;
-};
+import type { TUICardProps } from './type';
+import type { TUserSkill } from '../../lib/types/user';
 
 export const Card = ({
 	photo,
@@ -47,23 +34,21 @@ export const Card = ({
 		}
 	};
 
-	const renderTags = (tags: TSkillTagsUIProps[] | undefined, limit: number) => {
-		if (!tags || tags.length === 0) return null;
+	const renderTags = (skills: TUserSkill[] | undefined, limit: number) => {
+		if (!skills || skills.length === 0) return null;
 
-		const visibleTags = tags.slice(0, limit);
-		const remainingCount = tags.length - limit;
+		const visibleTags = skills.slice(0, limit);
+		const remainingCount = skills.length - limit;
 
 		return (
 			<>
-				{visibleTags.map((skill, index) => (
-					<SkillTags
-						key={index}
-						tagText={skill.tagText}
-						category={skill.category}
-					/>
+				{visibleTags.map((skill) => (
+					<SkillTags key={skill._id} category={skill.categoryName}>
+						{skill.name}
+					</SkillTags>
 				))}
 				{remainingCount > 0 && (
-					<SkillTags tagText={`+${remainingCount}`} category='+' />
+					<SkillTags category='+'>{`+${remainingCount}`}</SkillTags>
 				)}
 			</>
 		);
