@@ -1,156 +1,251 @@
 [
 	{
-		"id": 1,
 		"name": "Иван",
 		"city": "Санкт-Петербург",
 		"age": 34,
 		"about": "Люблю ритм, кофе по утрам и людей, которые не боятся пробовать новое",
-		"canTeach": ["Английский язык"],
-		"wantsToLearn": ["Тайм менеджмент", "Медитация"],
+		"canTeach": ["685ef8469b478aebbd5b1f65"],
+		"wantsToLearn": ["685ef6e59b478aebbd5b1f59", "685efc389b478aebbd5b1f7b"],
 		"photo": "https://images.unsplash.com/photo-1626038135427-bd4eb8193ba5?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 	},
 	{
-		"id": 2,
 		"name": "Анна",
 		"city": "Казань",
 		"age": 26,
 		"about": "Открыта новому, люблю книги и камерную музыку",
-		"canTeach": ["Бизнес и карьера", "Бизнес-план"],
-		"wantsToLearn": ["Иностранные языки", "Тайм менеджмент"],
+		"canTeach": [
+			"685ef6e59b478aebbd5b1f59",
+			"685ef77a9b478aebbd5b1f5e",
+			"685efbfc9b478aebbd5b1f78",
+			"685ef8cd9b478aebbd5b1f6b",
+			"685efc259b478aebbd5b1f7a"
+		],
+		"wantsToLearn": [
+			"685ef7319b478aebbd5b1f5c",
+			"685efc9e9b478aebbd5b1f7e",
+			"685ef8959b478aebbd5b1f67",
+			"685ef69d9b478aebbd5b1f57"
+		],
 		"photo": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 	},
 	{
-		"id": 3,
 		"name": "Максим",
 		"city": "Москва",
 		"age": 23,
 		"about": "Интересуюсь технологиями и психологией общения",
-		"canTeach": ["Творчество и искусство", "Игра на барабанах"],
-		"wantsToLearn": ["Тайм менеджмент", "Медитация"],
+		"canTeach": [
+			"685efc689b478aebbd5b1f7d",
+			"685ef89f9b478aebbd5b1f68",
+			"685efb4a9b478aebbd5b1f74",
+			"685ef7d79b478aebbd5b1f61"
+		],
+		"wantsToLearn": [
+			"685efc9e9b478aebbd5b1f7e",
+			"685ef69d9b478aebbd5b1f57",
+			"685ef67e9b478aebbd5b1f56",
+			"685efb329b478aebbd5b1f73",
+			"685efc0f9b478aebbd5b1f79"
+		],
 		"photo": "https://images.unsplash.com/photo-1639149888905-fb39731f2e6c?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 	},
 	{
-		"id": 4,
 		"name": "Илона",
 		"city": "Екатеринбург",
 		"age": 33,
 		"about": "Пишу музыку и верю в силу медитации",
-		"canTeach": ["Английский язык"],
-		"wantsToLearn": ["Тайм менеджмент", "Медитация"],
+		"canTeach": [
+			"685ef77a9b478aebbd5b1f5e",
+			"685efc689b478aebbd5b1f7d",
+			"685efb4a9b478aebbd5b1f74"
+		],
+		"wantsToLearn": [
+			"685ef69d9b478aebbd5b1f57",
+			"685ef89f9b478aebbd5b1f68",
+			"685efc0f9b478aebbd5b1f79",
+			"685ef7d79b478aebbd5b1f61"
+		],
 		"photo": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 	},
 	{
-		"id": 5,
 		"name": "Михаил",
 		"city": "Новосибирск",
 		"age": 29,
 		"about": "Предприниматель, бегаю марафоны и люблю кофе",
-		"canTeach": ["Английский язык"],
-		"wantsToLearn": ["Тайм менеджмент", "Медитация"],
+		"canTeach": [
+			"685ef6cb9b478aebbd5b1f58",
+			"685ef7319b478aebbd5b1f5c",
+			"685ef8c09b478aebbd5b1f6a",
+			"685efb329b478aebbd5b1f73"
+		],
+		"wantsToLearn": [
+			"685ef77a9b478aebbd5b1f5e",
+			"685efc689b478aebbd5b1f7d",
+			"685ef7d79b478aebbd5b1f61",
+			"685ef69d9b478aebbd5b1f57",
+			"685efb4a9b478aebbd5b1f74"
+		],
 		"photo": "https://images.unsplash.com/photo-1636041241625-42c19b151401?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 	},
 	{
-		"id": 6,
 		"name": "Мария",
 		"city": "Краснодар",
 		"age": 21,
 		"about": "Люблю порядок и хорошо структурированную информацию",
-		"canTeach": ["Английский язык"],
-		"wantsToLearn": ["Тайм менеджмент", "Медитация"],
+		"canTeach": [
+			"685ef82c9b478aebbd5b1f64",
+			"685efb329b478aebbd5b1f73",
+			"685ef69d9b478aebbd5b1f57"
+		],
+		"wantsToLearn": [
+			"685ef7d79b478aebbd5b1f61",
+			"685ef8b29b478aebbd5b1f69",
+			"685efc0f9b478aebbd5b1f79",
+			"685efc689b478aebbd5b1f7d"
+		],
 		"photo": "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=761&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 	},
 	{
-		"id": 7,
 		"name": "Сергей",
 		"city": "Москва",
 		"age": 31,
 		"about": "Люблю спорт и новые технологии",
-		"canTeach": ["Программирование", "Фотография"],
-		"wantsToLearn": ["Публичные выступления", "Медитация"],
+		"canTeach": [
+			"685ef7f59b478aebbd5b1f62",
+			"685efb4a9b478aebbd5b1f74",
+			"685ef89f9b478aebbd5b1f68",
+			"685ef6e59b478aebbd5b1f59"
+		],
+		"wantsToLearn": [
+			"685efc9e9b478aebbd5b1f7e",
+			"685ef69d9b478aebbd5b1f57",
+			"685ef77a9b478aebbd5b1f5e",
+			"685ef7319b478aebbd5b1f5c",
+			"685efb329b478aebbd5b1f73"
+		],
 		"photo": "https://images.unsplash.com/photo-1601455763557-db1bea8a9a5a?q=80&w=1512&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 	},
 	{
-		"id": 8,
 		"name": "Ольга",
 		"city": "Пермь",
 		"age": 27,
 		"about": "Занимаюсь йогой и здоровым образом жизни",
-		"canTeach": ["Йога", "Здоровый образ жизни"],
-		"wantsToLearn": ["Иностранные языки", "Фотография"],
+		"canTeach": ["685efc689b478aebbd5b1f7d", "685efb4a9b478aebbd5b1f74"],
+		"wantsToLearn": [
+			"685ef77a9b478aebbd5b1f5e",
+			"685ef7319b478aebbd5b1f5c",
+			"685ef69d9b478aebbd5b1f57",
+			"685efc9e9b478aebbd5b1f7e",
+			"685ef7d79b478aebbd5b1f61"
+		],
 		"photo": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 	},
 	{
-		"id": 9,
 		"name": "Алексей",
 		"city": "Владивосток",
 		"age": 28,
 		"about": "Увлекаюсь музыкой и путешествиями",
-		"canTeach": ["Игра на гитаре", "Фотография"],
-		"wantsToLearn": ["Тайм менеджмент", "Медитация"],
+		"canTeach": [
+			"685ef7d79b478aebbd5b1f61",
+			"685efb329b478aebbd5b1f73",
+			"685ef69d9b478aebbd5b1f57"
+		],
+		"wantsToLearn": ["685efc9e9b478aebbd5b1f7e", "685ef77a9b478aebbd5b1f5e"],
 		"photo": "https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 	},
 	{
-		"id": 10,
 		"name": "Елена",
 		"city": "Красноярск",
 		"age": 28,
 		"about": "Люблю искусство и дизайн",
-		"canTeach": ["Рисование", "Дизайн"],
-		"wantsToLearn": ["Программирование", "Тайм менеджмент"],
+		"canTeach": [
+			"685ef7319b478aebbd5b1f5c",
+			"685ef7f59b478aebbd5b1f62",
+			"685efb4a9b478aebbd5b1f74",
+			"685ef89f9b478aebbd5b1f68"
+		],
+		"wantsToLearn": ["685ef77a9b478aebbd5b1f5e", "685efc9e9b478aebbd5b1f7e"],
 		"photo": "https://images.unsplash.com/photo-1663893364107-a6ecd06cf615?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 	},
 	{
-		"id": 11,
 		"name": "Константин",
 		"city": "Иркутск",
 		"age": 36,
 		"about": "Интересуюсь спортом и психологией",
-		"canTeach": ["Фитнес", "Психология"],
-		"wantsToLearn": ["Медитация", "Тайм менеджмент"],
+		"canTeach": [
+			"685efc689b478aebbd5b1f7d",
+			"685efb4a9b478aebbd5b1f74",
+			"685ef7d79b478aebbd5b1f61"
+		],
+		"wantsToLearn": [
+			"685ef77a9b478aebbd5b1f5e",
+			"685ef7319b478aebbd5b1f5c",
+			"685ef69d9b478aebbd5b1f57",
+			"685efc9e9b478aebbd5b1f7e",
+			"685efb329b478aebbd5b1f73"
+		],
 		"photo": "https://images.unsplash.com/photo-1594616838951-c155f8d978a0?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 	},
 	{
-		"id": 12,
 		"name": "София",
 		"city": "Абакан",
 		"age": 24,
 		"about": "Люблю музыку и путешествия",
-		"canTeach": ["Игра на барабанах", "Пение"],
-		"wantsToLearn": ["Фотография", "Тайм менеджмент"],
+		"canTeach": ["685ef7f59b478aebbd5b1f62", "685efb4a9b478aebbd5b1f74"],
+		"wantsToLearn": [
+			"685ef77a9b478aebbd5b1f5e",
+			"685ef7319b478aebbd5b1f5c",
+			"685efc9e9b478aebbd5b1f7e",
+			"685ef69d9b478aebbd5b1f57"
+		],
 		"photo": "https://images.unsplash.com/photo-1607746882042-944635dfe10e?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 	},
 	{
-		"id": 13,
 		"name": "Екатерина",
 		"city": "Пермь",
 		"age": 33,
 		"about": "Обожаю готовить и изучать новые рецепты",
-		"canTeach": ["Кулинария", "Здоровое питание"],
-		"wantsToLearn": ["Йога", "Медитация"],
+		"canTeach": [
+			"685efc689b478aebbd5b1f7d",
+			"685ef82c9b478aebbd5b1f64",
+			"685ef69d9b478aebbd5b1f57"
+		],
+		"wantsToLearn": ["685efc9e9b478aebbd5b1f7e", "685ef77a9b478aebbd5b1f5e"],
 		"photo": "https://images.unsplash.com/photo-1586297135537-94bc9ba060aa?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 	},
 	{
-		"id": 14,
 		"name": "Дарья",
 		"city": "Ярославль",
 		"age": 26,
 		"about": "Люблю читать и развиваться",
-		"canTeach": ["Английский язык", "Публичные выступления"],
-		"wantsToLearn": ["Тайм менеджмент", "Программирование"],
+		"canTeach": [
+			"685ef77a9b478aebbd5b1f5e",
+			"685efb329b478aebbd5b1f73",
+			"685ef69d9b478aebbd5b1f57",
+			"685ef7d79b478aebbd5b1f61"
+		],
+		"wantsToLearn": [
+			"685efc9e9b478aebbd5b1f7e",
+			"685ef7319b478aebbd5b1f5c",
+			"685efb4a9b478aebbd5b1f74"
+		],
 		"photo": "https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?q=80&w=1167&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 	},
 	{
-		"id": 15,
 		"name": "Алла",
 		"city": "Архангельск",
 		"age": 22,
 		"about": "Увлекаюсь фотографией и искусством",
-		"canTeach": ["Фотография", "Рисование"],
-		"wantsToLearn": ["Программирование", "Иностранные языки"],
+		"canTeach": ["685ef77a9b478aebbd5b1f5e", "685efb4a9b478aebbd5b1f74"],
+		"wantsToLearn": [
+			"685efc9e9b478aebbd5b1f7e",
+			"685ef7319b478aebbd5b1f5c",
+			"685ef69d9b478aebbd5b1f57",
+			"685ef7d79b478aebbd5b1f61",
+			"685efb329b478aebbd5b1f73"
+		],
 		"photo": "https://images.unsplash.com/photo-1701615004837-40d8573b6652?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 	},
 	{
-		"id": 16,
 		"name": "Виктория",
 		"city": "Кемерово",
 		"age": 30,
@@ -160,203 +255,271 @@
 		"photo": "https://images.unsplash.com/photo-1558898479-33c0057a5d12?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 	},
 	{
-		"id": 17,
-		"name": "Елизавета",
-		"city": "Владивосток",
-		"age": 25,
-		"about": "Обожаю путешествия и фото",
-		"canTeach": ["Фотография", "Туризм"],
-		"wantsToLearn": ["Программирование", "Йога"],
-		"photo": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=688&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+		"name": "Виктория",
+		"city": "Кемерово",
+		"age": 30,
+		"about": "Занимаюсь спортом и люблю музыку",
+		"canTeach": [
+			"685ef7d79b478aebbd5b1f61",
+			"685efb329b478aebbd5b1f73",
+			"685ef69d9b478aebbd5b1f57"
+		],
+		"wantsToLearn": [
+			"685efc9e9b478aebbd5b1f7e",
+			"685ef77a9b478aebbd5b1f5e",
+			"685ef7319b478aebbd5b1f5c",
+			"685efb4a9b478aebbd5b1f74"
+		],
+		"photo": "https://images.unsplash.com/photo-1558898479-33c0057a5d12?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 	},
 	{
-		"id": 18,
-		"name": "Виктория",
+		"name": "Зинаида",
 		"city": "Сочи",
 		"age": 31,
 		"about": "Люблю пляж и музыку",
-		"canTeach": ["Игра на барабанах", "Пение"],
-		"wantsToLearn": ["Медитация", "Тайм менеджмент"],
+		"canTeach": ["685ef7d79b478aebbd5b1f61", "685efb4a9b478aebbd5b1f74"],
+		"wantsToLearn": [
+			"685efc9e9b478aebbd5b1f7e",
+			"685ef77a9b478aebbd5b1f5e",
+			"685ef7319b478aebbd5b1f5c",
+			"685ef69d9b478aebbd5b1f57"
+		],
 		"photo": "https://images.unsplash.com/photo-1632324343640-86af9827dbeb?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 	},
 	{
-		"id": 19,
 		"name": "Елена",
 		"city": "Красноярск",
 		"age": 28,
 		"about": "Люблю искусство и творчество",
-		"canTeach": ["Рисование", "Дизайн"],
-		"wantsToLearn": ["Медитация", "Тайм менеджмент"],
+		"canTeach": [
+			"685ef7f59b478aebbd5b1f62",
+			"685efb4a9b478aebbd5b1f74",
+			"685ef69d9b478aebbd5b1f57"
+		],
+		"wantsToLearn": ["685efc9e9b478aebbd5b1f7e", "685ef77a9b478aebbd5b1f5e"],
 		"photo": "https://images.unsplash.com/photo-1569913486515-b74bf7751574?q=80&w=689&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 	},
 	{
-		"id": 20,
 		"name": "Константин",
 		"city": "Иркутск",
 		"age": 36,
 		"about": "Увлекаюсь спортом и психологией",
-		"canTeach": ["Фитнес", "Психология"],
-		"wantsToLearn": ["Тайм менеджмент", "Медитация"],
+		"canTeach": ["685efc689b478aebbd5b1f7d", "685efb4a9b478aebbd5b1f74"],
+		"wantsToLearn": [
+			"685ef77a9b478aebbd5b1f5e",
+			"685ef7319b478aebbd5b1f5c",
+			"685ef69d9b478aebbd5b1f57",
+			"685efc9e9b478aebbd5b1f7e",
+			"685ef7d79b478aebbd5b1f61"
+		],
 		"photo": "https://images.unsplash.com/photo-1725131481715-f0aa4357665d?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 	},
 	{
-		"id": 21,
 		"name": "София",
 		"city": "Абакан",
 		"age": 24,
 		"about": "Люблю музыку и танцы",
-		"canTeach": ["Игра на барабанах", "Пение"],
-		"wantsToLearn": ["Тайм менеджмент", "Фотография"],
+		"canTeach": ["685ef7d79b478aebbd5b1f61", "685efb4a9b478aebbd5b1f74"],
+		"wantsToLearn": [
+			"685ef77a9b478aebbd5b1f5e",
+			"685efc9e9b478aebbd5b1f7e",
+			"685ef69d9b478aebbd5b1f57"
+		],
 		"photo": "https://images.unsplash.com/photo-1697395156014-7b3abb7c9262?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 	},
 	{
-		"id": 22,
 		"name": "Екатерина",
 		"city": "Пермь",
 		"age": 33,
 		"about": "Увлекаюсь кулинарией и здоровьем",
-		"canTeach": ["Кулинария", "Здоровое питание"],
-		"wantsToLearn": ["Медитация", "Йога"],
+		"canTeach": ["685efc689b478aebbd5b1f7d", "685efb4a9b478aebbd5b1f74"],
+		"wantsToLearn": [
+			"685ef77a9b478aebbd5b1f5e",
+			"685efc9e9b478aebbd5b1f7e",
+			"685ef69d9b478aebbd5b1f57"
+		],
 		"photo": "https://images.unsplash.com/photo-1645763341075-663e2237018d?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 	},
 	{
-		"id": 23,
 		"name": "Дарья",
 		"city": "Ярославль",
 		"age": 26,
 		"about": "Люблю развиваться и учиться",
-		"canTeach": ["Английский язык", "Публичные выступления"],
-		"wantsToLearn": ["Программирование", "Тайм менеджмент"],
+		"canTeach": [
+			"685ef77a9b478aebbd5b1f5e",
+			"685efb4a9b478aebbd5b1f74",
+			"685ef69d9b478aebbd5b1f57"
+		],
+		"wantsToLearn": ["685efc9e9b478aebbd5b1f7e", "685ef7319b478aebbd5b1f5c"],
 		"photo": "https://images.unsplash.com/photo-1601217672201-cca23494ed2c?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 	},
 	{
-		"id": 24,
 		"name": "Алла",
 		"city": "Архангельск",
 		"age": 22,
 		"about": "Интересуюсь фотографией и искусством",
-		"canTeach": ["Фотография", "Рисование"],
-		"wantsToLearn": ["Иностранные языки", "Программирование"],
+		"canTeach": ["685ef7d79b478aebbd5b1f61", "685efb4a9b478aebbd5b1f74"],
+		"wantsToLearn": [
+			"685efc9e9b478aebbd5b1f7e",
+			"685ef77a9b478aebbd5b1f5e",
+			"685ef69d9b478aebbd5b1f57"
+		],
 		"photo": "https://images.unsplash.com/photo-1580390058870-56b3920b2c72?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 	},
 	{
-		"id": 25,
 		"name": "Дмитрий",
 		"city": "Томск",
 		"age": 29,
 		"about": "Занимаюсь спортом и играю на гитаре",
-		"canTeach": ["Фитнес", "Игра на гитаре"],
-		"wantsToLearn": ["Медитация", "Фотография"],
+		"canTeach": ["685efc689b478aebbd5b1f7d", "685efb4a9b478aebbd5b1f74"],
+		"wantsToLearn": [
+			"685efc9e9b478aebbd5b1f7e",
+			"685ef77a9b478aebbd5b1f5e",
+			"685ef69d9b478aebbd5b1f57"
+		],
 		"photo": "https://images.unsplash.com/photo-1628157588553-5eeea00af15c?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 	},
 	{
-		"id": 26,
 		"name": "Наталья",
 		"city": "Уфа",
 		"age": 32,
-		"about": "Люблю путешествия и искусство",
-		"canTeach": ["Рисование", "Фотография"],
-		"wantsToLearn": ["Программирование", "Йога"],
+		"about": "Люблю путешествия и искусство. Служила в морской пехоте",
+		"canTeach": ["685ef7d79b478aebbd5b1f61", "685efb4a9b478aebbd5b1f74"],
+		"wantsToLearn": [
+			"685efc9e9b478aebbd5b1f7e",
+			"685ef77a9b478aebbd5b1f5e",
+			"685ef69d9b478aebbd5b1f57"
+		],
 		"photo": "https://images.unsplash.com/photo-1624561272659-224ea122b2e9?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 	},
 	{
-		"id": 27,
 		"name": "Андрей",
 		"city": "Челябинск",
 		"age": 34,
 		"about": "Интересуюсь бизнесом и спортом",
-		"canTeach": ["Бизнес и карьера", "Фитнес"],
-		"wantsToLearn": ["Тайм менеджмент", "Медитация"],
+		"canTeach": [
+			"685efc689b478aebbd5b1f7d",
+			"685efb4a9b478aebbd5b1f74",
+			"685ef69d9b478aebbd5b1f57"
+		],
+		"wantsToLearn": ["685efc9e9b478aebbd5b1f7e", "685ef77a9b478aebbd5b1f5e"],
 		"photo": "https://images.unsplash.com/photo-1654110455429-cf322b40a906?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 	},
 	{
-		"id": 28,
 		"name": "Валерия",
 		"city": "Киров",
 		"age": 27,
 		"about": "Увлекаюсь музыкой и йогой",
-		"canTeach": ["Пение", "Йога"],
-		"wantsToLearn": ["Программирование", "Медитация"],
+		"canTeach": ["685ef7d79b478aebbd5b1f61", "685efc689b478aebbd5b1f7d"],
+		"wantsToLearn": [
+			"685ef77a9b478aebbd5b1f5e",
+			"685efc9e9b478aebbd5b1f7e",
+			"685ef69d9b478aebbd5b1f57"
+		],
 		"photo": "https://images.unsplash.com/photo-1722270606350-e7be9fb9eb1e?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 	},
 	{
-		"id": 29,
 		"name": "Игорь",
 		"city": "Вологда",
 		"age": 30,
 		"about": "Люблю технологии и спорт",
-		"canTeach": ["Программирование", "Фитнес"],
-		"wantsToLearn": ["Йога", "Медитация"],
+		"canTeach": ["685efc689b478aebbd5b1f7d", "685efb4a9b478aebbd5b1f74"],
+		"wantsToLearn": [
+			"685ef77a9b478aebbd5b1f5e",
+			"685efc9e9b478aebbd5b1f7e",
+			"685ef69d9b478aebbd5b1f57"
+		],
 		"photo": "https://images.unsplash.com/photo-1624561172888-ac93c696e10c?q=80&w=689&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 	},
 	{
-		"id": 30,
 		"name": "Ксения",
 		"city": "Тюмень",
 		"age": 25,
 		"about": "Обожаю рисовать и фотографировать",
-		"canTeach": ["Рисование", "Фотография"],
-		"wantsToLearn": ["Программирование", "Тайм менеджмент"],
+		"canTeach": ["685ef7d79b478aebbd5b1f61", "685efb4a9b478aebbd5b1f74"],
+		"wantsToLearn": [
+			"685ef77a9b478aebbd5b1f5e",
+			"685efc9e9b478aebbd5b1f7e",
+			"685ef69d9b478aebbd5b1f57"
+		],
 		"photo": "https://images.unsplash.com/photo-1568822617270-2c1579f8dfe2?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 	},
 	{
-		"id": 31,
 		"name": "Владимир",
 		"city": "Барнаул",
 		"age": 33,
 		"about": "Люблю спорт и игры",
-		"canTeach": ["Фитнес", "Игра на барабанах"],
-		"wantsToLearn": ["Медитация", "Тайм менеджмент"],
+		"canTeach": ["685efc689b478aebbd5b1f7d", "685efb4a9b478aebbd5b1f74"],
+		"wantsToLearn": [
+			"685ef77a9b478aebbd5b1f5e",
+			"685efc9e9b478aebbd5b1f7e",
+			"685ef69d9b478aebbd5b1f57"
+		],
 		"photo": "https://images.unsplash.com/photo-1649123245135-4db6ead931b5?q=80&w=725&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 	},
 	{
-		"id": 32,
 		"name": "Оксана",
 		"city": "Ижевск",
 		"age": 29,
 		"about": "Увлекаюсь кулинарией и здоровьем",
-		"canTeach": ["Кулинария", "Здоровое питание"],
-		"wantsToLearn": ["Йога", "Медитация"],
+		"canTeach": ["685efc689b478aebbd5b1f7d", "685efb4a9b478aebbd5b1f74"],
+		"wantsToLearn": [
+			"685ef77a9b478aebbd5b1f5e",
+			"685efc9e9b478aebbd5b1f7e",
+			"685ef69d9b478aebbd5b1f57"
+		],
 		"photo": "https://images.unsplash.com/photo-1651346158507-a2810590687f?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 	},
 	{
-		"id": 33,
 		"name": "Роман",
 		"city": "Владимир",
 		"age": 28,
 		"about": "Люблю технологии и путешествия",
-		"canTeach": ["Программирование", "Туризм"],
-		"wantsToLearn": ["Медитация", "Тайм менеджмент"],
+		"canTeach": ["685efc689b478aebbd5b1f7d", "685efb4a9b478aebbd5b1f74"],
+		"wantsToLearn": [
+			"685ef77a9b478aebbd5b1f5e",
+			"685efc9e9b478aebbd5b1f7e",
+			"685ef69d9b478aebbd5b1f57"
+		],
 		"photo": "https://images.unsplash.com/photo-1635930870702-aab3e1b19cb6?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 	},
 	{
-		"id": 34,
 		"name": "Светлана",
 		"city": "Мурманск",
 		"age": 31,
 		"about": "Обожаю музыку и творчество",
-		"canTeach": ["Игра на пианино", "Рисование"],
-		"wantsToLearn": ["Медитация", "Йога"],
+		"canTeach": ["685ef7d79b478aebbd5b1f61", "685efb4a9b478aebbd5b1f74"],
+		"wantsToLearn": [
+			"685ef77a9b478aebbd5b1f5e",
+			"685efc9e9b478aebbd5b1f7e",
+			"685ef69d9b478aebbd5b1f57"
+		],
 		"photo": "https://images.unsplash.com/photo-1685903772095-f07172808761?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 	},
 	{
-		"id": 35,
-		"name": "Николай",
+		"name": "Али-баба",
 		"city": "Саратов",
 		"age": 35,
 		"about": "Занимаюсь спортом и бизнесом",
-		"canTeach": ["Фитнес", "Бизнес и карьера"],
-		"wantsToLearn": ["Тайм менеджмент", "Программирование"],
+		"canTeach": ["685efc689b478aebbd5b1f7d", "685efb4a9b478aebbd5b1f74"],
+		"wantsToLearn": [
+			"685ef77a9b478aebbd5b1f5e",
+			"685efc9e9b478aebbd5b1f7e",
+			"685ef69d9b478aebbd5b1f57"
+		],
 		"photo": "https://images.unsplash.com/photo-1624561187289-198fc6eee90b?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 	},
 	{
-		"id": 36,
 		"name": "Марина",
 		"city": "Тула",
 		"age": 27,
 		"about": "Люблю готовить и путешествовать",
-		"canTeach": ["Кулинария", "Туризм"],
-		"wantsToLearn": ["Фотография", "Йога"],
+		"canTeach": ["685efc689b478aebbd5b1f7d", "685efb4a9b478aebbd5b1f74"],
+		"wantsToLearn": [
+			"685ef77a9b478aebbd5b1f5e",
+			"685efc9e9b478aebbd5b1f7e",
+			"685ef69d9b478aebbd5b1f57"
+		],
 		"photo": "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 	}
 ]

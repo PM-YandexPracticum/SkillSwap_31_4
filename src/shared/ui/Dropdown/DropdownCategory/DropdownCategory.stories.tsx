@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { DropdownCategoryUI } from './DropdownCategory';
+import { DropdownCategoryUI } from '@ui';
 import type { Option } from '../MultiSelectDropdown/type';
 
 const meta: Meta<typeof DropdownCategoryUI> = {
@@ -50,8 +50,7 @@ export const Default: Story = {
 
 		const handleSelect = (
 			idDropdown: string,
-			setOptions: React.Dispatch<React.SetStateAction<Option[]>>,
-			options: Option[]
+			setOptions: React.Dispatch<React.SetStateAction<Option[]>>
 		) => {
 			return (value: string) => {
 				setOptions((prev) => {
@@ -74,7 +73,7 @@ export const Default: Story = {
 						isChecked={dropdownsState['categoryDrop'].isChecked}
 						onChange={() => handleCheckboxChange('categoryDrop')}
 						options={options1}
-						onSelect={handleSelect('categoryDrop', setOptions1, options1)}
+						onSelect={handleSelect('categoryDrop', setOptions1)}
 						displayText='Иностранный язык'
 						variant='no-border'
 						isOpen={dropdownsState['categoryDrop'].isOpen}
@@ -86,7 +85,7 @@ export const Default: Story = {
 						isChecked={dropdownsState['cakskll'].isChecked}
 						onChange={() => handleCheckboxChange('cakskll')}
 						options={options2}
-						onSelect={handleSelect('cakskll', setOptions2, options2)}
+						onSelect={handleSelect('cakskll', setOptions2)}
 						displayText='Иностранный язык'
 						variant='no-border'
 						isOpen={dropdownsState['cakskll'].isOpen}
