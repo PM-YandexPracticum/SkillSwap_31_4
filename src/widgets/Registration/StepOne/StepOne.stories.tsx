@@ -2,7 +2,7 @@ import type { Meta, StoryFn } from '@storybook/react-vite';
 import { StepOne } from './StepOne';
 
 const meta: Meta<typeof StepOne> = {
-	title: 'Widgets/StepOne',
+	title: 'Widgets/Registration/StepOne',
 	component: StepOne,
 	argTypes: {
 		onNext: {
