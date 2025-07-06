@@ -45,6 +45,11 @@
 	object-fit: cover;
 }
 
+.name {
+	color: var(--color-text-primary);
+	text-decoration: none;
+}
+
 .authButtons_container {
 	display: flex;
 	gap: 8px;

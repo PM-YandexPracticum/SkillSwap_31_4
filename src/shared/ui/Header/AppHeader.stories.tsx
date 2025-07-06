@@ -1,21 +1,18 @@
-import type { Meta } from '@storybook/react-vite';
-
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useEffect, useState } from 'react';
+import { MemoryRouter } from 'react-router-dom';
 import type { TCategoryWithSkills, TSkill } from '../../lib/types/skill.ts';
-import type { StoryFn } from '@storybook/react';
 import type { TUser } from '../../lib/types/user.ts';
 import { AppHeaderUI } from './AppHeader.tsx';
 
-const meta = {
+const meta: Meta<typeof AppHeaderUI> = {
 	title: 'Shared/UI/Header',
 	component: AppHeaderUI,
+	tags: ['autodocs'],
 	argTypes: {
-		isModal: {
-			control: 'boolean',
-		},
-		isAuth: {
-			control: 'boolean',
-		},
+		isModal: { control: 'boolean' },
+		isAuth: { control: 'boolean' },
+		isNotification: { control: 'boolean' },
 		categories: { table: { disable: true } },
 		user: { table: { disable: true } },
 		searchValue: { table: { disable: true } },
@@ -26,75 +23,64 @@ const meta = {
 		handleSkillTitleClick: { table: { disable: true } },
 		handleSkillTagClick: { table: { disable: true } },
 	},
-} satisfies Meta<typeof AppHeaderUI>;
-
+};
 export default meta;
 
-const Template: StoryFn<typeof AppHeaderUI> = (args) => {
-	const [categories, setCategories] = useState<TCategoryWithSkills[]>([]);
-	const [user, setUser] = useState<TUser | null>(null);
-	const [searchValue, setSearchValue] = useState('');
+type Story = StoryObj<typeof AppHeaderUI>;
 
-	useEffect(() => {
-		fetch('https://skills-api.lukumka-dev.ru/api/skills/')
-			.then((res) => res.json())
-			.then((data) => setCategories(data.categories));
-	}, []);
+export const Dynamic: Story = {
+	args: {
+		isModal: true,
+		isAuth: false,
+	},
+	render: (args) => {
+		const [categories, setCategories] = useState<TCategoryWithSkills[]>([]);
+		const [user, setUser] = useState<TUser | null>(null);
+		const [searchValue, setSearchValue] = useState('');
 
-	useEffect(() => {
-		fetch('https://skills-api.lukumka-dev.ru/api/users/')
-			.then((res) => res.json())
-			.then((data) => {
-				console.log(data.users[1]);
-				setUser(data.users[1]);
-			});
-	}, []);
-	const allSkills: TSkill[] = [];
-	categories.forEach((category: TCategoryWithSkills) => {
-		allSkills.push(...category.skills);
-	});
+		useEffect(() => {
+			fetch('https://skills-api.lukumka-dev.ru/api/skills/')
+				.then((res) => res.json())
+				.then((data) => setCategories(data.categories));
+		}, []);
 
-	const handleRegisterButtonClick = () => {
-		alert('Register button clicked!');
-	};
+		useEffect(() => {
+			fetch('https://skills-api.lukumka-dev.ru/api/users/')
+				.then((res) => res.json())
+				.then((data) => setUser(data.users[1]));
+		}, []);
 
-	const handleLoginButtonClick = () => {
-		alert('Login button clicked!');
-	};
+		const allSkills: TSkill[] = [];
+		categories.forEach((category) => {
+			allSkills.push(...category.skills);
+		});
 
-	const handleCloseButtonClick = () => {
-		alert('Close button clicked!');
-	};
+		const handleRegisterButtonClick = () => alert('Register button clicked!');
+		const handleLoginButtonClick = () => alert('Login button clicked!');
+		const handleCloseButtonClick = () => alert('Close button clicked!');
+		const handleSkillTitleClick = (skills: TCategoryWithSkills) =>
+			alert(`Skill title clicked: ${JSON.stringify(skills)}`);
+		const handleSkillTagClick = (skill: TSkill) =>
+			alert(`Skill tag clicked: ${JSON.stringify(skill)}`);
 
-	const handleSkillTitleClick = (skills: TCategoryWithSkills) => {
-		alert(`Skill title clicked: ${JSON.stringify(skills)}`);
-	};
+		if (!user || !categories.length) return <div>Loading...</div>;
 
-	const handleSkillTagClick = (skill: TSkill) => {
-		alert(`Skill tag clicked: ${JSON.stringify(skill)}`);
-	};
-
-	if (!user || !categories.length) return <div>Loading...</div>;
-
-	return (
-		<AppHeaderUI
-			{...args}
-			categories={categories}
-			user={user}
-			searchOptions={allSkills}
-			searchValue={searchValue}
-			setSearchValue={setSearchValue}
-			handleRegisterButtonClick={handleRegisterButtonClick}
-			handleLoginButtonClick={handleLoginButtonClick}
-			handleCloseButtonClick={handleCloseButtonClick}
-			handleSkillTitleClick={handleSkillTitleClick}
-			handleSkillTagClick={handleSkillTagClick}
-		/>
-	);
-};
-
-export const Dynamic = Template.bind({});
-Dynamic.args = {
-	isModal: true,
-	isAuth: false,
+		return (
+			<MemoryRouter>
+				<AppHeaderUI
+					{...args}
+					categories={categories}
+					user={user}
+					searchOptions={allSkills}
+					searchValue={searchValue}
+					setSearchValue={setSearchValue}
+					handleRegisterButtonClick={handleRegisterButtonClick}
+					handleLoginButtonClick={handleLoginButtonClick}
+					handleCloseButtonClick={handleCloseButtonClick}
+					handleSkillTitleClick={handleSkillTitleClick}
+					handleSkillTagClick={handleSkillTagClick}
+				/>
+			</MemoryRouter>
+		);
+	},
 };

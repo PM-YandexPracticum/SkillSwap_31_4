@@ -4,6 +4,7 @@ import type { TUser } from '../../lib/types/user';
 export type TAppHeaderUIProps = {
 	isModal: boolean;
 	isAuth: boolean;
+	isNotification: boolean;
 	categories: TCategoryWithSkills[];
 	user: TUser;
 	handleRegisterButtonClick?: () => void;

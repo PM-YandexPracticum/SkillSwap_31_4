@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styles from './AppHeader.module.scss';
 import cross from '../../../images/icons/cross.svg';
 import type { TAppHeaderUIProps } from './type';
@@ -12,6 +13,7 @@ import { DropdownSkillsUI } from '../Dropdown/DropdownSkills';
 export const AppHeaderUI = ({
 	isModal,
 	isAuth,
+	isNotification,
 	categories,
 	user,
 	handleRegisterButtonClick,
@@ -59,20 +61,26 @@ export const AppHeaderUI = ({
 				<ThemeToggleButton theme='light' />
 				{isAuth && (
 					<>
-						<NotificationButton />
-						<LikeButtonUI />
+						<NotificationButton hasNotification={isNotification} />
+						<Link to='/favorites'>
+							<LikeButtonUI />
+						</Link>
 					</>
 				)}
 			</div>
 
 			{isAuth ? (
 				<div className={styles.profile}>
-					<p>{user.name}</p>
-					<img
-						className={styles.avatar}
-						src={user.photo}
-						alt='Фото пользователя'
-					/>
+					<Link className={styles.name} to='/profile'>
+						{user.name}
+					</Link>
+					<Link to='/profile'>
+						<img
+							className={styles.avatar}
+							src={user.photo}
+							alt='Фото пользователя'
+						/>
+					</Link>
 				</div>
 			) : (
 				<div>
