@@ -82,5 +82,6 @@ module.exports = {
 		'jsx-a11y/click-events-have-key-events': 'off',
 		'react/button-has-type': 'off',
 		'react/jsx-no-useless-fragment': 'off',
+		'no-underscore-dangle': ['error', { allow: ['_id'] }],
 	},
 };
