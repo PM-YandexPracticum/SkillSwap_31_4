@@ -1,0 +1,65 @@
+.userInfo {
+	display: flex;
+	gap: 196px;
+	width: 1020px;
+	padding: 60px;
+	background-color: var(--color-surface);
+	border-radius: 24px 24px 0 0;
+}
+
+.form {
+	width: 460px;
+}
+
+.inputs {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	margin-block-end: 32px;
+}
+
+.inputGroup {
+	display: flex;
+	gap: 24px;
+}
+
+.editPasswordButton {
+	margin-block-start: 12px;
+	color: var(--color-primary-pressed);
+	font-weight: 500;
+	font-size: 16px;
+	font-family: var(--font-roboto);
+	line-height: 24px;
+	background: none;
+	border: none;
+	cursor: pointer;
+}
+
+.editPasswordButton:hover {
+	color: var(--color-accent);
+}
+
+.userPhoto {
+	display: flex;
+	justify-content: end;
+	align-items: end;
+	width: 244px;
+	height: 244px;
+	background-position: center;
+	background-size: cover;
+	border-radius: 100%;
+}
+
+.hiddenInput {
+	display: none;
+}
+
+.edit {
+	display: block;
+	width: 56px;
+	height: 56px;
+	padding: 16px;
+	background-color: var(--color-button-hover);
+	border-radius: 100%;
+	cursor: pointer;
+}
