@@ -10,15 +10,11 @@ const getAuthHeaders = (token: string) => ({
 	Authorization: `${token}`,
 });
 
-type TServerResponse<T> = {
-	success: boolean;
-} & T;
-
-type TUsersResponse = TServerResponse<{
+type TUsersResponse = {
 	data: TUser[];
-}>;
+};
 
-type TRegisterStep2 = TServerResponse<{
+type TRegisterStep2 = {
 	userId: string;
 	name: string;
 	city: string;
@@ -26,25 +22,22 @@ type TRegisterStep2 = TServerResponse<{
 	photo?: string;
 	birthDate: string;
 	wantsToLearn: { name: string; categoryName: string }[];
-}>;
+};
 
-type TRegisterStep3AddCard = TServerResponse<{
+type TRegisterStep3AddCard = {
 	userId: string;
 	title: string;
 	description: string;
 	photo?: string[];
 	canTeach: { name: string; categoryName: string }[];
-}>;
+};
 
 // Получения пользователей
 
 export const getUsersApi = () =>
 	fetch(`${URL}/api/users`)
 		.then((res) => checkResponse<TUsersResponse>(res))
-		.then((data) => {
-			if (data?.success) return data.data;
-			return Promise.reject(data);
-		});
+		.then((data) => data);
 
 // Получения пользователя по id
 
