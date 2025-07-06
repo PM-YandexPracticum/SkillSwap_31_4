@@ -15,7 +15,6 @@ interface SkillCardsListProps {
 }
 
 export interface SkillCardsListDemoProps extends SkillCardsListProps {
-	buttonMoreType: 'watchAll' | 'arrow' | null;
 	onClickButtonMore?: () => void;
 	maxCardCount?: number;
 }
