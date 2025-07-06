@@ -1,6 +1,6 @@
-import type { TCategory, TSkill } from './skill';
+import type { TCategories, TSkill } from './skill';
 
-type TResponse = {
+export type TResponse = {
 	success: boolean;
 };
 
@@ -14,8 +14,8 @@ export type TUser = {
 	city: string;
 	age: number;
 	about: string;
-	canTeach: TUserSkills[];
-	wantsToLearn: TUserSkills[];
+	canTeach: TUserSkill[];
+	wantsToLearn: TUserSkill[];
 	photo: string;
 	likes: string[];
 	birthDate: Date;
@@ -23,6 +23,6 @@ export type TUser = {
 	skillPhotos: string[];
 };
 
-type TUserSkills = TSkill & {
-	categoryName: TCategory;
+export type TUserSkill = TSkill & {
+	categoryName: TCategories;
 };

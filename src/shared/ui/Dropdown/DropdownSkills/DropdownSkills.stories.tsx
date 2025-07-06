@@ -1,8 +1,8 @@
 import type { Meta } from '@storybook/react-vite';
 
-import { DropdownSkillsUI } from '@ui';
-import type { TSkill, TSkillsResponse } from '../../../lib/types/skill.ts';
+import type { TCategoryWithSkills, TSkill } from '../../../lib/types/skill.ts';
 import { useEffect, useState } from 'react';
+import { DropdownSkillsUI } from './DropdownSkills.tsx';
 
 const meta = {
 	title: 'Shared/UI/Dropdown/DropdownSkills',
@@ -24,7 +24,7 @@ const SkillTagsWithFetch = () => {
 	const handleTagClick = (skill: TSkill) => {
 		alert(`Вы кликнули по ${skill.name}`);
 	};
-	const handleTitleClick = (items: TSkillsResponse) => {
+	const handleTitleClick = (items: TCategoryWithSkills) => {
 		alert(`Вы кликнули по ${items.category.name}`);
 	};
 	useEffect(() => {

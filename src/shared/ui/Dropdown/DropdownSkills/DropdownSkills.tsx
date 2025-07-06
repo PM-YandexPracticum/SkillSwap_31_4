@@ -4,7 +4,6 @@ import styles from './DropdownSkills.module.scss';
 import ArrowDownIcon from '../../../../images/icons/chevron-down.svg';
 import { SkillIcon } from '../../SkillIcon';
 import type { TDropdownSkillsUIProps } from './type';
-import type { TCategoryName } from '../../../lib/types/skill';
 
 export const DropdownSkillsUI = ({
 	skillsData,
@@ -32,7 +31,7 @@ export const DropdownSkillsUI = ({
 				<div className={styles.menu}>
 					{skillsData.map((item) => (
 						<div key={item.category._id} className={styles.menuGroup}>
-							<SkillIcon category={item.category.name as TCategoryName} />
+							<SkillIcon category={item.category.name} />
 							<div className={styles.tagsContainer}>
 								<button onClick={() => onTitleClick && onTitleClick(item)}>
 									<h2 className={styles.title}>{item.category.name}</h2>

@@ -1,7 +1,7 @@
-import type { TSkill, TSkillsResponse } from '../../../lib/types/skill';
+import type { TCategoryWithSkills, TSkill } from '../../../lib/types/skill';
 
 export type TDropdownSkillsUIProps = {
-	skillsData: TSkillsResponse[];
+	skillsData: TCategoryWithSkills[];
 	onTagClick?: (skill: TSkill) => void;
-	onTitleClick?: (skills: TSkillsResponse) => void;
+	onTitleClick?: (skills: TCategoryWithSkills) => void;
 };

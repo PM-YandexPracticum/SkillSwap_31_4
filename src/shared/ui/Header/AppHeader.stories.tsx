@@ -1,10 +1,10 @@
 import type { Meta } from '@storybook/react-vite';
 
-import { AppHeaderUI } from '@ui';
 import { useEffect, useState } from 'react';
-import type { TSkill, TSkillsResponse } from '../../lib/types/skill.ts';
+import type { TCategoryWithSkills, TSkill } from '../../lib/types/skill.ts';
 import type { StoryFn } from '@storybook/react';
 import type { TUser } from '../../lib/types/user.ts';
+import { AppHeaderUI } from './AppHeader.tsx';
 
 const meta = {
 	title: 'Shared/UI/Header',
@@ -31,7 +31,7 @@ const meta = {
 export default meta;
 
 const Template: StoryFn<typeof AppHeaderUI> = (args) => {
-	const [categories, setCategories] = useState<TSkillsResponse[]>([]);
+	const [categories, setCategories] = useState<TCategoryWithSkills[]>([]);
 	const [user, setUser] = useState<TUser | null>(null);
 	const [searchValue, setSearchValue] = useState('');
 
@@ -50,7 +50,7 @@ const Template: StoryFn<typeof AppHeaderUI> = (args) => {
 			});
 	}, []);
 	const allSkills: TSkill[] = [];
-	categories.forEach((category: TSkillsResponse) => {
+	categories.forEach((category: TCategoryWithSkills) => {
 		allSkills.push(...category.skills);
 	});
 
@@ -66,7 +66,7 @@ const Template: StoryFn<typeof AppHeaderUI> = (args) => {
 		alert('Close button clicked!');
 	};
 
-	const handleSkillTitleClick = (skills: TSkillsResponse) => {
+	const handleSkillTitleClick = (skills: TCategoryWithSkills) => {
 		alert(`Skill title clicked: ${JSON.stringify(skills)}`);
 	};
 
