@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Input } from '../../shared/ui/Input';
 import { ButtonUI } from '../../shared/ui/Button';
 import styles from './StepOne.module.scss';
@@ -17,6 +17,13 @@ export const StepOne: React.FC<StepOneProps> = ({
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [errors, setErrors] = useState({ email: '', password: '' });
+	const [isFormValid, setIsFormValid] = useState(false);
+
+	useEffect(() => {
+		const emailValid = !!email && /\S+@\S+\.\S+/.test(email);
+		const passwordValid = !!password && password.length >= 8;
+		setIsFormValid(emailValid && passwordValid);
+	}, [email, password]);
 
 	const validate = () => {
 		let valid = true;
@@ -51,10 +58,16 @@ export const StepOne: React.FC<StepOneProps> = ({
 
 	const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setEmail(e.target.value);
+		if (errors.email) {
+			setErrors({ ...errors, email: '' });
+		}
 	};
 
 	const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setPassword(e.target.value);
+		if (errors.password) {
+			setErrors({ ...errors, password: '' });
+		}
 	};
 
 	return (
@@ -142,7 +155,11 @@ export const StepOne: React.FC<StepOneProps> = ({
 					</div>
 				)}
 
-				<ButtonUI color='primary' width='100%' className={styles.nextButton}>
+				<ButtonUI
+					color='primary'
+					width='100%'
+					className={styles.nextButton}
+					isDisabled={!isFormValid}>
 					Далее
 				</ButtonUI>
 			</form>
