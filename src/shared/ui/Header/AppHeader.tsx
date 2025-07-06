@@ -3,11 +3,11 @@ import cross from '../../../images/icons/cross.svg';
 import type { TAppHeaderUIProps } from './type';
 import { ButtonUI } from '../Button';
 import { Logo } from '../Logo';
-import { DropdownSkillsUI } from '../Dropdown';
 import { Search } from '../Search';
 import { ThemeToggleButton } from '../ThemeToggleButton';
 import { NotificationButton } from '../Notification';
 import { LikeButtonUI } from '../LikeButton';
+import { DropdownSkillsUI } from '../Dropdown/DropdownSkills';
 
 export const AppHeaderUI = ({
 	isModal,
