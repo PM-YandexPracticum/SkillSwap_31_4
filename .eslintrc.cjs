@@ -17,6 +17,7 @@ module.exports = {
 		'.eslintrc.cjs',
 		'src/stories/',
 		'src/shared/ui/**/*.stories.tsx',
+		'jest.config.ts',
 	],
 	parser: '@typescript-eslint/parser',
 	parserOptions: {
