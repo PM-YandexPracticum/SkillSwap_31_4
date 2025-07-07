@@ -139,10 +139,6 @@ export const Default: Story = {
 			useState<TCategory[]>(subCategory);
 		const [isEnabled, setIsEnabled] = useState(false);
 		const [userData, setUserData] = useState<TUserType>(initialUser);
-		const [isOpenCity, setIsOpenCity] = useState(false);
-		const [isOpenGender, setIsOpenGender] = useState(false);
-		const [isOpenCategory, setIsOpenCategory] = useState(false);
-		const [isOpenSubCategory, setIsOpenSubCategory] = useState(false);
 
 		useEffect(() => {
 			const newSubCategory: TCategory[] = subCategory.filter(
@@ -208,10 +204,6 @@ export const Default: Story = {
 				...prev,
 				userName: e.target.value,
 			}));
-			setIsOpenCity(false);
-			setIsOpenGender(false);
-			setIsOpenCategory(false);
-			setIsOpenSubCategory(false);
 		};
 
 		const handleDate = (date: Date) => {
@@ -219,40 +211,17 @@ export const Default: Story = {
 				...prev,
 				dateBirthday: date,
 			}));
-			setIsOpenCity(false);
-			setIsOpenGender(false);
-			setIsOpenCategory(false);
-			setIsOpenSubCategory(false);
 		};
 
 		const handleAddPhoto = () => {
-			setIsOpenCity(false);
-			setIsOpenGender(false);
-			setIsOpenCategory(false);
-			setIsOpenSubCategory(false);
 			alert('Add Photo');
 		};
 
 		const handleNext = () => {
-			setIsOpenCity(false);
-			setIsOpenGender(false);
-			setIsOpenCategory(false);
-			setIsOpenSubCategory(false);
 			alert('Next Button Clicked');
 		};
 		const handleBack = () => {
-			setIsOpenCity(false);
-			setIsOpenGender(false);
-			setIsOpenCategory(false);
-			setIsOpenSubCategory(false);
 			alert('Back Button Clicked');
-		};
-
-		const handleClickCity = () => {
-			setIsOpenCity((prev) => !prev);
-			setIsOpenGender(false);
-			setIsOpenCategory(false);
-			setIsOpenSubCategory(false);
 		};
 
 		const handleClearCity = () => {
@@ -260,10 +229,6 @@ export const Default: Story = {
 				...prev,
 				city: '',
 			}));
-			setIsOpenCity(false);
-			setIsOpenGender(false);
-			setIsOpenCategory(false);
-			setIsOpenSubCategory(false);
 		};
 
 		const handleInputChangeCity = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -271,10 +236,6 @@ export const Default: Story = {
 				...prev,
 				city: e.target.value,
 			}));
-			setIsOpenCity(true);
-			setIsOpenGender(false);
-			setIsOpenCategory(false);
-			setIsOpenSubCategory(false);
 		};
 
 		const handleSelectCity = (value: string) => {
@@ -282,17 +243,6 @@ export const Default: Story = {
 				...prev,
 				city: value,
 			}));
-			setIsOpenCity(false);
-			setIsOpenGender(false);
-			setIsOpenCategory(false);
-			setIsOpenSubCategory(false);
-		};
-
-		const handleToggleGender = () => {
-			setIsOpenGender((prev) => !prev);
-			setIsOpenCity(false);
-			setIsOpenCategory(false);
-			setIsOpenSubCategory(false);
 		};
 
 		const handleSelectGender = (value: string) => {
@@ -300,16 +250,6 @@ export const Default: Story = {
 				...prev,
 				gender: value,
 			}));
-			setIsOpenGender(false);
-			setIsOpenCategory(false);
-			setIsOpenSubCategory(false);
-		};
-
-		const handleToggleCategory = () => {
-			setIsOpenCategory((prev) => !prev);
-			setIsOpenCity(false);
-			setIsOpenGender(false);
-			setIsOpenSubCategory(false);
 		};
 
 		const handleSelectCategory = (value: string) => {
@@ -318,18 +258,6 @@ export const Default: Story = {
 					opt.id === value ? { ...opt, checked: !opt.checked } : opt
 				)
 			);
-			setIsOpenGender(false);
-			setIsOpenCity(false);
-			setIsOpenSubCategory(false);
-		};
-
-		const handleToggleSubCategory = () => {
-			if (optionsCategory.some((opt) => opt.checked)) {
-				setIsOpenSubCategory((prev) => !prev);
-			}
-			setIsOpenCity(false);
-			setIsOpenGender(false);
-			setIsOpenCategory(false);
 		};
 
 		const handleSelectSubCategory = (value: string) => {
@@ -338,9 +266,6 @@ export const Default: Story = {
 					opt.id === value ? { ...opt, checked: !opt.checked } : opt
 				)
 			);
-			setIsOpenGender(false);
-			setIsOpenCity(false);
-			setIsOpenCategory(false);
 		};
 
 		return (
@@ -351,25 +276,17 @@ export const Default: Story = {
 				gender={gender}
 				category={optionsCategory}
 				subCategory={optionsSubCategory}
-				isOpenCity={isOpenCity}
-				isOpenGender={isOpenGender}
-				isOpenCategory={isOpenCategory}
-				isOpenSubCategory={isOpenSubCategory}
 				onAddPhoto={handleAddPhoto}
 				onChange={handleChange}
 				onNext={handleNext}
 				onBack={handleBack}
 				onClearCity={handleClearCity}
-				onClickCity={handleClickCity}
 				onSelectCity={handleSelectCity}
 				onInputChangeCity={handleInputChangeCity}
-				onToggleGender={handleToggleGender}
 				onSelectGender={handleSelectGender}
 				onInputDate={handleDate}
 				onSelectCategory={handleSelectCategory}
-				onToggleCategory={handleToggleCategory}
 				onSelectSubCategory={handleSelectSubCategory}
-				onToggleSubCategory={handleToggleSubCategory}
 			/>
 		);
 	},

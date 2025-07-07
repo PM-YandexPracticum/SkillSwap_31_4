@@ -4,13 +4,9 @@ export type TCategories = {
 };
 
 export type TStepThreeProps = {
-	isOpenCategory: boolean;
-	onToggleCategory: () => void;
 	categories: TCategories[];
 	selectedCategoryText: string | undefined;
 	onSelectCategory: (value: string) => void;
-	isOpenSubcategory: boolean;
-	onToggleSubcategory: () => void;
 	subcategories: TCategories[];
 	selectedSubcategoryText: string | undefined;
 	onSelectSubcategory: (value: string) => void;
