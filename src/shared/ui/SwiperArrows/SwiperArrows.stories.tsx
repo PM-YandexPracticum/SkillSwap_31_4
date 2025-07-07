@@ -1,44 +1,35 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { SwiperArrows } from '../SwiperArrows/SwiperArrows';
 import { Card } from '../Card';
+import type { TUser } from '../../lib/types/user';
 
 export default {
 	title: 'Shared/UI/SwiperArrows',
 	component: Card,
 };
 
-const mockCardData = new Array(10).fill(null).map((_, index) => ({
-	photo:
-		'https://images.unsplash.com/photo-1639149888905-fb39731f2e6c?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-	userName: `Пользователь ${index + 1}`,
-	userLocation: 'Москва',
-	userAge: 25 + index,
-	isLiked: false,
-	teachSkills: [
-		{ tagText: 'React', category: 'Образование и развитие' as const },
-		{ tagText: 'JS', category: 'Образование и развитие' as const },
-	],
-	learnSkills: [
-		{ tagText: 'Английский', category: 'Иностранные языки' as const },
-		{ tagText: 'Французский', category: 'Иностранные языки' as const },
-	],
-	onClickDetails: () => alert('Подробнее'),
-	onClickLike: () => alert('Лайк'),
-}));
-
 export const CardSlider = () => {
-	const [index, setIndex] = useState(0);
 	const visibleCount = 3;
+	const [index, setIndex] = useState(0);
+	const [users, setUser] = useState<TUser[]>([]);
+
+	useEffect(() => {
+		fetch('https://skills-api.lukumka-dev.ru/api/users/')
+			.then((res) => res.json())
+			.then((data) => {
+				setUser(data.users);
+			});
+	}, []);
 
 	const handlePrev = () => {
 		setIndex((prev) => Math.max(0, prev - 3));
 	};
 
 	const handleNext = () => {
-		setIndex((prev) => Math.min(mockCardData.length - visibleCount, prev + 3));
+		setIndex((prev) => Math.min(users.length - visibleCount, prev + 3));
 	};
 
-	const visibleCards = mockCardData.slice(index, index + visibleCount);
+	const visibleCards = users.slice(index, index + visibleCount);
 
 	return (
 		<div
@@ -55,7 +46,7 @@ export const CardSlider = () => {
 				onPrev={handlePrev}
 				onNext={handleNext}
 				disabledPrev={index === 0}
-				disabledNext={index >= mockCardData.length - visibleCount}
+				disabledNext={index >= users.length - visibleCount}
 			/>
 
 			<div
@@ -66,25 +57,38 @@ export const CardSlider = () => {
 					overflow: 'hidden',
 					padding: '0 16px',
 				}}>
-				{visibleCards.map((card, index) => (
-					<Card key={index} {...card} />
+				{visibleCards.map((user) => (
+					<Card
+						key={user._id}
+						userName={user.name}
+						userAge={user.age}
+						userLocation={user.city}
+						photo={user.photo}
+						isLiked={false}
+						teachSkills={user.canTeach}
+						learnSkills={user.wantsToLearn}
+						onClickDetails={() => {}}
+						onClickLike={() => {}}
+					/>
 				))}
 			</div>
 		</div>
 	);
 };
-const mockGalleryData = [
-	'https://images.unsplash.com/photo-1749741355867-8d40976f2bfb?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-	'https://images.unsplash.com/photo-1743445888873-7b989699663d?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-	'https://plus.unsplash.com/premium_photo-1750353386208-7e189f9845ef?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-	'https://images.unsplash.com/photo-1750779940698-f24b28d76fd9?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-	'https://images.unsplash.com/photo-1750839713647-f845c59c3883?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-];
 
 const visibleSmallCount = 3;
 
 const PhotoGallery = ({ photos }: { photos: string[] }) => {
 	const [currentIndex, setCurrentIndex] = useState(0);
+	const [user, setUser] = useState<TUser | null>(null);
+
+	useEffect(() => {
+		fetch('https://skills-api.lukumka-dev.ru/api/users/')
+			.then((res) => res.json())
+			.then((data) => {
+				setUser(data.users[4]);
+			});
+	}, []);
 
 	const handlePrev = () => {
 		setCurrentIndex((prev) => (prev - 1 + photos.length) % photos.length);
@@ -108,6 +112,7 @@ const PhotoGallery = ({ photos }: { photos: string[] }) => {
 	const remainingCount =
 		photos.length > totalVisible ? photos.length - totalVisible : 0;
 
+	if (!user) return <div>Loading...</div>;
 	return (
 		<div
 			style={{
@@ -192,6 +197,17 @@ const PhotoGallery = ({ photos }: { photos: string[] }) => {
 };
 
 export const GallerySlider = () => {
+	const [user, setUser] = useState<TUser | null>(null);
+
+	useEffect(() => {
+		fetch('https://skills-api.lukumka-dev.ru/api/users/')
+			.then((res) => res.json())
+			.then((data) => {
+				setUser(data.users[4]);
+			});
+	}, []);
+	if (!user) return <div>Loading...</div>;
+
 	return (
 		<div
 			style={{
@@ -200,7 +216,7 @@ export const GallerySlider = () => {
 				margin: '0 auto',
 				background: '#F9FAF7',
 			}}>
-			<PhotoGallery photos={mockGalleryData} />
+			<PhotoGallery photos={user?.skillPhotos ?? []} />
 		</div>
 	);
 };

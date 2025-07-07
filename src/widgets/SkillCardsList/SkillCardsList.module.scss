@@ -1,0 +1,39 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
+}
+
+.titleContainer {
+	font-weight: 500;
+	font-size: 32px;
+	line-height: 40px;
+	letter-spacing: -0.01em;
+}
+
+.listHeader {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.listContainer {
+	position: relative;
+	z-index: 0;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	place-content: center center;
+	gap: 24px;
+	box-sizing: border-box;
+	width: 100%;
+	height: 100%;
+	overflow: hidden !important;
+}
+
+.messageContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	inline-size: 100%;
+	text-align: center;
+}
