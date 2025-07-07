@@ -47,6 +47,42 @@ export const UICard = {
 					isLiked={isLiked}
 					onClickLike={() => setIsLiked(!isLiked)}
 					onClickDetails={() => alert('Подробности не подробны:)')}
+					withDescription={false}
+					aboutMe={user.about ?? ''}
+				/>
+			</div>
+		);
+	},
+};
+
+export const UICardWithDescription = {
+	render: () => {
+		const [isLiked, setIsLiked] = useState(false);
+		const [user, setUser] = useState<TUser | null>(null);
+
+		useEffect(() => {
+			fetch('https://skills-api.lukumka-dev.ru/api/users/')
+				.then((res) => res.json())
+				.then((data) => {
+					setUser(data.users[4]);
+				});
+		}, []);
+		if (!user) return <div>Loading...</div>;
+
+		return (
+			<div>
+				<Card
+					photo={user?.photo ?? ''}
+					userName={user?.name ?? ''}
+					userLocation={user?.city ?? ''}
+					userAge={user?.age ?? 0}
+					teachSkills={user?.canTeach ?? []}
+					learnSkills={user?.wantsToLearn ?? []}
+					isLiked={isLiked}
+					onClickLike={() => setIsLiked(!isLiked)}
+					onClickDetails={() => alert('Подробности не подробны:)')}
+					withDescription={true}
+					aboutMe={user.about ?? ''}
 				/>
 			</div>
 		);
