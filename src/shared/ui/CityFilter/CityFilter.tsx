@@ -5,7 +5,7 @@ import style from './CityFilter.module.scss';
 
 type TCityItem = {
 	id: string;
-	city: string;
+	name: string;
 };
 
 type TCityFilterProps = {
@@ -27,7 +27,7 @@ export const CityFilter = ({
 			<CheckboxFilterCategoryUI
 				key={item.id}
 				id={item.id}
-				text={item.city}
+				text={item.name}
 				isChecked={!!checkedItems[item.id]}
 				onChange={() => onChange(item.id)}
 			/>

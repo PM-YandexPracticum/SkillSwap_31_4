@@ -1,7 +1,7 @@
 export const optionsGender = [
-	{ value: 'not', label: 'Без разницы' },
-	{ value: 'men', label: 'Мужской' },
-	{ value: 'women', label: 'Женский' },
+	{ label: 'Не имеет значения', value: 'not' },
+	{ label: 'Мужской', value: 'Мужской' },
+	{ label: 'Женский', value: 'Женский' },
 ];
 
 export const roleOptions = [
@@ -12,8 +12,8 @@ export const roleOptions = [
 
 export type SkillOption = {
 	id: string;
-	text: string;
-	parentId: string;
+	name: string;
+	parentId?: string;
 	checked: boolean;
 	isOpen: boolean;
 };

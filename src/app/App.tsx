@@ -1,8 +1,9 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import { useEffect } from 'react';
-import { getUsers } from '../features/user/thunk';
+import { getUsers } from '../features/userSlice/thunk';
 import { useDispatch } from '../services/store';
+import { Catalog } from '../presenters/Catalog';
 
 const App = () => {
 	const dispatch = useDispatch();
@@ -14,7 +15,7 @@ const App = () => {
 	return (
 		<>
 			<Routes>
-				<Route path='/' element={<></>} />
+				<Route path='/' element={<Catalog />} />
 				<Route path='/profile' element={<></>} />
 				<Route path='/profile/requests' element={<></>} />
 				<Route path='/profile/orders' element={<></>} />
