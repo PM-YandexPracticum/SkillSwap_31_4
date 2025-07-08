@@ -3,7 +3,6 @@ import './App.css';
 import { useEffect } from 'react';
 import { getUserById, getUsers } from '../features/user/thunk';
 import { useDispatch } from '../services/store';
-import { ProfileFavoritesUI } from '../widgets/ProfileFavorites/ProfileFavorites';
 
 const App = () => {
 	const dispatch = useDispatch();
@@ -15,7 +14,6 @@ const App = () => {
 
 	return (
 		<>
-			<ProfileFavoritesUI />
 			<Routes>
 				<Route path='/' element={<></>} />
 				<Route path='/profile' element={<></>} />
