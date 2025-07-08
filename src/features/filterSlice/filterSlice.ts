@@ -6,7 +6,7 @@ type FiltersState = {
 	mode: 'canTeach' | 'wantToLearn' | 'all';
 	gender: 'Мужской' | 'Женский' | null;
 	cityIds: string[]; // изменили с city: string | null
-	skillIds: number[];
+	skillIds: string[];
 };
 
 const initialState: FiltersState = {
@@ -34,7 +34,7 @@ const filtersSlice = createSlice({
 				state.cityIds.push(cityId);
 			}
 		},
-		toggleSkillId(state, action: PayloadAction<number>) {
+		toggleSkillId(state, action: PayloadAction<string>) {
 			const id = action.payload;
 			if (state.skillIds.includes(id)) {
 				state.skillIds = state.skillIds.filter((s) => s !== id);

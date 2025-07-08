@@ -6,9 +6,17 @@ export const optionsGender = [
 
 export const roleOptions = [
 	{ value: 'all', label: 'Всё' },
-	{ value: 'learn', label: 'Хочу научиться' },
-	{ value: 'can-study', label: 'Могу научить' },
+	{ value: 'canTeach', label: 'Хочу научиться' },
+	{ value: 'wantToLearn', label: 'Могу научить' },
 ];
+
+export type SkillGroup = {
+	category: string;
+	skills: {
+		id: string;
+		name: string;
+	}[];
+};
 
 export type SkillOption = {
 	id: string;
@@ -20,10 +28,10 @@ export type SkillOption = {
 
 export type CityItem = {
 	id: string;
-	city: string;
+	name: string;
 };
 
 export type FiltersBarProps = {
-	skills: SkillOption[];
+	skills: SkillGroup[];
 	cities: CityItem[];
 };

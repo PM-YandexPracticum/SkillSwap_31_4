@@ -10,7 +10,7 @@ export const SkillCardsListDemo: React.FC<SkillCardsListDemoProps> = (
 
 	const CroppedCardsList = SkillCardsProps.slice(0, maxCardCount || 3);
 	return (
-		<section className={styles.container}>
+		<section className={styles.containerDemo}>
 			<nav className={styles.listHeader}>
 				<h2 className={styles.titleContainer}>{title}</h2>
 				<ButtonUI onClick={onClickButtonMore} color='tertiary' width='187px'>

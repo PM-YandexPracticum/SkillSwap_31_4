@@ -15,6 +15,7 @@ import styles from './FiltersBar.module.scss';
 import crossIcon from '../../images/icons/cross.svg';
 import { roleOptions, optionsGender } from './type';
 import type { FiltersBarProps } from './type';
+import type { TOption } from '../../shared/ui/SkillFilter/type';
 
 export const FiltersBar = ({ skills, cities }: FiltersBarProps) => {
 	const dispatch = useDispatch();
@@ -43,14 +44,63 @@ export const FiltersBar = ({ skills, cities }: FiltersBarProps) => {
 		setShowAllSkills(false);
 		setShowAllCities(false);
 	};
+	const skillOptions = useMemo(() => {
+		const options: TOption[] = [];
+
+		skills.forEach(({ category, skills: categorySkills }) => {
+			const categoryId = category;
+
+			// Флаг: есть выбранные навыки в категории
+			const hasChecked = categorySkills.some((skill) =>
+				filters.skillIds.includes(skill.id)
+			);
+
+			// Флаг: открыт дропдаун
+			const isOpen = openGroups[categoryId] || false;
+
+			options.push({
+				id: categoryId,
+				parentId: categoryId,
+				text: category,
+				checked: hasChecked || isOpen,
+				isOpen,
+			});
+
+			categorySkills.forEach((skill) => {
+				options.push({
+					id: skill.id,
+					parentId: categoryId,
+					text: skill.name,
+					checked: filters.skillIds.includes(skill.id),
+					isOpen: false,
+				});
+			});
+		});
+
+		return options;
+	}, [skills, filters.skillIds, openGroups]);
 
 	const countSelectedOptions = useMemo(() => {
-		const skillsCount = filters.skillIds.length;
-		const cityCount = filters.cityIds.length;
-		const genderCount = filters.gender ? 1 : 0;
-		const modeCount = filters.mode !== 'all' ? 1 : 0;
-		return skillsCount + cityCount + genderCount + modeCount;
+		return (
+			filters.skillIds.length +
+			filters.cityIds.length +
+			Number(!!filters.gender) +
+			Number(filters.mode !== 'all')
+		);
 	}, [filters]);
+
+	const checkedCityItems = useMemo(() => {
+		const checkedSet = new Set(filters.cityIds);
+		return cities.reduce(
+			(acc, city) => {
+				return {
+					...acc,
+					[city.id]: checkedSet.has(city.id),
+				};
+			},
+			{} as Record<string, boolean>
+		);
+	}, [cities, filters.cityIds]);
 
 	return (
 		<div className={styles.filterBar}>
@@ -75,7 +125,9 @@ export const FiltersBar = ({ skills, cities }: FiltersBarProps) => {
 					options={roleOptions}
 					value={filters.mode}
 					name='role'
-					onChange={(v) => dispatch(setMode(v))}
+					onChange={(v) =>
+						dispatch(setMode(v as 'all' | 'canTeach' | 'wantToLearn'))
+					}
 				/>
 			</div>
 
@@ -85,13 +137,7 @@ export const FiltersBar = ({ skills, cities }: FiltersBarProps) => {
 					isAllOpen={showAllSkills}
 					textAllOpen='Все категории'
 					textAllCLose='Свернуть'
-					options={skills.map((s) => ({
-						id: s.id,
-						text: s.name,
-						parentId: '', // если навыки не группируются — оставить пустым
-						checked: filters.skillIds.includes(s.id),
-						isOpen: openGroups[s.id] || false,
-					}))}
+					options={skillOptions}
 					onChangeSingle={handleSkillCheck}
 					onChangeGroup={handleGroupToggle}
 					onOpenAll={() => setShowAllSkills((prev) => !prev)}
@@ -104,7 +150,11 @@ export const FiltersBar = ({ skills, cities }: FiltersBarProps) => {
 					options={optionsGender}
 					value={filters.gender || 'not'}
 					name='gender'
-					onChange={(v) => dispatch(setGender(v === 'not' ? null : v))}
+					onChange={(v) =>
+						dispatch(
+							setGender(v === 'not' ? null : (v as 'Мужской' | 'Женский'))
+						)
+					}
 				/>
 			</div>
 
@@ -112,13 +162,7 @@ export const FiltersBar = ({ skills, cities }: FiltersBarProps) => {
 				<h3>Город</h3>
 				<CityFilter
 					items={cities}
-					checkedItems={cities.reduce(
-						(acc, city) => {
-							acc[city.id] = filters.cityIds.includes(city.id);
-							return acc;
-						},
-						{} as Record<string, boolean>
-					)}
+					checkedItems={checkedCityItems}
 					onChange={handleCityCheck}
 					isAllOpen={showAllCities}
 					onOpenAll={() => setShowAllCities((prev) => !prev)}

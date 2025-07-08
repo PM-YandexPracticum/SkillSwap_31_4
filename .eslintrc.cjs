@@ -19,7 +19,9 @@ module.exports = {
 		'src/shared/ui/**/*.stories.tsx',
 		'jest.config.ts',
 		'src/widgets/FiltersBar/FiltersBar.tsx',
-		'src/presenters/Catalog.tsx'
+		'src/presenters/CatalogPresenter/CatalogPresenter.tsx',
+		'src/shared/ui/Loader/Loader.tsx',
+		'src/app/App.tsx'
 	],
 	parser: '@typescript-eslint/parser',
 	parserOptions: {

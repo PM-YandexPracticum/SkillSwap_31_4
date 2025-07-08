@@ -3,7 +3,7 @@ import './App.css';
 import { useEffect } from 'react';
 import { getUsers } from '../features/userSlice/thunk';
 import { useDispatch } from '../services/store';
-import { Catalog } from '../presenters/Catalog';
+import { CatalogPage } from '../pages/CatalogPage/CatalogPage';
 
 const App = () => {
 	const dispatch = useDispatch();
@@ -15,7 +15,7 @@ const App = () => {
 	return (
 		<>
 			<Routes>
-				<Route path='/' element={<Catalog />} />
+				<Route path='/' element={<CatalogPage />} />
 				<Route path='/profile' element={<></>} />
 				<Route path='/profile/requests' element={<></>} />
 				<Route path='/profile/orders' element={<></>} />
