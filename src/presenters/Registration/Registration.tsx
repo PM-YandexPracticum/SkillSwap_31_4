@@ -85,7 +85,6 @@ export const Registration = () => {
 				break;
 		}
 	};
-
 	const onChangeValueInStepThree = (
 		type: TStepThreeValues,
 		value: string | string[]

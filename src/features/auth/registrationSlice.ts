@@ -214,7 +214,6 @@ export const registrationSlice = createSlice({
 			}
 		},
 		setPhoto: (state, action: PayloadAction<string>) => {
-			console.log(action.payload);
 			state.user.photo.value = action.payload;
 		},
 		setSkillName: (state, action: PayloadAction<string>) => {
@@ -306,29 +305,23 @@ export const registrationSlice = createSlice({
 	},
 	extraReducers: (builder) => {
 		builder.addCase(registerUserStepOne.rejected, (state) => {
-			console.log('STEP ONE REJECTED');
 			state.stepOneApiError = true;
 		});
 		builder.addCase(registerUserStepOne.fulfilled, (state, action) => {
-			console.log('STEP ONE FULFILLED');
 			state.user.userId = (action.payload as { userId: string })
 				.userId as string;
 			state.stepOneApiError = false;
 		});
 		builder.addCase(registerUserStepTwo.rejected, (state) => {
-			console.log('STEP TWO REJECTED');
 			state.stepTwoApiError = true;
 		});
 		builder.addCase(registerUserStepTwo.fulfilled, (state) => {
-			console.log('STEP TWO FULFILLED');
 			state.stepTwoApiError = false;
 		});
 		builder.addCase(registerUserStepThree.rejected, (state) => {
-			console.log('STEP THREE REJECTED');
 			state.stepThreeApiError = true;
 		});
 		builder.addCase(registerUserStepThree.fulfilled, (state) => {
-			console.log('STEP THREE FULFILLED');
 			state.stepThreeApiError = false;
 		});
 		builder.addCase(getCities.fulfilled, (state, action) => {
