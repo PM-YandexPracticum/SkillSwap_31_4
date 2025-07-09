@@ -2,9 +2,9 @@ import { FiltersBar } from '../../widgets/FiltersBar/FiltersBar';
 import { SkillCardsListInfinite } from '../../widgets/SkillCardsList/SkillCardsListInfinite/SkillCardsListInfinite';
 import { SkillCardsListDemo } from '../../widgets/SkillCardsList/SkillCardsListDemo/SkillCardsListDemo';
 import { Card } from '../../shared/ui/Card/Card';
-import { Loader } from '../../shared/ui/Loader/Loader';
 import styles from './Catalog.module.scss';
 import { Catalog } from '../../features/Catalog/Catalog'; // путь подгони
+import { Preloader } from '../../shared/ui/Preloader';
 
 export const CatalogPage = () => {
 	const {
@@ -25,7 +25,7 @@ export const CatalogPage = () => {
 	if (loading) {
 		return (
 			<div>
-				<Loader />
+				<Preloader isAbsolute={false} />
 			</div>
 		);
 	}
