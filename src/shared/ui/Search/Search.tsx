@@ -1,20 +1,8 @@
 import React, { useState } from 'react';
 import clsx from 'clsx';
 import styles from './Search.module.scss';
-
-interface SkillOption {
-	id: string;
-	label: string;
-}
-
-interface SearchProps {
-	placeholder?: string;
-	value: string;
-	onChange: (value: string) => void;
-	onSelect?: (option: SkillOption) => void;
-	options?: SkillOption[];
-	className?: string;
-}
+import type { TSkill } from '../../lib/types/skill';
+import type { TSearchProps } from './type';
 
 const SearchIcon = () => (
 	<svg
@@ -55,22 +43,21 @@ const ClearIcon = ({ onClick }: { onClick: () => void }) => (
 	</svg>
 );
 
-export const Search: React.FC<SearchProps> = ({
+export const Search: React.FC<TSearchProps> = ({
 	placeholder = 'Искать навык',
 	value,
 	onChange,
 	onSelect,
 	options = [],
-	className = '',
 }) => {
 	const [isOpen, setIsOpen] = useState(false);
 
 	const filteredOptions = options.filter((option) =>
-		option.label.toLowerCase().startsWith(value.toLowerCase())
+		option.name.toLowerCase().startsWith(value.toLowerCase())
 	);
 
-	const handleSelect = (option: SkillOption) => {
-		onChange(option.label);
+	const handleSelect = (option: TSkill) => {
+		onChange(option.name);
 		onSelect?.(option);
 		setIsOpen(false);
 	};
@@ -81,7 +68,7 @@ export const Search: React.FC<SearchProps> = ({
 	};
 
 	return (
-		<div className={clsx(styles.searchWrapper, className)}>
+		<div className={styles.searchWrapper}>
 			<div
 				className={clsx(
 					styles.search,
@@ -103,12 +90,12 @@ export const Search: React.FC<SearchProps> = ({
 				<ul className={styles.dropdown}>
 					{filteredOptions.length > 0 ? (
 						filteredOptions.slice(0, 10).map((option) => (
-							<li key={option.id}>
+							<li key={option._id}>
 								<button
 									type='button'
 									className={styles.dropdownItem}
 									onClick={() => handleSelect(option)}>
-									{option.label}
+									{option.name}
 								</button>
 							</li>
 						))

@@ -38,7 +38,6 @@ export const FiltersBar = ({ skills, cities }: FiltersBarProps) => {
 			prev.map((item) => {
 				if (item.id === id) {
 					if (property === 'isOpen') {
-						// меняем isOpen
 						const newIsOpen = !item.isOpen;
 
 						// получаем всех детей этой категории

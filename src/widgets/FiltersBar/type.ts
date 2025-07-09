@@ -16,14 +16,14 @@ export type SkillOption = {
 	parentId: string;
 	checked: boolean;
 	isOpen: boolean;
-}
+};
 
 export type CityItem = {
 	id: string;
 	city: string;
-}
+};
 
 export type FiltersBarProps = {
 	skills: SkillOption[];
 	cities: CityItem[];
-}
+};

@@ -15,7 +15,10 @@ type Story = StoryObj<typeof meta>;
 
 export const SkillTag: Story = {
 	args: {
-		tagText: 'Английский язык',
 		category: 'Иностранные языки',
+		children: 'Английский',
+	},
+	render: (args) => {
+		return <SkillTags {...args} />;
 	},
 };

@@ -58,6 +58,10 @@
 	color: var(--color-text-caption);
 }
 
+.dropdownListAbsolute {
+	position: absolute;
+}
+
 .optionItem {
 	display: flex;
 	align-items: center;
@@ -71,13 +75,13 @@
 	border: none;
 	cursor: pointer;
 
+	&:hover {
+		background-color: var(--color-disabled);
+	}
+
 	&.selected {
 		color: var(--color-primary-pressed);
 	}
-}
-
-.dropdownListAbsolute > .optionItem:hover {
-	background-color: var(--color-disabled);
 }
 
 .dropdownList {
@@ -101,20 +105,16 @@
 	}
 }
 
-.dropdownListAbsolute {
-	position: absolute;
-}
-
 .noBorderDropdownList {
+	gap: 0;
 	padding: 12px 0;
 	border: none;
-	gap: 0;
 
 	.optionItem {
-		padding: 0;
 		height: auto;
+		padding: 0;
 	}
-	
+
 	.dropdownListAbsolute > .optionItem {
 		width: 100%;
 		padding: 0;

@@ -1,0 +1,57 @@
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 32px;
+	width: 100%;
+	background-color: var(--color-background);
+	padding-block: 36px 20px;
+	padding-inline: 36px;
+}
+
+.menu {
+	display: flex;
+	align-items: center;
+	gap: 24px;
+}
+
+.link {
+	color: var(--color-text-primary);
+	text-decoration: none;
+}
+
+.block {
+	width: 10px;
+	height: 10px;
+	background-color: #1ea7fd;
+}
+
+.toolbar {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+}
+
+.profile {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.avatar {
+	width: 48px;
+	height: 48px;
+	border-radius: 50%;
+	object-fit: cover;
+}
+
+.name {
+	color: var(--color-text-primary);
+	text-decoration: none;
+}
+
+.authButtons_container {
+	display: flex;
+	gap: 8px;
+	width: 308px;
+}

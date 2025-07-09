@@ -1,27 +1,27 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { FiltersBar } from './FiltersBar';
 import { useEffect, useState } from 'react';
+import { FiltersBar } from './FiltersBar';
 import type { SkillOption, CityItem } from './type';
 
 interface User {
 	city: string;
 	canTeach: {
-	  _id: string;
-	  name: string;
-	  categoryName: string;
+		_id: string;
+		name: string;
+		categoryName: string;
 	}[];
 	wantsToLearn: {
 		_id: string;
 		name: string;
 		categoryName: string;
-	  }[];
-  }
+	}[];
+}
 
 const meta: Meta<typeof FiltersBar> = {
-  title: 'widgets/FiltersBar',
-  component: FiltersBar,
-  tags: ['autodocs'],
-  parameters: { layout: 'centered' },
+	title: 'widgets/FiltersBar',
+	component: FiltersBar,
+	tags: ['autodocs'],
+	parameters: { layout: 'centered' },
 };
 
 export default meta;
@@ -31,13 +31,13 @@ type Story = StoryObj<typeof FiltersBar>;
 const transformData = (users: User[]) => {
 	const categoriesMap = new Map<string, string>(); // categoryName -> categoryId
 	const skillsMap = new Map<string, SkillOption>(); // все категории и подкатегории(скилы)
-	const citySet = new Set<string>(); //все города
+	const citySet = new Set<string>(); // все города
 
-	let categoryCounter = 1; //для генерации уникальных айди
+	let categoryCounter = 1; // для генерации уникальных айди
 
 	const processSkills = (skills: User['canTeach'] | User['wantsToLearn']) => {
-		skills.forEach(skill => {
-			const categoryName = skill.categoryName;
+		skills.forEach((skill) => {
+			const { categoryName } = skill;
 
 			// Если категория еще не добавлена — добавляем
 			if (!categoriesMap.has(categoryName)) {
@@ -70,7 +70,7 @@ const transformData = (users: User[]) => {
 	};
 
 	// Обход всех пользователей
-	users.forEach(user => {
+	users.forEach((user) => {
 		citySet.add(user.city);
 		processSkills(user.canTeach);
 		processSkills(user.wantsToLearn);
@@ -87,25 +87,31 @@ const transformData = (users: User[]) => {
 };
 
 export const FiltersBarDefault: Story = {
-  render: () => {
-    const [skills, setSkills] = useState<SkillOption[]>([]); 
-    const [cities, setCities] = useState<CityItem[]>([]);
+	render: () => {
+		const [skills, setSkills] = useState<SkillOption[]>([]);
+		const [cities, setCities] = useState<CityItem[]>([]);
 
-    useEffect(() => {
-      (async () => {
-        const res = await fetch('https://skills-api.lukumka-dev.ru/api/users/');
-        const data = await res.json();
+		useEffect(() => {
+			(async () => {
+				const res = await fetch('https://skills-api.lukumka-dev.ru/api/users/');
+				const data = await res.json();
 
-        const { skillsList, cityList } = transformData(data.users as User[])
-        setSkills(skillsList);
-        setCities(cityList);
-      })();
-    }, []);
+				const { skillsList, cityList } = transformData(data.users as User[]);
+				setSkills(skillsList);
+				setCities(cityList);
+			})();
+		}, []);
 
-    return (
-      <div style={{ backgroundColor: 'gray', width: 500, height: 1200, padding: 100 }}>
-        <FiltersBar skills={skills} cities={cities} />
-      </div>
-    );
-  },
+		return (
+			<div
+				style={{
+					backgroundColor: 'gray',
+					width: 500,
+					height: 1200,
+					padding: 100,
+				}}>
+				<FiltersBar skills={skills} cities={cities} />
+			</div>
+		);
+	},
 };
