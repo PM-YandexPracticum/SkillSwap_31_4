@@ -1,0 +1,1 @@
+export { PhotoGalleryUI } from './PhotoGallery';

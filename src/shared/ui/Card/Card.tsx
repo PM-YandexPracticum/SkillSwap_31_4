@@ -2,7 +2,8 @@ import { ButtonUI, LikeButtonUI } from '@ui';
 import { SkillTags } from '../SkillTags';
 import styles from './Card.module.scss';
 import type { TUICardProps } from './type';
-import type { TUserSkill } from '../../lib/types/user';
+import type { TSkill } from '../../../api/type';
+import type { TCategories } from '../../lib/types/skill';
 
 export const Card = ({
 	photo,
@@ -34,7 +35,7 @@ export const Card = ({
 		}
 	};
 
-	const renderTags = (skills: TUserSkill[] | undefined, limit: number) => {
+	const renderTags = (skills: TSkill[] | undefined, limit: number) => {
 		if (!skills || skills.length === 0) return null;
 
 		const visibleTags = skills.slice(0, limit);
@@ -43,7 +44,9 @@ export const Card = ({
 		return (
 			<>
 				{visibleTags.map((skill) => (
-					<SkillTags key={skill._id} category={skill.categoryName}>
+					<SkillTags
+						key={skill._id}
+						category={skill.categoryName as TCategories}>
 						{skill.name}
 					</SkillTags>
 				))}
