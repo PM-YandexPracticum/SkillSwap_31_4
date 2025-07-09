@@ -25,6 +25,7 @@ export const UICard = {
 	render: () => {
 		const [isLiked, setIsLiked] = useState(false);
 		const [user, setUser] = useState<TUser | null>(null);
+		const [withDescription, setWithDescription] = useState(false);
 
 		useEffect(() => {
 			fetch('https://skills-api.lukumka-dev.ru/api/users/')
@@ -36,18 +37,38 @@ export const UICard = {
 		if (!user) return <div>Loading...</div>;
 
 		return (
-			<div>
-				<Card
-					photo={user?.photo ?? ''}
-					userName={user?.name ?? ''}
-					userLocation={user?.city ?? ''}
-					userAge={user?.age ?? 0}
-					teachSkills={user?.canTeach ?? []}
-					learnSkills={user?.wantsToLearn ?? []}
-					isLiked={isLiked}
-					onClickLike={() => setIsLiked(!isLiked)}
-					onClickDetails={() => alert('Подробности не подробны:)')}
-				/>
+			<div
+				style={{
+					width: '100vw',
+					height: '100vh',
+					backgroundColor: '#333',
+					display: 'flex',
+					justifyContent: 'center',
+					alignItems: 'center',
+				}}>
+				<div>
+					{withDescription && (
+						<button
+							type='button'
+							style={{ marginBlockEnd: '20px', cursor: 'pointer' }}
+							onClick={() => setWithDescription(false)}>
+							Вернуться назад
+						</button>
+					)}
+					<Card
+						photo={user?.photo ?? ''}
+						userName={user?.name ?? ''}
+						userLocation={user?.city ?? ''}
+						userAge={user?.age ?? 0}
+						teachSkills={user?.canTeach ?? []}
+						learnSkills={user?.wantsToLearn ?? []}
+						isLiked={isLiked}
+						onClickLike={() => setIsLiked(!isLiked)}
+						onClickDetails={() => setWithDescription(true)}
+						withDescription={withDescription}
+						aboutMe={user.about ?? ''}
+					/>
+				</div>
 			</div>
 		);
 	},

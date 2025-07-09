@@ -17,6 +17,7 @@ module.exports = {
 		'.eslintrc.cjs',
 		'src/stories/',
 		'src/shared/ui/**/*.stories.tsx',
+		'jest.config.ts',
 	],
 	parser: '@typescript-eslint/parser',
 	parserOptions: {
@@ -84,5 +85,9 @@ module.exports = {
 		'react/jsx-props-no-spreading': 'off',
 		'react/jsx-no-useless-fragment': 'off',
 		'no-underscore-dangle': ['error', { allow: ['_id'] }],
+		'no-param-reassign': [
+			'error',
+			{ props: true, ignorePropertyModificationsFor: ['state'] },
+		],
 	},
 };
