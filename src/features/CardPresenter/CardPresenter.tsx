@@ -5,7 +5,15 @@ import { useDispatch, useSelector } from '../../services/store';
 import { getUserByIdSelector } from '../user/userSlice';
 import type { TUser } from '../../api/type';
 
-export const CardPresenter = ({ user }: { user: TUser }) => {
+type TCardPresenterProps = {
+	user: TUser;
+	withDescription?: boolean;
+};
+
+export const CardPresenter = ({
+	user,
+	withDescription = false,
+}: TCardPresenterProps) => {
 	const currentUser = useSelector<TUser>(getUserByIdSelector);
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
@@ -23,7 +31,7 @@ export const CardPresenter = ({ user }: { user: TUser }) => {
 	};
 
 	const handleClickDetails = () => {
-		navigate(`/${user._id}`);
+		navigate(`/user/${user._id}`);
 	};
 
 	return (
@@ -35,6 +43,8 @@ export const CardPresenter = ({ user }: { user: TUser }) => {
 			teachSkills={user.canTeach}
 			learnSkills={user.wantsToLearn}
 			isLiked={isLiked}
+			aboutMe={user.about}
+			withDescription={withDescription}
 			onClickDetails={handleClickDetails}
 			onClickLike={handleClickLike}
 		/>

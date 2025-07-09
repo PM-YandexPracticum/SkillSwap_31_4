@@ -1,10 +1,12 @@
 .content {
 	display: grid;
-	grid-template-rows: repeat(3, auto);
-	grid-template-columns: repeat(3, auto);
+	grid-template-rows: 368px;
+	grid-template-columns: repeat(3, 324px);
 	gap: 10px;
 	width: 100%;
 	max-width: 1020px;
 	height: 792px;
 	overflow-y: auto;
+	background-color: var(--color-surface);
+	border-radius: 24px 24px 0 0;
 }
