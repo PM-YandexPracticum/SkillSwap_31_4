@@ -1,6 +1,7 @@
 import type { Meta } from '@storybook/react-vite';
 import { Card } from './Card';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import type { TUser } from '../../lib/types/user.ts';
 
 const meta = {
 	title: 'Shared/UI/Card',
@@ -23,30 +24,51 @@ export default meta;
 export const UICard = {
 	render: () => {
 		const [isLiked, setIsLiked] = useState(false);
+		const [user, setUser] = useState<TUser | null>(null);
+		const [withDescription, setWithDescription] = useState(false);
+
+		useEffect(() => {
+			fetch('https://skills-api.lukumka-dev.ru/api/users/')
+				.then((res) => res.json())
+				.then((data) => {
+					setUser(data.users[4]);
+				});
+		}, []);
+		if (!user) return <div>Loading...</div>;
 
 		return (
-			<div>
-				<Card
-					photo='https://images.unsplash.com/photo-1628157588553-5eeea00af15c?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
-					userName='Иван'
-					userLocation='Санкт-Петербург'
-					userAge={26}
-					teachSkills={[
-						{ tagText: 'Английский язык', category: 'Иностранные языки' },
-					]}
-					learnSkills={[
-						{ tagText: 'Тайм менеджмент', category: 'Образование и развитие' },
-						{ tagText: 'Медитация', category: 'Здоровье и лайфстайл' },
-						{ tagText: 'Английский язык', category: 'Иностранные языки' },
-						{
-							tagText: 'Игра на барабанах',
-							category: 'Творчество и искусство',
-						},
-					]}
-					isLiked={isLiked}
-					onClickLike={() => setIsLiked(!isLiked)}
-					onClickDetails={() => alert('Подробности не подробны:)')}
-				/>
+			<div
+				style={{
+					width: '100vw',
+					height: '100vh',
+					backgroundColor: '#333',
+					display: 'flex',
+					justifyContent: 'center',
+					alignItems: 'center',
+				}}>
+				<div>
+					{withDescription && (
+						<button
+							type='button'
+							style={{ marginBlockEnd: '20px', cursor: 'pointer' }}
+							onClick={() => setWithDescription(false)}>
+							Вернуться назад
+						</button>
+					)}
+					<Card
+						photo={user?.photo ?? ''}
+						userName={user?.name ?? ''}
+						userLocation={user?.city ?? ''}
+						userAge={user?.age ?? 0}
+						teachSkills={user?.canTeach ?? []}
+						learnSkills={user?.wantsToLearn ?? []}
+						isLiked={isLiked}
+						onClickLike={() => setIsLiked(!isLiked)}
+						onClickDetails={() => setWithDescription(true)}
+						withDescription={withDescription}
+						aboutMe={user.about ?? ''}
+					/>
+				</div>
 			</div>
 		);
 	},

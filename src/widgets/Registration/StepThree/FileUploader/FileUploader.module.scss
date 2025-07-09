@@ -1,0 +1,39 @@
+.hiddenInput {
+	display: none;
+}
+
+.uploadButton {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 4px;
+	color: #508826;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 24px;
+	cursor: pointer;
+}
+
+.description {
+	margin-block-end: 8px;
+	color: #69735d;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 24px;
+	text-align: center;
+}
+
+.container {
+	width: 100%;
+	height: 96px;
+	padding: 20px;
+	border: 1px dotted #69735d;
+	border-radius: 12px;
+	opacity: 0.8;
+}
+
+.filesContainer {
+	display: flex;
+	justify-content: center;
+	font-size: 12px;
+}

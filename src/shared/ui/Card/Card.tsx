@@ -1,28 +1,17 @@
-/* eslint-disable react/no-array-index-key */
-import { ButtonUI } from '../Button';
-import { LikeButtonUI } from '../LikeButton';
+import { ButtonUI, LikeButtonUI } from '@ui';
 import { SkillTags } from '../SkillTags';
-import type { TSkillTagsUIProps } from '../SkillTags/SkillTags';
 import styles from './Card.module.scss';
-
-export type TUICardProps = {
-	photo: string;
-	userName: string;
-	userLocation: string;
-	userAge: number;
-	isLiked: boolean;
-	teachSkills: TSkillTagsUIProps[];
-	learnSkills: TSkillTagsUIProps[];
-	onClickDetails: () => void;
-	onClickLike: () => void;
-};
+import type { TUICardProps } from './type';
+import type { TUserSkill } from '../../lib/types/user';
 
 export const Card = ({
 	photo,
 	userName,
+	aboutMe,
 	userLocation,
 	userAge,
 	isLiked,
+	withDescription,
 	teachSkills,
 	learnSkills,
 	onClickDetails,
@@ -47,30 +36,33 @@ export const Card = ({
 		}
 	};
 
-	const renderTags = (tags: TSkillTagsUIProps[] | undefined, limit: number) => {
-		if (!tags || tags.length === 0) return null;
+	const renderTags = (skills: TUserSkill[] | undefined, limit: number) => {
+		if (!skills || skills.length === 0) return null;
 
-		const visibleTags = tags.slice(0, limit);
-		const remainingCount = tags.length - limit;
+		const visibleTags = skills.slice(0, limit);
+		const remainingCount = skills.length - limit;
 
 		return (
 			<>
-				{visibleTags.map((skill, index) => (
+				{visibleTags.map((skill) => (
 					<SkillTags
-						key={index}
-						tagText={skill.tagText}
-						category={skill.category}
-					/>
+						key={skill._id}
+						category={skill.categoryName}
+						title={skill.name}>
+						{skill.name}
+					</SkillTags>
 				))}
 				{remainingCount > 0 && (
-					<SkillTags tagText={`+${remainingCount}`} category='+' />
+					<SkillTags category='+'>{`+${remainingCount}`}</SkillTags>
 				)}
 			</>
 		);
 	};
 
 	return (
-		<article className={styles.card}>
+		<article
+			className={styles.card}
+			style={{ padding: withDescription ? '32px' : '20px' }}>
 			<div className={styles.user}>
 				<div
 					className={styles.userPhoto}
@@ -85,25 +77,37 @@ export const Card = ({
 						{userLocation}, {userAge} {getYearAddition()}
 					</span>
 				</div>
-				<LikeButtonUI isLiked={isLiked} onClick={onClickLike} />
+				{!withDescription && (
+					<LikeButtonUI isLiked={isLiked} onClick={onClickLike} />
+				)}
 			</div>
+			{withDescription && <p className={styles.aboutMe}>{aboutMe}</p>}
 			<div>
-				<div className={styles.tags}>
+				<div
+					className={styles.tags}
+					style={{ gap: withDescription ? '14px' : '8px' }}>
 					<h4>Может научить:</h4>
 					<div className={styles.tagsContainer}>
 						{renderTags(teachSkills, 2)}
 					</div>
 				</div>
-				<div className={styles.tags} style={{ marginBlockStart: '12px' }}>
-					<h4>Может научить:</h4>
+				<div
+					className={styles.tags}
+					style={{
+						marginBlockStart: withDescription ? '24px' : '12px',
+						gap: withDescription ? '14px' : '8px',
+					}}>
+					<h4>Хочет научиться:</h4>
 					<div className={styles.tagsContainer}>
 						{renderTags(learnSkills, 2)}
 					</div>
 				</div>
 			</div>
-			<ButtonUI onClick={onClickDetails} width='284' color='primary'>
-				Подробнее
-			</ButtonUI>
+			{!withDescription && (
+				<ButtonUI onClick={onClickDetails} width='284' color='primary'>
+					Подробнее
+				</ButtonUI>
+			)}
 		</article>
 	);
 };
