@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import { useEffect } from 'react';
-import { getUsers } from '../features/userSlice/thunk';
+import { getUsers } from '../entities/userSlice/thunk';
 import { useDispatch } from '../services/store';
 import { CatalogPage } from '../pages/CatalogPage/CatalogPage';
 

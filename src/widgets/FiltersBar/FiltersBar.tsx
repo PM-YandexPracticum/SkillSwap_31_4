@@ -1,13 +1,3 @@
-import { useState, useMemo } from 'react';
-import { useDispatch, useSelector } from '../../services/store';
-import {
-	setGender,
-	setMode,
-	toggleCityId,
-	toggleSkillId,
-	resetFilters,
-} from '../../features/filterSlice/filterSlice';
-
 import { SkillFilterUI } from '../../shared/ui/SkillFilter';
 import { CityFilter } from '../../shared/ui/CityFilter';
 import { Radio } from '../../shared/ui/Radio';
@@ -15,92 +5,25 @@ import styles from './FiltersBar.module.scss';
 import crossIcon from '../../images/icons/cross.svg';
 import { roleOptions, optionsGender } from './type';
 import type { FiltersBarProps } from './type';
-import type { TOption } from '../../shared/ui/SkillFilter/type';
+import { useFiltersBarLogic } from '../../features/FiltersBar/FiltersBar';
 
-export const FiltersBar = ({ skills, cities }: FiltersBarProps) => {
-	const dispatch = useDispatch();
-	const filters = useSelector((state) => state.filters);
-
-	const [showAllSkills, setShowAllSkills] = useState(false);
-	const [openGroups, setOpenGroups] = useState<Record<string, boolean>>({});
-	const [showAllCities, setShowAllCities] = useState(false);
-
-	// UI-флаг: открыть/закрыть подкатегории
-	const handleGroupToggle = (id: string) => {
-		setOpenGroups((prev) => ({ ...prev, [id]: !prev[id] }));
-	};
-
-	const handleSkillCheck = (id: string) => {
-		dispatch(toggleSkillId(id));
-	};
-
-	const handleCityCheck = (id: string) => {
-		dispatch(toggleCityId(id));
-	};
-
-	const handleReset = () => {
-		dispatch(resetFilters());
-		setOpenGroups({});
-		setShowAllSkills(false);
-		setShowAllCities(false);
-	};
-	const skillOptions = useMemo(() => {
-		const options: TOption[] = [];
-
-		skills.forEach(({ category, skills: categorySkills }) => {
-			const categoryId = category;
-
-			// Флаг: есть выбранные навыки в категории
-			const hasChecked = categorySkills.some((skill) =>
-				filters.skillIds.includes(skill.id)
-			);
-
-			// Флаг: открыт дропдаун
-			const isOpen = openGroups[categoryId] || false;
-
-			options.push({
-				id: categoryId,
-				parentId: categoryId,
-				text: category,
-				checked: hasChecked || isOpen,
-				isOpen,
-			});
-
-			categorySkills.forEach((skill) => {
-				options.push({
-					id: skill.id,
-					parentId: categoryId,
-					text: skill.name,
-					checked: filters.skillIds.includes(skill.id),
-					isOpen: false,
-				});
-			});
-		});
-
-		return options;
-	}, [skills, filters.skillIds, openGroups]);
-
-	const countSelectedOptions = useMemo(() => {
-		return (
-			filters.skillIds.length +
-			filters.cityIds.length +
-			Number(!!filters.gender) +
-			Number(filters.mode !== 'all')
-		);
-	}, [filters]);
-
-	const checkedCityItems = useMemo(() => {
-		const checkedSet = new Set(filters.cityIds);
-		return cities.reduce(
-			(acc, city) => {
-				return {
-					...acc,
-					[city.id]: checkedSet.has(city.id),
-				};
-			},
-			{} as Record<string, boolean>
-		);
-	}, [cities, filters.cityIds]);
+export const FiltersBar = (props: FiltersBarProps) => {
+	const {
+		showAllSkills,
+		setShowAllSkills,
+		handleGroupToggle,
+		handleSkillCheck,
+		handleCityCheck,
+		handleReset,
+		skillOptions,
+		countSelectedOptions,
+		checkedCityItems,
+		showAllCities,
+		setShowAllCities,
+		filters,
+		setGenderFilter,
+		setModeFilter,
+	} = useFiltersBarLogic(props);
 
 	return (
 		<div className={styles.filterBar}>
@@ -125,9 +48,7 @@ export const FiltersBar = ({ skills, cities }: FiltersBarProps) => {
 					options={roleOptions}
 					value={filters.mode}
 					name='role'
-					onChange={(v) =>
-						dispatch(setMode(v as 'all' | 'canTeach' | 'wantToLearn'))
-					}
+					onChange={setModeFilter}
 				/>
 			</div>
 
@@ -150,18 +71,14 @@ export const FiltersBar = ({ skills, cities }: FiltersBarProps) => {
 					options={optionsGender}
 					value={filters.gender || 'not'}
 					name='gender'
-					onChange={(v) =>
-						dispatch(
-							setGender(v === 'not' ? null : (v as 'Мужской' | 'Женский'))
-						)
-					}
+					onChange={setGenderFilter}
 				/>
 			</div>
 
 			<div className={styles.cityFilter}>
 				<h3>Город</h3>
 				<CityFilter
-					items={cities}
+					items={props.cities}
 					checkedItems={checkedCityItems}
 					onChange={handleCityCheck}
 					isAllOpen={showAllCities}
