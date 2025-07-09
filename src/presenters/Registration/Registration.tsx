@@ -119,8 +119,8 @@ export const Registration = () => {
 	) => {
 		dispatch(registerUserStepOne(value));
 	};
-	console.log(validationErrors);
-	const onNextStep = () => {
+
+	const onNextStep = async () => {
 		switch (step) {
 			case 1:
 				setStep(2);
@@ -233,5 +233,3 @@ export const Registration = () => {
 		/>
 	);
 };
-
-/** Только вопрос, а будет ли оно нормально работать...? */

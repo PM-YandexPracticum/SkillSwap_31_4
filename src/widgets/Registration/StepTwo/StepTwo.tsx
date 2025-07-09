@@ -1,6 +1,7 @@
 import clsx from 'clsx';
+import { useRef, useState } from 'react';
 import UserCircleModalIcon from '@images/icons/user-circleModal.svg';
-import { useState } from 'react';
+
 import {
 	Input,
 	DropdownCityUI,
@@ -20,7 +21,7 @@ export const StepTwoUI = ({
 	gender,
 	category,
 	subCategory,
-	onAddPhoto,
+	handleFileChange,
 	onChange,
 	onNext,
 	onBack,
@@ -32,42 +33,57 @@ export const StepTwoUI = ({
 	onSelectCategory,
 	onSelectSubCategory,
 }: TStepTwoUIProps) => {
+	const imageFile = useRef<HTMLInputElement>(null);
+
 	const [isOpenCity, setIsOpenCity] = useState(false);
 	const [isOpenGender, setIsOpenGender] = useState(false);
 	const [isOpenCategory, setIsOpenCategory] = useState(false);
 	const [isOpenSubCategory, setIsOpenSubCategory] = useState(false);
 
-	const onClickCityContainer = () => {
+	const onToggleGender = () => {
+		setIsOpenGender(!isOpenGender);
+		setIsOpenCity(false);
+		setIsOpenCategory(false);
+		setIsOpenSubCategory(false);
+	};
+
+	const onClickCity = () => {
 		setIsOpenCity(!isOpenCity);
 		setIsOpenGender(false);
 		setIsOpenCategory(false);
 		setIsOpenSubCategory(false);
 	};
 
-	const onClickGenderContainer = () => {
-		setIsOpenGender(!isOpenGender);
-		setIsOpenCity(false);
-		setIsOpenCategory(false);
-		setIsOpenSubCategory(false);
-	};
-	const onClickCategoryContainer = () => {
+	const onToggleCategory = () => {
 		setIsOpenCategory(!isOpenCategory);
-		setIsOpenCity(false);
 		setIsOpenGender(false);
+		setIsOpenCity(false);
 		setIsOpenSubCategory(false);
 	};
-	const onClickSubCategoryContainer = () => {
+
+	const onToggleSubCategory = () => {
 		setIsOpenSubCategory(!isOpenSubCategory);
-		setIsOpenCity(false);
 		setIsOpenGender(false);
+		setIsOpenCity(false);
 		setIsOpenCategory(false);
+	};
+
+	const handleImageClick = () => {
+		imageFile.current?.click();
 	};
 
 	return (
 		<div className={styles.container}>
+			<input
+				ref={imageFile}
+				type='file'
+				accept='image/*'
+				onChange={handleFileChange}
+				className={styles.hiddenInput}
+			/>
 			<button
 				type='button'
-				onClick={onAddPhoto}
+				onClick={handleImageClick}
 				disabled={false}
 				className={clsx(styles.userCircleButton)}>
 				<img
@@ -75,7 +91,9 @@ export const StepTwoUI = ({
 					className={clsx(styles.userCircle)}
 					alt='Картинка'
 				/>
-				<span className={clsx(styles.userCirclePlus)}>+</span>
+				{user.photo === '' && (
+					<span className={clsx(styles.userCirclePlus)}>+</span>
+				)}
 			</button>
 			<Input
 				label='Имя'
@@ -99,8 +117,11 @@ export const StepTwoUI = ({
 					selectedOption={user.gender}
 					displayText={gender.find((opt) => opt.value === user.gender)?.text}
 					isOpen={isOpenGender}
-					onToggle={onClickGenderContainer}
-					onSelect={onSelectGender}
+					onToggle={onToggleGender}
+					onSelect={(value: string) => {
+						setIsOpenGender(false);
+						onSelectGender(value);
+					}}
 				/>
 			</div>
 			<DropdownCityUI
@@ -111,8 +132,11 @@ export const StepTwoUI = ({
 				selectedOption={user.city}
 				onClear={onClearCity}
 				onInputChange={onInputChangeCity}
-				onSelect={onSelectCity}
-				onClick={onClickCityContainer}
+				onSelect={(value: string) => {
+					setIsOpenCity(false);
+					onSelectCity?.(value);
+				}}
+				onClick={onClickCity}
 			/>
 			<MultiSelectDropdownUI
 				idDropdown='category1'
@@ -122,8 +146,10 @@ export const StepTwoUI = ({
 				isAbsolute
 				isOpen={isOpenCategory}
 				options={category}
-				onToggle={onClickCategoryContainer}
-				onSelect={onSelectCategory}
+				onToggle={onToggleCategory}
+				onSelect={(value: string) => {
+					onSelectCategory(value);
+				}}
 				displayText={
 					category.filter((opt) => opt.checked).length > 0
 						? `Выбрано: ${category.filter((opt) => opt.checked).length}`
@@ -138,8 +164,10 @@ export const StepTwoUI = ({
 				variant='default'
 				isOpen={isOpenSubCategory}
 				options={subCategory}
-				onToggle={onClickSubCategoryContainer}
-				onSelect={onSelectSubCategory}
+				onToggle={onToggleSubCategory}
+				onSelect={(value: string) => {
+					onSelectSubCategory(value);
+				}}
 				displayText={
 					subCategory.filter((opt) => opt.checked).length > 0
 						? `Выбрано: ${subCategory.filter((opt) => opt.checked).length}`

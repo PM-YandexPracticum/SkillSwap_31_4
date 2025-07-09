@@ -51,7 +51,10 @@ export const StepThree = ({
 						onToggle={onClickCategoryContainer}
 						options={categories}
 						displayText={selectedCategoryText}
-						onSelect={onSelectCategory}
+						onSelect={(value: string) => {
+							setIsOpenCategory(false);
+							onSelectCategory(value);
+						}}
 					/>
 					<DropdownBaseUI
 						label='Подкатегория навыка'
@@ -62,7 +65,10 @@ export const StepThree = ({
 						onToggle={onClickSubCategoryContainer}
 						options={subcategories}
 						displayText={selectedSubcategoryText}
-						onSelect={onSelectSubcategory}
+						onSelect={(value: string) => {
+							setIsOpenSubcategory(false);
+							onSelectSubcategory(value);
+						}}
 					/>
 					<Input
 						label='Описание'

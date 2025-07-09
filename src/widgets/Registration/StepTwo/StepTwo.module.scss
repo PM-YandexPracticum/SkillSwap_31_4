@@ -15,7 +15,7 @@
 	position: relative;
 	display: flex;
 	box-sizing: border-box;
-	margin: 9px;
+	margin: 7px;
 	padding: 0;
 	background-color: transparent;
 	border: 0 none transparent;
@@ -61,4 +61,8 @@
 
 .addMargin {
 	margin-top: 16px;
+}
+
+.hiddenInput {
+	display: none;
 }

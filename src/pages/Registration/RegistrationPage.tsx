@@ -31,6 +31,25 @@ export const RegistrationPage: React.FC<RegistrationProps> = (
 		onNextStep();
 	};
 
+	async function fileToDataUrl(file: File): Promise<string> {
+		return new Promise((resolve, reject) => {
+			const reader = new FileReader();
+
+			reader.onload = () => resolve(reader.result as string);
+			reader.onerror = (error) => reject(error);
+
+			reader.readAsDataURL(file);
+		});
+	}
+
+	const onChangePhoto = async (e: ChangeEvent<HTMLInputElement>) => {
+		if (e.target.files) {
+			const file = e.target.files[0];
+			const dataUrl: string = await fileToDataUrl(file);
+			onChangeValueInStepThree('images', dataUrl);
+		}
+	};
+
 	return (
 		<section>
 			{step === 1 && (
@@ -52,7 +71,7 @@ export const RegistrationPage: React.FC<RegistrationProps> = (
 					]}
 					category={utilsData.categories}
 					subCategory={utilsData.subcategories}
-					onAddPhoto={() => onChangeValueInStepTwo('photo', '')}
+					handleFileChange={onChangePhoto}
 					onBack={onPrevStep}
 					onChange={(e: ChangeEvent) =>
 						onChangeValueInStepTwo(
