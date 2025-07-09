@@ -1,8 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import { useEffect } from 'react';
+import { getUserById, getUsers } from '../entities/userSlice/thunk';
 import { ProtectedRoute } from '../presenters/ProtectedRoute/ProtectedRoute';
-import { getUsers } from '../entities/userSlice/thunk';
 import { useDispatch } from '../services/store';
 import { CatalogPage } from '../pages/CatalogPage/CatalogPage';
 
@@ -11,7 +11,8 @@ const App = () => {
 
 	useEffect(() => {
 		dispatch(getUsers());
-	}, []);
+		dispatch(getUserById('686ac2ec267cc5ef811c8a23'));
+	}, [dispatch]);
 
 	return (
 		<>
@@ -73,7 +74,7 @@ const App = () => {
 						</ProtectedRoute>
 					}
 				/>
-				<Route path='/:id' element={<></>} />
+				<Route path='/user/:id' element={<></>} />
 				<Route path='*' element={<></>} />
 				<Route path='/500' element={<></>} />
 			</Routes>
