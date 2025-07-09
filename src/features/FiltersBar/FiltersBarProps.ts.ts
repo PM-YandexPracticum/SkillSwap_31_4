@@ -22,6 +22,19 @@ export type FiltersState = {
 	mode: 'all' | 'canTeach' | 'wantToLearn';
 };
 
+export type TGroupedSkill = {
+	category: string;
+	skills: {
+		id: string;
+		name: string;
+	}[];
+};
+
+export type UseFiltersBarLogicProps = {
+	skills: TGroupedSkill[];
+	cities: { id: string; name: string }[];
+};
+
 export type FiltersBarProps = {
 	skills: SkillGroup[];
 	cities: CityOption[];

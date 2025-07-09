@@ -9,8 +9,15 @@ import {
 } from '../../entities/filtersSlice/filterSlice';
 // import type { FiltersBarProps } from './type';
 import type { TOption } from '../../shared/ui/SkillFilter/type';
+import type {
+	TGroupedSkill,
+	UseFiltersBarLogicProps,
+} from './FiltersBarProps.ts';
 
-export const useFiltersBarLogic = ({ skills, cities }) => {
+export const useFiltersBarLogic = ({
+	skills,
+	cities,
+}: UseFiltersBarLogicProps) => {
 	const dispatch = useDispatch();
 	const filters = useSelector((state) => state.filters);
 
@@ -40,31 +47,33 @@ export const useFiltersBarLogic = ({ skills, cities }) => {
 	const skillOptions = useMemo(() => {
 		const options: TOption[] = [];
 
-		skills.forEach(({ category, skills: categorySkills }) => {
-			const categoryId = category;
-			const hasChecked = categorySkills.some((skill) =>
-				filters.skillIds.includes(skill.id)
-			);
-			const isOpen = openGroups[categoryId] || false;
+		(skills as TGroupedSkill[]).forEach(
+			({ category, skills: categorySkills }) => {
+				const categoryId = category;
+				const hasChecked = categorySkills.some((skill) =>
+					filters.skillIds.includes(skill.id)
+				);
+				const isOpen = openGroups[categoryId] || false;
 
-			options.push({
-				id: categoryId,
-				parentId: categoryId,
-				text: category,
-				checked: hasChecked || isOpen,
-				isOpen,
-			});
-
-			categorySkills.forEach((skill) => {
 				options.push({
-					id: skill.id,
+					id: categoryId,
 					parentId: categoryId,
-					text: skill.name,
-					checked: filters.skillIds.includes(skill.id),
-					isOpen: false,
+					text: category,
+					checked: hasChecked || isOpen,
+					isOpen,
 				});
-			});
-		});
+
+				categorySkills.forEach((skill) => {
+					options.push({
+						id: skill.id,
+						parentId: categoryId,
+						text: skill.name,
+						checked: filters.skillIds.includes(skill.id),
+						isOpen: false,
+					});
+				});
+			}
+		);
 
 		return options;
 	}, [skills, filters.skillIds, openGroups]);

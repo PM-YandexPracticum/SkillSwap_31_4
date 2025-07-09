@@ -25,7 +25,7 @@ export const CatalogPage = () => {
 	if (loading) {
 		return (
 			<div>
-				<Preloader isAbsolute={false} />
+				<Preloader isAbsolute={true} />
 			</div>
 		);
 	}
@@ -50,7 +50,7 @@ export const CatalogPage = () => {
 								dataLength: filteredUsers.length,
 								hasMore: false,
 								next: () => {},
-								loader: <span>Загрузка...</span>,
+								loader: <></>,
 								endMessage: <span>Это всё</span>,
 							}}
 							isHasButtonNew={false}
