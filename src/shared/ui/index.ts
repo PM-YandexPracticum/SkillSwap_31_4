@@ -15,4 +15,3 @@ export * from './Search';
 export * from './Modal';
 export * from './Input';
 export * from './MenuItem';
-export * from './PhotoFallery';
