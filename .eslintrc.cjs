@@ -18,11 +18,6 @@ module.exports = {
 		'src/stories/',
 		'src/shared/ui/**/*.stories.tsx',
 		'jest.config.ts',
-		'src/app/App.tsx',
-		'src/features/Catalog/Catalog.tsx',
-		'src/features/FiltersBar/FiltersBar.tsx',
-		'src/widgets/FiltersBar/FiltersBar.tsx',
-		'src/pages/CatalogPage/CatalogPage.tsx'
 	],
 	parser: '@typescript-eslint/parser',
 	parserOptions: {
