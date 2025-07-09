@@ -2,9 +2,11 @@ import { useState, useEffect } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { StepTwoUI } from './StepTwo';
 import type { TUserType } from './type';
+import type { TErrorResponse, TUploadResponse } from '../../../api/type';
 import type { TOption as TCity } from '../../../shared/ui/Dropdown/DropdownCity/type';
 import type { Option as TGender } from '../../../shared/ui/Dropdown/DropdownBase/type';
 import type { Option as TCategory } from '../../../shared/ui/Dropdown/MultiSelectDropdown/type';
+import { uploadPhotos } from '../../../api/api';
 
 const meta: Meta<typeof StepTwoUI> = {
 	title: 'Widgets/Registration/StepTwo',
@@ -185,6 +187,7 @@ export const Default: Story = {
 			const hasUserName = userData.userName.trim() !== '';
 			const hasCity = userData.city.trim() !== '';
 			const hasGender = userData.gender.trim() !== '';
+			const hasPhoto = userData.photo.trim() !== '';
 			const hasCategory = userData.wantsToLearnCat.length > 0;
 			const hasSubCategory = userData.wantsToLearnSubCat.length > 0;
 
@@ -198,7 +201,8 @@ export const Default: Story = {
 				hasGender &&
 				hasCategory &&
 				hasSubCategory &&
-				isNotToday;
+				isNotToday &&
+				hasPhoto;
 
 			setIsEnabled(isFormValid);
 		}, [userData]);
@@ -225,12 +229,36 @@ export const Default: Story = {
 			setIsOpenSubCategory(false);
 		};
 
-		const handleAddPhoto = () => {
+		const handleAddPhoto = (e: React.ChangeEvent<HTMLInputElement>) => {
+			let fileUrl: string = '';
+			if (e.target.files && e.target.files.length > 0) {
+				const newFiles = Array.from(e.target.files).slice(0, 1);
+				uploadPhotos(newFiles)
+					.then((response) => {
+						const urlsTab = response as TUploadResponse;
+						fileUrl = urlsTab?.urls[0];
+					})
+					.catch((error: TErrorResponse) => {
+						if (error) {
+							fileUrl = '';
+						}
+					})
+					.finally(() =>
+						setUserData((prev) => ({
+							...prev,
+							photo: fileUrl,
+						}))
+					);
+			} else {
+				setUserData((prev) => ({
+					...prev,
+					photo: '',
+				}));
+			}
 			setIsOpenCity(false);
 			setIsOpenGender(false);
 			setIsOpenCategory(false);
 			setIsOpenSubCategory(false);
-			alert('Add Photo');
 		};
 
 		const handleNext = () => {
@@ -355,7 +383,7 @@ export const Default: Story = {
 				isOpenGender={isOpenGender}
 				isOpenCategory={isOpenCategory}
 				isOpenSubCategory={isOpenSubCategory}
-				onAddPhoto={handleAddPhoto}
+				handleFileChange={handleAddPhoto}
 				onChange={handleChange}
 				onNext={handleNext}
 				onBack={handleBack}
