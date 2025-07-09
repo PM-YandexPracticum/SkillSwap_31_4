@@ -1,6 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '../../services/rootReducer';
+import { uploadPhotos as apiUploadPhotos } from '../../api/api';
+import type { TUploadResponse } from '../../api/type';
 
 interface UploadState {
 	urls: string[];
@@ -20,22 +22,8 @@ export const uploadPhotos = createAsyncThunk<
 	{ rejectValue: string }
 >('upload/uploadPhotos', async (files, { rejectWithValue }) => {
 	try {
-		const formData = new FormData();
-		files.forEach((file) => {
-			formData.append('photos', file);
-		});
-
-		const response = await fetch('/api/upload/photos', {
-			method: 'POST',
-			body: formData,
-		});
-
-		if (!response.ok) {
-			throw new Error('Server responded with an error!');
-		}
-
-		const data = await response.json();
-		return data.urls;
+		const response = (await apiUploadPhotos(files)) as TUploadResponse;
+		return response.urls;
 	} catch (err) {
 		if (err instanceof Error) {
 			return rejectWithValue(err.message);
