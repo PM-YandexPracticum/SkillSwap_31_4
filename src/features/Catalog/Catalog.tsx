@@ -8,7 +8,6 @@ export const Catalog = () => {
 	const dispatch = useDispatch();
 	const users = useSelector(getUsersSelector);
 	const filters = useSelector((state) => state.filters);
-	const loading = useSelector((state) => state.user.loading);
 	const currentUserId = useSelector((state) => state.user.user?._id);
 	const [visibleCount, setVisibleCount] = useState(9);
 
@@ -46,10 +45,12 @@ export const Catalog = () => {
 			}
 		});
 
-		return Array.from(groupedSkills.entries()).map(([category, skills]) => ({
-			category,
-			skills,
-		}));
+		return Array.from(groupedSkills.entries()).map(
+			([category, skillsArray]) => ({
+				category,
+				skills: skillsArray,
+			})
+		);
 	}, [users]);
 
 	const cities = useMemo(() => {
@@ -74,50 +75,49 @@ export const Catalog = () => {
 		}
 	};
 
-	const filteredUsers = useMemo(() => {
-		return users.filter((user) => {
-			if (filters.gender && user.gender !== filters.gender) return false;
-			if (filters.cityIds.length && !filters.cityIds.includes(user.city))
-				return false;
-			return userMatchesSkills(user);
-		});
-	}, [users, filters]);
+	const filteredUsers = useMemo(
+		() =>
+			users.filter((user) => {
+				if (filters.gender && user.gender !== filters.gender) return false;
+				if (filters.cityIds.length && !filters.cityIds.includes(user.city))
+					return false;
+				return userMatchesSkills(user);
+			}),
+		[users, filters]
+	);
 
-	const isFiltering = useMemo(() => {
-		return (
+	const isFiltering = useMemo(
+		() =>
 			filters.skillIds.length > 0 ||
 			filters.cityIds.length > 0 ||
-			!!filters.gender
-		);
-	}, [filters]);
+			!!filters.gender,
+		[filters]
+	);
 
-	const popularUsers = useMemo(() => {
-		return [...users]
-			.sort((a, b) => (b.likes?.length || 0) - (a.likes?.length || 0))
-			.slice(0, 3);
-	}, [users]);
+	const popularUsers = useMemo(
+		() =>
+			[...users]
+				.sort((a, b) => (b.likes?.length || 0) - (a.likes?.length || 0))
+				.slice(0, 3),
+		[users]
+	);
 
-	const newUsers = useMemo(() => {
-		return [...users]
-			.sort(
-				(a, b) =>
-					new Date(b.registerDate).getTime() -
-					new Date(a.registerDate).getTime()
-			)
-			.slice(0, 3);
-	}, [users]);
+	const newUsers = useMemo(
+		() =>
+			[...users]
+				.sort(
+					(a, b) =>
+						new Date(b.registerDate).getTime() -
+						new Date(a.registerDate).getTime()
+				)
+				.slice(0, 3),
+		[users]
+	);
 
-	const makeUserCardProps = (user: TUser, index: number) => ({
-		index,
-		photo: user.photo,
-		userName: user.name,
-		userLocation: user.city,
-		userAge: user.age,
-		isLiked: user.likes.includes(currentUserId),
-		teachSkills: user.canTeach,
-		learnSkills: user.wantsToLearn,
-		onClickDetails: () => console.log('Подробнее про', user.name),
-		onClickLike: () => console.log('Лайк:', user.name),
+	const makeUserCardProps = (user: TUser) => ({
+		_id: user._id,
+		user,
+		withDescription: false, // или false — в зависимости от ситуации
 	});
 
 	const loadMore = () => {
@@ -125,11 +125,11 @@ export const Catalog = () => {
 	};
 
 	const visibleUsers = filteredUsers.slice(0, visibleCount);
+	const loadingUsers = useSelector((state) => state.user.loadingUsers);
 
 	return {
 		skills,
 		cities,
-		loading,
 		isFiltering,
 		filteredUsers,
 		visibleUsers,
@@ -139,5 +139,6 @@ export const Catalog = () => {
 		loadMore,
 		visibleCount,
 		currentUserId,
+		loading: loadingUsers,
 	};
 };

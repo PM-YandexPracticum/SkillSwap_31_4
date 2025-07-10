@@ -67,7 +67,7 @@ export const SkillCardsListInfinite: React.FC<SkillCardsListInfiniteProps> = (
 				}}>
 				<div className={styles.listContainer}>
 					{SkillCardsProps.map((skillCardProps) => (
-						<SkillCard key={skillCardProps.index} {...skillCardProps} />
+						<SkillCard key={skillCardProps._id} {...skillCardProps} />
 					))}
 				</div>
 			</InfiniteScroll>

@@ -1,10 +1,13 @@
 import { Route, Routes } from 'react-router-dom';
-import './App.css';
 import { useEffect } from 'react';
 import { getUserById, getUsers } from '../entities/userSlice/thunk';
-import { ProtectedRoute } from '../presenters/ProtectedRoute/ProtectedRoute';
+import { ProtectedRoute } from '../ProtectedRoute/ProtectedRoute';
 import { useDispatch } from '../services/store';
 import { CatalogPage } from '../pages/CatalogPage/CatalogPage';
+import { Error500 } from '../pages/Error500/Error500';
+import styles from './App.module.css';
+import { NotFound404 } from '../pages/NotFound404/NotFound404';
+import { ProfileFavoritesUI } from '../widgets/ProfileFavorites/ProfileFavorites';
 
 const App = () => {
 	const dispatch = useDispatch();
@@ -15,7 +18,7 @@ const App = () => {
 	}, [dispatch]);
 
 	return (
-		<>
+		<div className={styles.app}>
 			<Routes>
 				<Route path='/' element={<CatalogPage />} />
 				<Route
@@ -46,7 +49,7 @@ const App = () => {
 					path='/profile/favorites'
 					element={
 						<ProtectedRoute>
-							<></>
+							<ProfileFavoritesUI />
 						</ProtectedRoute>
 					}
 				/>
@@ -75,10 +78,10 @@ const App = () => {
 					}
 				/>
 				<Route path='/user/:id' element={<></>} />
-				<Route path='*' element={<></>} />
-				<Route path='/500' element={<></>} />
+				<Route path='*' element={<NotFound404 />} />
+				<Route path='/500' element={<Error500 />} />
 			</Routes>
-		</>
+		</div>
 	);
 };
 

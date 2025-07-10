@@ -19,7 +19,7 @@ export const SkillCardsListDemo: React.FC<SkillCardsListDemoProps> = (
 			</nav>
 			<div className={styles.listContainer}>
 				{CroppedCardsList.map((cardProps) => (
-					<SkillCard key={cardProps.index} {...cardProps} />
+					<SkillCard key={cardProps._id} {...cardProps} />
 				))}
 			</div>
 		</section>

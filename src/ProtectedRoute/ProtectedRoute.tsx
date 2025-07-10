@@ -1,5 +1,5 @@
 import { Navigate, useLocation } from 'react-router-dom';
-import { Preloader } from '../../shared/ui/Preloader';
+import { Preloader } from '../shared/ui/Preloader';
 // import { useSelector } from '../../services/store';
 
 type ProtectedRouteProps = {
