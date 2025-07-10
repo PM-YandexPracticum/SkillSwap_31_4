@@ -1,3 +1,4 @@
+/* eslint-disable react/destructuring-assignment */
 import { SkillFilterUI } from '../../shared/ui/SkillFilter';
 import { CityFilter } from '../../shared/ui/CityFilter';
 import { Radio } from '../../shared/ui/Radio';
