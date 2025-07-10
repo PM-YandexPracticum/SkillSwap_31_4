@@ -1,0 +1,14 @@
+.content {
+	display: flex;
+	justify-content: center;
+	gap: 24px;
+	background-color: var(--color-background);
+}
+
+.sidebar {
+	width: 324px;
+	height: 752px;
+	padding: 40px;
+	background-color: var(--color-surface);
+	border-radius: 24px;
+}

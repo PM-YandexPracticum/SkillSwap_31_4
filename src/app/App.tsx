@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import { useEffect } from 'react';
-import { ProtectedRoute } from '../presenters/ProtectedRoute/ProtectedRoute';
+import { ProtectedRoute } from '../ProtectedRoute/ProtectedRoute';
 import { getUsers } from '../features/user/thunk';
 import { useDispatch } from '../services/store';
 
