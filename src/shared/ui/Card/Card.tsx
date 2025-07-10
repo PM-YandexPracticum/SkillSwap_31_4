@@ -1,8 +1,9 @@
-import { ButtonUI, LikeButtonUI } from '@ui';
 import { SkillTags } from '../SkillTags';
 import styles from './Card.module.scss';
 import type { TUICardProps } from './type';
 import type { TUserSkill } from '../../lib/types/user';
+import { LikeButtonUI } from '../LikeButton';
+import { ButtonUI } from '../Button';
 
 export const Card = ({
 	photo,
