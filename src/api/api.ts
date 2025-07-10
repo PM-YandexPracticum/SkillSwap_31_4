@@ -36,15 +36,13 @@ type TRegisterStep3AddCard = {
 
 export const getUsersApi = () =>
 	fetch(`${URL}/api/users`)
-		.then((res) => checkResponse<TUsersResponse>(res))
+		.then((res) => checkResponse<TUser[]>(res))
 		.then((data) => data);
 
 // Получения пользователя по id
 
 export const getUsersIdApi = (id: string) =>
-	fetch(`${URL}/api/users/${id}`).then((res) =>
-		checkResponse<TUsersResponse>(res)
-	);
+	fetch(`${URL}/api/users/${id}`).then((res) => checkResponse<TUser>(res));
 
 // Поставить лайк
 

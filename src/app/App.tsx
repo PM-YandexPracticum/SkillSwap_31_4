@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { getUserById, getUsers } from '../features/user/thunk';
 import { ProtectedRoute } from '../presenters/ProtectedRoute/ProtectedRoute';
 import { useDispatch } from '../services/store';
+import { CardSliderPresenter } from '../features/CardSliderPresenter/CardSliderPresenter';
 
 const App = () => {
 	const dispatch = useDispatch();
@@ -15,6 +16,7 @@ const App = () => {
 
 	return (
 		<>
+			<CardSliderPresenter id='686ac2ec267cc5ef811c8a23' />
 			<Routes>
 				<Route path='/' element={<></>} />
 				<Route
