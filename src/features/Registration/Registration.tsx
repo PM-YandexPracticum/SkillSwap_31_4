@@ -9,8 +9,8 @@ import {
 	getCities,
 	getCategories,
 	getSubcategories,
-} from '../../features/auth/thunk';
-import { uploadPhotos } from '../../features/upload/uploadSlice';
+} from '../../entities/auth/thunk';
+import { uploadPhotos } from '../../entities/uploadSlice/uploadSlice';
 import {
 	getValidationErrors,
 	getUserData,
@@ -25,7 +25,7 @@ import {
 	RegistrationActions,
 	getFormattedWantsToLearn,
 	getFormattedCanTeach,
-} from '../../features/auth/registrationSlice';
+} from '../../entities/auth/registrationSlice';
 import type {
 	TStepTwoValues,
 	TStepThreeValues,

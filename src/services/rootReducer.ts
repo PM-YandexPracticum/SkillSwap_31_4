@@ -4,7 +4,7 @@ import uploadReducer from '../entities/uploadSlice/uploadSlice';
 import { filtersReducer } from '../entities/filtersSlice/filterSlice';
 import { notificationsSliceReducer } from '../entities/notificationSlice/notificationsSlice';
 import skillsReducer from '../entities/skillsSlice/skillsSlice';
-import { registrationSliceReducer } from '../features/auth/registrationSlice';
+import { registrationSliceReducer } from '../entities/auth/registrationSlice';
 
 export const rootReducer = combineReducers({
 	user: userSliceReducer,
