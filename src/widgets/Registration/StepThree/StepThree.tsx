@@ -16,6 +16,7 @@ export const StepThree = ({
 	skillDescription,
 	onChangeSkillName,
 	onChangeSkillDescription,
+	onChangeFiles,
 	onSubmit,
 	onBack,
 }: TStepThreeProps) => {
@@ -77,7 +78,7 @@ export const StepThree = ({
 						onChange={onChangeSkillDescription}
 						multiline
 					/>
-					<FileUploader />
+					<FileUploader onChangeFiles={onChangeFiles} />
 				</div>
 				<div className={styles.buttonGroup}>
 					<ButtonUI onClick={onBack} color='secondary' isDisabled={false}>

@@ -17,4 +17,5 @@ export type TStepThreeProps = {
 	onChangeSkillDescription: (e: React.ChangeEvent<HTMLInputElement>) => void;
 	onSubmit: () => void;
 	onBack: () => void;
+	onChangeFiles: (files: File[]) => void;
 };

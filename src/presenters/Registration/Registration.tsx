@@ -10,6 +10,7 @@ import {
 	getCategories,
 	getSubcategories,
 } from '../../features/auth/thunk';
+import { uploadPhotos } from '../../features/upload/uploadSlice';
 import {
 	getValidationErrors,
 	getUserData,
@@ -22,6 +23,8 @@ import {
 	getCategoriesData,
 	getSubcategoriesData,
 	RegistrationActions,
+	getFormattedWantsToLearn,
+	getFormattedCanTeach,
 } from '../../features/auth/registrationSlice';
 import type {
 	TStepTwoValues,
@@ -49,6 +52,8 @@ export const Registration = () => {
 	const cities = useSelector(getCitiesData);
 	const categories = useSelector(getCategoriesData);
 	const subcategories = useSelector(getSubcategoriesData);
+	const formattedWantsToLearn = useSelector(getFormattedWantsToLearn);
+	const formattedCanTeach = useSelector(getFormattedCanTeach);
 
 	const utilsData = {
 		cities: cities || [],
@@ -58,55 +63,71 @@ export const Registration = () => {
 
 	const [step, setStep] = useState(1);
 
-	const onChangeValueInStepTwo = (valueName: TStepTwoValues, value: string) => {
+	const onChangeValueInStepTwo = (
+		valueName: TStepTwoValues,
+		value: string | File[]
+	) => {
 		switch (valueName) {
-			case 'userName':
-				dispatch(RegistrationActions.setUserName(value));
+			case 'userName': {
+				dispatch(RegistrationActions.setUserName(value as string));
 				break;
-			case 'city':
-				dispatch(RegistrationActions.setCity(value));
+			}
+			case 'city': {
+				dispatch(RegistrationActions.setCity(value as string));
 				break;
-			case 'gender':
-				dispatch(RegistrationActions.setGender(value));
+			}
+			case 'gender': {
+				dispatch(RegistrationActions.setGender(value as string));
 				break;
-			case 'photo':
-				dispatch(RegistrationActions.setPhoto(value));
+			}
+			case 'photo': {
+				const file = value[0] as File;
+				dispatch(RegistrationActions.setPhoto(file));
 				break;
-			case 'date':
-				dispatch(RegistrationActions.setDateBirthday(value));
+			}
+			case 'date': {
+				dispatch(RegistrationActions.setDateBirthday(value as string));
 				break;
-			case 'category':
-				dispatch(RegistrationActions.setWantsToLearnCat(value));
+			}
+			case 'category': {
+				dispatch(RegistrationActions.setWantsToLearnCat(value as string));
 				break;
-			case 'subcategory':
-				dispatch(RegistrationActions.setWantsToLearnSubCat(value));
+			}
+			case 'subcategory': {
+				dispatch(RegistrationActions.setWantsToLearnSubCat(value as string));
 				break;
+			}
 			default:
 				break;
 		}
 	};
 	const onChangeValueInStepThree = (
 		type: TStepThreeValues,
-		value: string | string[]
+		value: string | File[]
 	) => {
 		switch (type) {
-			case 'skillName':
+			case 'skillName': {
 				dispatch(RegistrationActions.setSkillName(value as string));
 				break;
-			case 'skillDescription':
+			}
+			case 'skillDescription': {
 				dispatch(RegistrationActions.setSkillDescription(value as string));
 				break;
-			case 'category':
+			}
+			case 'category': {
 				dispatch(RegistrationActions.setSelectedCategoryText(value as string));
 				break;
-			case 'subcategory':
+			}
+			case 'subcategory': {
 				dispatch(
 					RegistrationActions.setSelectedSubcategoryText(value as string)
 				);
 				break;
-			case 'images':
-				dispatch(RegistrationActions.setImages(value as string[]));
+			}
+			case 'images': {
+				dispatch(RegistrationActions.setImages(value as File[]));
 				break;
+			}
 			default:
 				break;
 		}
@@ -119,70 +140,62 @@ export const Registration = () => {
 		dispatch(registerUserStepOne(value));
 	};
 
+	const getFileIntoUrl = (file: File | null) => {
+		if (!file) {
+			return '';
+		}
+		const url = URL.createObjectURL(file);
+		return url;
+	};
+
 	const onNextStep = async () => {
 		switch (step) {
-			case 1:
+			case 1: {
 				setStep(2);
 				break;
-			case 2:
+			}
+			case 2: {
+				setStep(3);
+				break;
+			}
+			case 3: {
+				setStep(4);
+				break;
+			}
+			case 4: {
+				if (user.photo) {
+					dispatch(uploadPhotos([user.photo]));
+				}
 				dispatch(
 					registerUserStepTwo({
 						userId: user.userId!,
 						name: user.userName,
 						city: user.city,
 						gender: user.gender,
-						photo: user.photo,
+						photo: getFileIntoUrl(user.photo),
 						birthDate: user.dateBirthday,
-						wantsToLearn: user.wantsToLearnCat.map((item) => ({
-							name: item,
-							categoryName: item,
-						})),
+						wantsToLearn: formattedWantsToLearn,
 					})
-				).then(() => {
-					setStep(3);
-				});
-				break;
-			case 3:
+				);
+				dispatch(uploadPhotos(images));
+				const imagesUrl = images.map((image) => getFileIntoUrl(image));
 				dispatch(
 					registerUserStepThree({
 						userId: user.userId!,
 						title: skillName,
 						description: skillDescription,
-						photo: images,
-						canTeach: [
-							{
-								name: selectedCategoryText,
-								categoryName: selectedCategoryText,
-							},
-						],
+						photo: imagesUrl,
+						canTeach: formattedCanTeach,
 					})
-				).then(() => {
-					setStep(4);
-				});
+				);
+				setStep(5);
 				break;
-			case 4:
-				dispatch(
-					registerUserStepThree({
-						userId: user.userId!,
-						title: skillName,
-						description: skillDescription,
-						photo: images,
-						canTeach: [
-							{
-								name: selectedCategoryText,
-								categoryName: selectedCategoryText,
-							},
-						],
-					})
-				)
-					.then(() => {
-						setStep(4);
-					})
-					.finally(() => {
-						setStep(1);
-						navigate('/');
-					});
+			}
+			case 5: {
+				setStep(1);
+				navigate('/');
 				break;
+			}
 			default:
 				break;
 		}
@@ -190,7 +203,6 @@ export const Registration = () => {
 	const onPrevStep = () => {
 		setStep(step - 1 > 1 ? step - 1 : 1);
 	};
-
 	return (
 		/** Ну вот теперь все собрали */
 		<RegistrationPage
@@ -202,12 +214,13 @@ export const Registration = () => {
 				canTeach: '',
 				id: 0,
 				dateBirthday: new Date(user.dateBirthday),
+				photo: getFileIntoUrl(user.photo),
 			}}
 			skillName={skillName}
 			skillDescription={skillDescription}
 			selectedSubcategoryText={selectedSubcategoryText}
 			selectedCategoryText={selectedCategoryText}
-			images={images}
+			images={images.map((item) => getFileIntoUrl(item))}
 			onChangeValueInStepOne={onChangeValueInStepOne}
 			onChangeValueInStepTwo={onChangeValueInStepTwo}
 			onChangeValueInStepThree={onChangeValueInStepThree}

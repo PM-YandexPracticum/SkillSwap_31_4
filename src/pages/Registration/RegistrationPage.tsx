@@ -4,6 +4,7 @@ import { StepTwoUI } from '../../widgets/Registration/StepTwo';
 import { StepThree } from '../../widgets/Registration/StepThree/StepThree';
 import type RegistrationProps from './type';
 import { ReviewModalUI } from '../../shared/ui/ReviewModal/ReviewModal';
+import { ModalWithContentUI } from '../../shared/ui';
 
 export const RegistrationPage: React.FC<RegistrationProps> = (
 	props: RegistrationProps
@@ -33,12 +34,8 @@ export const RegistrationPage: React.FC<RegistrationProps> = (
 
 	const onChangePhoto = async (e: ChangeEvent<HTMLInputElement>) => {
 		if (e.target.files) {
-			const file = e.target.files[0];
-			const imageUrl = URL.createObjectURL(file);
-			if (user.photo) {
-				URL.revokeObjectURL(user.photo);
-			}
-			onChangeValueInStepTwo('photo', imageUrl);
+			const files: File[] = Array.from(e.target.files);
+			onChangeValueInStepTwo('photo', files);
 		}
 	};
 
@@ -57,9 +54,9 @@ export const RegistrationPage: React.FC<RegistrationProps> = (
 					isEnabled={isDoneStepTwo !== undefined ? isDoneStepTwo : true}
 					city={utilsData.cities}
 					gender={[
-						{ value: 'male', text: 'Мужской' },
-						{ value: 'female', text: 'Женский' },
-						{ value: 'ZVZVZVZV SVO SVO SVO ZVZVZVZVZV', text: 'Не указан' },
+						{ value: 'Мужской', text: 'Мужской' },
+						{ value: 'Женский', text: 'Женский' },
+						{ value: 'Не указан', text: 'Не указан' },
 					]}
 					category={utilsData.categories}
 					subCategory={utilsData.subcategories}
@@ -124,6 +121,9 @@ export const RegistrationPage: React.FC<RegistrationProps> = (
 					}
 					onSubmit={onNextStep}
 					onBack={onPrevStep}
+					onChangeFiles={(files: File[]) =>
+						onChangeValueInStepThree('images', files)
+					}
 				/>
 			)}
 			{step === 4 && (
@@ -137,6 +137,16 @@ export const RegistrationPage: React.FC<RegistrationProps> = (
 					}}
 					onSave={onNextStep}
 					onClose={onPrevStep}
+					onEdit={onPrevStep}
+				/>
+			)}
+			{step === 5 && (
+				<ModalWithContentUI
+					title='Ваше предложение создано
+'
+					subtitle='Теперь вы можете предложить обмен'
+					onClose={onNextStep}
+					icon='src/images/icons/Done.svg'
 				/>
 			)}
 		</section>

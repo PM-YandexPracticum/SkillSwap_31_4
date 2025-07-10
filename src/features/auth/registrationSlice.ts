@@ -30,7 +30,7 @@ type TUser = {
 	about: TRegistrationValue<string>;
 	wantsToLearnCat: TRegistrationValue<string[]>;
 	wantsToLearnSubCat: TRegistrationValue<string[]>;
-	photo: TRegistrationValue<string>;
+	photo: TRegistrationValue<File | null>;
 };
 
 type TRegistrationValue<T> = {
@@ -59,7 +59,7 @@ export interface TRegistrationState {
 	skillDescription: TRegistrationValue<string>;
 	selectedSubcategoryText: TRegistrationValue<string>;
 	selectedCategoryText: TRegistrationValue<string>;
-	images: TRegistrationValue<string[]>;
+	images: TRegistrationValue<File[]>;
 	cities: TCitiesData | null;
 	categories: TCategoriesData | null;
 	subcategories: TCategoriesData | null;
@@ -81,11 +81,11 @@ const initialState: TRegistrationState = {
 		},
 		age: {
 			value: 0,
-			error: 'Поле пустое',
+			error: '',
 		},
 		dateBirthday: {
 			value: '',
-			error: 'Поле пустое',
+			error: '',
 		},
 		gender: {
 			value: '',
@@ -104,8 +104,8 @@ const initialState: TRegistrationState = {
 			error: 'Поле пустое',
 		},
 		photo: {
-			value: '',
-			error: 'Поле пустое',
+			value: null,
+			error: '',
 		},
 	},
 	skillName: {
@@ -213,7 +213,7 @@ export const registrationSlice = createSlice({
 				state.user.wantsToLearnSubCat.error = '';
 			}
 		},
-		setPhoto: (state, action: PayloadAction<string>) => {
+		setPhoto: (state, action: PayloadAction<File>) => {
 			state.user.photo.value = action.payload;
 		},
 		setSkillName: (state, action: PayloadAction<string>) => {
@@ -232,9 +232,16 @@ export const registrationSlice = createSlice({
 			state.selectedCategoryText.value = action.payload;
 			state.selectedCategoryText.error = baseValidation(action.payload);
 		},
-		setImages: (state, action: PayloadAction<string[]>) => {
-			state.images.value = action.payload;
-			state.images.error = '';
+		setImages: (state, action: PayloadAction<File[]>) => {
+			const imagesNames: Set<string> = new Set();
+			state.images.value.forEach((image) => {
+				imagesNames.add(image.name);
+			});
+			action.payload.forEach((imageFile) => {
+				if (!imagesNames.has(imageFile.name)) {
+					state.images.value.push(imageFile);
+				}
+			});
 		},
 	},
 	selectors: {
@@ -302,6 +309,38 @@ export const registrationSlice = createSlice({
 		getCitiesData: (state: TRegistrationState) => state.cities,
 		getCategoriesData: (state: TRegistrationState) => state.categories,
 		getSubcategoriesData: (state: TRegistrationState) => state.subcategories,
+		getFormattedWantsToLearn: (state: TRegistrationState) => {
+			const { wantsToLearnCat, wantsToLearnSubCat } = state.user;
+			const categories = state.categories ?? [];
+			const subcategories = state.subcategories ?? [];
+
+			const formatted = wantsToLearnSubCat.value
+				.map((subcatId) => {
+					const sub = subcategories.find((s) => s.id === subcatId);
+					const cat = categories.find((c) =>
+						wantsToLearnCat.value.includes(c.id)
+					);
+					if (!sub || !cat) return null;
+					return {
+						name: sub.text,
+						categoryName: cat.text,
+					};
+				})
+				.filter(Boolean);
+
+			return formatted as { name: string; categoryName: string }[];
+		},
+		getFormattedCanTeach: (state: TRegistrationState) => {
+			const { selectedCategoryText, selectedSubcategoryText } = state;
+			if (!selectedCategoryText.value || !selectedSubcategoryText.value)
+				return [];
+			return [
+				{
+					name: selectedSubcategoryText.value,
+					categoryName: selectedCategoryText.value,
+				},
+			];
+		},
 	},
 	extraReducers: (builder) => {
 		builder.addCase(registerUserStepOne.rejected, (state) => {
@@ -372,5 +411,7 @@ export const {
 	getCitiesData,
 	getCategoriesData,
 	getSubcategoriesData,
+	getFormattedCanTeach,
+	getFormattedWantsToLearn,
 } = registrationSlice.selectors;
 export const registrationSliceReducer = registrationSlice.reducer;

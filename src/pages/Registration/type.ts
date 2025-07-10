@@ -70,8 +70,8 @@ export default interface RegistrationProps {
 		'email&password',
 		{ email: string; password: string }
 	>;
-	onChangeValueInStepTwo: OnChangeFunction<TStepTwoValues, string>;
-	onChangeValueInStepThree: OnChangeFunction<TStepThreeValues, string>;
+	onChangeValueInStepTwo: OnChangeFunction<TStepTwoValues, string | File[]>;
+	onChangeValueInStepThree: OnChangeFunction<TStepThreeValues, string | File[]>;
 	// Значения полей для второго этапа (город, дата рождения и т.п.)
 	user: TUserType;
 	skillName: string;
