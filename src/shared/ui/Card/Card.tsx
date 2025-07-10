@@ -1,16 +1,18 @@
-import { ButtonUI, LikeButtonUI } from '@ui';
+import { ButtonUI } from '../Button/Button';
 import { SkillTags } from '../SkillTags';
 import styles from './Card.module.scss';
 import type { TUICardProps } from './type';
-import type { TSkill } from '../../../api/type';
-import type { TCategories } from '../../lib/types/skill';
+import type { TUserSkill } from '../../lib/types/user';
+import { LikeButtonUI } from '../LikeButton';
 
 export const Card = ({
 	photo,
 	userName,
+	aboutMe,
 	userLocation,
 	userAge,
 	isLiked,
+	withDescription,
 	teachSkills,
 	learnSkills,
 	onClickDetails,
@@ -35,7 +37,7 @@ export const Card = ({
 		}
 	};
 
-	const renderTags = (skills: TSkill[] | undefined, limit: number) => {
+	const renderTags = (skills: TUserSkill[] | undefined, limit: number) => {
 		if (!skills || skills.length === 0) return null;
 
 		const visibleTags = skills.slice(0, limit);
@@ -46,7 +48,8 @@ export const Card = ({
 				{visibleTags.map((skill) => (
 					<SkillTags
 						key={skill._id}
-						category={skill.categoryName as TCategories}>
+						category={skill.categoryName}
+						title={skill.name}>
 						{skill.name}
 					</SkillTags>
 				))}
@@ -58,7 +61,9 @@ export const Card = ({
 	};
 
 	return (
-		<article className={styles.card}>
+		<article
+			className={styles.card}
+			style={{ padding: withDescription ? '32px' : '20px' }}>
 			<div className={styles.user}>
 				<div
 					className={styles.userPhoto}
@@ -73,25 +78,37 @@ export const Card = ({
 						{userLocation}, {userAge} {getYearAddition()}
 					</span>
 				</div>
-				<LikeButtonUI isLiked={isLiked} onClick={onClickLike} />
+				{!withDescription && (
+					<LikeButtonUI isLiked={isLiked} onClick={onClickLike} />
+				)}
 			</div>
+			{withDescription && <p className={styles.aboutMe}>{aboutMe}</p>}
 			<div>
-				<div className={styles.tags}>
+				<div
+					className={styles.tags}
+					style={{ gap: withDescription ? '14px' : '8px' }}>
 					<h4>Может научить:</h4>
 					<div className={styles.tagsContainer}>
 						{renderTags(teachSkills, 2)}
 					</div>
 				</div>
-				<div className={styles.tags} style={{ marginBlockStart: '12px' }}>
-					<h4>Может научить:</h4>
+				<div
+					className={styles.tags}
+					style={{
+						marginBlockStart: withDescription ? '24px' : '12px',
+						gap: withDescription ? '14px' : '8px',
+					}}>
+					<h4>Хочет научиться:</h4>
 					<div className={styles.tagsContainer}>
 						{renderTags(learnSkills, 2)}
 					</div>
 				</div>
 			</div>
-			<ButtonUI onClick={onClickDetails} width='284' color='primary'>
-				Подробнее
-			</ButtonUI>
+			{!withDescription && (
+				<ButtonUI onClick={onClickDetails} width='284' color='primary'>
+					Подробнее
+				</ButtonUI>
+			)}
 		</article>
 	);
 };

@@ -1,29 +1,37 @@
 export const optionsGender = [
-	{ value: 'not', label: 'Без разницы' },
-	{ value: 'men', label: 'Мужской' },
-	{ value: 'women', label: 'Женский' },
+	{ label: 'Не имеет значения', value: 'not' },
+	{ label: 'Мужской', value: 'Мужской' },
+	{ label: 'Женский', value: 'Женский' },
 ];
 
 export const roleOptions = [
 	{ value: 'all', label: 'Всё' },
-	{ value: 'learn', label: 'Хочу научиться' },
-	{ value: 'can-study', label: 'Могу научить' },
+	{ value: 'canTeach', label: 'Хочу научиться' },
+	{ value: 'wantToLearn', label: 'Могу научить' },
 ];
+
+export type SkillGroup = {
+	category: string;
+	skills: {
+		id: string;
+		name: string;
+	}[];
+};
 
 export type SkillOption = {
 	id: string;
-	text: string;
-	parentId: string;
+	name: string;
+	parentId?: string;
 	checked: boolean;
 	isOpen: boolean;
 };
 
 export type CityItem = {
 	id: string;
-	city: string;
+	name: string;
 };
 
 export type FiltersBarProps = {
-	skills: SkillOption[];
+	skills: SkillGroup[];
 	cities: CityItem[];
 };

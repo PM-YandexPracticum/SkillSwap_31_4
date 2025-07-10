@@ -4,6 +4,13 @@
 	gap: 32px;
 }
 
+.containerDemo {
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
+	margin-bottom: 40px;
+}
+
 .titleContainer {
 	font-weight: 500;
 	font-size: 32px;

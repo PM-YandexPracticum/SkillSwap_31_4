@@ -84,5 +84,12 @@ module.exports = {
 		'react/jsx-props-no-spreading': 'off',
 		'react/jsx-no-useless-fragment': 'off',
 		'no-underscore-dangle': ['error', { allow: ['_id'] }],
+		'no-param-reassign': [
+			'error',
+			{
+				props: true,
+				ignorePropertyModificationsFor: ['state'],
+			},
+		],
 	},
 };
