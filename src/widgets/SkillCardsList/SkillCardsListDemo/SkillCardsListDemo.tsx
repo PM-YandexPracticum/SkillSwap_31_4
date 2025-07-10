@@ -10,7 +10,7 @@ export const SkillCardsListDemo: React.FC<SkillCardsListDemoProps> = (
 
 	const CroppedCardsList = SkillCardsProps.slice(0, maxCardCount || 3);
 	return (
-		<section className={styles.container}>
+		<section className={styles.containerDemo}>
 			<nav className={styles.listHeader}>
 				<h2 className={styles.titleContainer}>{title}</h2>
 				<ButtonUI onClick={onClickButtonMore} color='tertiary' width='187px'>
@@ -19,7 +19,7 @@ export const SkillCardsListDemo: React.FC<SkillCardsListDemoProps> = (
 			</nav>
 			<div className={styles.listContainer}>
 				{CroppedCardsList.map((cardProps) => (
-					<SkillCard key={cardProps.index} {...cardProps} />
+					<SkillCard key={cardProps._id} {...cardProps} />
 				))}
 			</div>
 		</section>

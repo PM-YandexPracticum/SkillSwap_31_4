@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import styles from './AppHeader.module.scss';
 import cross from '../../../images/icons/cross.svg';
+import logout from '../../../images/icons/logout.svg';
 import type { TAppHeaderUIProps } from './type';
 import { ButtonUI } from '../Button';
 import { Logo } from '../Logo';
@@ -25,6 +27,7 @@ export const AppHeaderUI = ({
 	setSearchValue,
 	searchOptions,
 }: TAppHeaderUIProps) => {
+	const [isOpen, setIsOpen] = useState(false);
 	if (isModal)
 		return (
 			<div className={styles.header}>
@@ -62,7 +65,7 @@ export const AppHeaderUI = ({
 				{isAuth && (
 					<>
 						<NotificationButton hasNotification={isNotification} />
-						<Link to='/favorites'>
+						<Link to='profile/favorites'>
 							<LikeButtonUI />
 						</Link>
 					</>
@@ -71,16 +74,29 @@ export const AppHeaderUI = ({
 
 			{isAuth ? (
 				<div className={styles.profile}>
-					<Link className={styles.name} to='/profile'>
-						{user.name}
-					</Link>
-					<Link to='/profile'>
+					<p className={styles.name}>{user.name}</p>
+					<div
+						className={styles.profileButton}
+						onClick={() => {
+							setIsOpen((prevState) => !prevState);
+						}}>
 						<img
 							className={styles.avatar}
 							src={user.photo}
 							alt='Фото пользователя'
 						/>
-					</Link>
+					</div>
+					{isOpen && (
+						<div className={styles.dropdown}>
+							<Link className={styles.dropdownButton} to='/profile'>
+								Личный кабинет
+							</Link>
+							<Link className={styles.dropdownButton} to='/'>
+								Выйти из аккаунта
+								<img src={logout} alt='Иконка выхода' />
+							</Link>
+						</div>
+					)}
 				</div>
 			) : (
 				<div>
