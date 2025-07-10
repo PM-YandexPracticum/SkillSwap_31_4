@@ -2,13 +2,11 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import type { TUser } from '../../api/type';
 import { ProfileEditForm } from '../../widgets/ProfileEditForm';
-import { ProfileTabs } from '../../widgets/ProfileTabs/ProfileTabs';
-import styles from './Profile.module.scss';
 import type { TOption as TCity } from '../../shared/ui/Dropdown/DropdownCity/type';
 import { Preloader } from '../../shared/ui/Preloader';
-import { getUserByIdSelector } from '../../features/user/userSlice';
+import { getUserByIdSelector } from '../../entities/userSlice/userSlice';
 import type { RootState } from '../../services/rootReducer';
-import { getUserById } from '../../features/user/thunk';
+import { getUserById } from '../../entities/userSlice/thunk';
 import type { AppDispatch } from '../../services/store';
 
 export const Profile = () => {
@@ -58,7 +56,7 @@ export const Profile = () => {
 	const [isOpenCity, setIsOpenCity] = useState(false);
 
 	useEffect(() => {
-		const userId = '686bde764f1a52ec37cb4ecb'; // Заменить на id текущего пользователя
+		const userId = '686ac2ec267cc5ef811c8a23'; // Заменить на id текущего пользователя
 		dispatch(getUserById(userId));
 	}, [dispatch]);
 
@@ -134,10 +132,7 @@ export const Profile = () => {
 	}
 
 	return (
-		<div className={styles.content}>
-			<nav className={styles.sidebar}>
-				<ProfileTabs />
-			</nav>
+		<>
 			<ProfileEditForm
 				userEmail={formValues.email || ''}
 				userName={formValues.name || ''}
@@ -165,6 +160,6 @@ export const Profile = () => {
 				onInputDate={handleDateChange}
 				onChangeUserPhoto={handlePhotoChange}
 			/>
-		</div>
+		</>
 	);
 };

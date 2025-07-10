@@ -4,7 +4,7 @@ import {
 	getUserByIdSelector,
 	getUsersSelector,
 } from '../../entities/userSlice/userSlice';
-import { CardPresenter } from '../../features/CardPresenter/CardPresenter';
+import { CardPresenter } from '../../features/Card/CardPresenter';
 
 export const ProfileFavoritesUI = () => {
 	const currentUser = useSelector(getUserByIdSelector);
@@ -14,10 +14,12 @@ export const ProfileFavoritesUI = () => {
 	);
 
 	return (
-		<div className={styles.content}>
-			{likedUsers.map((user) => (
-				<CardPresenter key={user._id} user={user} />
-			))}
-		</div>
+		<>
+			<div className={styles.content}>
+				{likedUsers.map((user) => (
+					<CardPresenter key={user._id} user={user} />
+				))}
+			</div>
+		</>
 	);
 };

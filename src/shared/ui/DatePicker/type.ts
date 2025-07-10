@@ -4,4 +4,5 @@ export default interface DataPickerProps {
 	error?: string;
 	maxDate?: Date;
 	minDate?: Date;
+	selectedDate?: Date;
 }
