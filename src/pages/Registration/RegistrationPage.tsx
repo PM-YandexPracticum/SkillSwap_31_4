@@ -79,7 +79,7 @@ export const RegistrationPage: React.FC<RegistrationProps> = (
 						onChangeValueInStepTwo('gender', value)
 					}
 					onInputDate={(date: Date) =>
-						onChangeValueInStepTwo('date', date.toLocaleDateString())
+						onChangeValueInStepTwo('date', date.toISOString().slice(0, 10))
 					}
 					onSelectCategory={(value: string) =>
 						onChangeValueInStepTwo('category', value)
