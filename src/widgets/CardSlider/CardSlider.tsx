@@ -3,7 +3,7 @@ import { SwiperArrows } from '@ui';
 import styles from './CardSlider.module.scss';
 import type { TUser } from '../../api/type';
 import type { SwiperArrowsProps } from '../../shared/ui/SwiperArrows/type';
-import { CardPresenter } from '../../features/CardPresenter/CardPresenter';
+import { CardPresenter } from '../../features/Card/CardPresenter';
 
 type CardSliderUIProps = {
 	users: TUser[];

@@ -29,14 +29,14 @@ export const ReviewModalUI = ({
 	data,
 	onSave,
 	onClose,
+	onEdit,
 }: ReviewModalUIProps) => {
 	const [mainImage, ...otherImages] = data.images;
 	const getImageSrc = (img: string | File): string =>
 		typeof img === 'string' ? img : URL.createObjectURL(img);
 
 	const handleEdit = () => {
-		// TODO: Страница редактирования. Как сделают, можно делать useNavigate туда
-		console.log('Переход на страницу редактирования (в разработке)');
+		onEdit();
 	};
 
 	const handleSave = () => {

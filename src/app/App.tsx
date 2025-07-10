@@ -7,17 +7,18 @@ import { CatalogPage } from '../pages/CatalogPage/CatalogPage';
 import { Error500 } from '../pages/Error500/Error500';
 import styles from './App.module.css';
 import { NotFound404 } from '../pages/NotFound404/NotFound404';
-import { ProfileFavoritesUI } from '../widgets/ProfileFavorites/ProfileFavorites';
 import { Footer } from '../shared/ui/Footer';
 import { AppHeaderUI } from '../shared/ui/Header';
 import { getUserByIdSelector } from '../entities/userSlice/userSlice';
 import { getSkills } from '../entities/skillsSlice/thunk';
 import { Preloader } from '../shared/ui/Preloader';
-import './App.css';
+import { ProfileFavoritesUI } from '../widgets/ProfileFavorites/ProfileFavorites';
+import { Profile } from '../features/Profile/Profile';
+import { ProfileLayout } from '../pages/ProfileLayout/ProfileLayout';
+import { Registration } from '../features/Registration/Registration';
 
 const App = () => {
 	const dispatch = useDispatch();
-
 	const user = useSelector(getUserByIdSelector);
 	const { categories, status: skillsStatus } = useSelector(
 		(state: RootState) => state.skills
@@ -33,13 +34,6 @@ const App = () => {
 
 	const allSkills = categories.flatMap((cat) => cat.skills || []);
 
-	const handleRegisterButtonClick = () => console.log('Register');
-	const handleLoginButtonClick = () => console.log('Login');
-	const handleCloseButtonClick = () => console.log('Close');
-	const handleSkillTitleClick = (skill) => console.log('Title', skill);
-	const handleSkillTagClick = (skill) => console.log('Tag', skill);
-
-	// Показываем прелоадер пока загружаются категории (или если user ещё не определён)
 	if (skillsStatus === 'loading' || !user) {
 		return (
 			<div className={styles.app}>
@@ -59,59 +53,36 @@ const App = () => {
 				searchValue={searchValue}
 				setSearchValue={setSearchValue}
 				searchOptions={allSkills}
-				handleRegisterButtonClick={handleRegisterButtonClick}
-				handleLoginButtonClick={handleLoginButtonClick}
-				handleCloseButtonClick={handleCloseButtonClick}
-				handleSkillTitleClick={handleSkillTitleClick}
-				handleSkillTagClick={handleSkillTagClick}
+				handleRegisterButtonClick={() => console.log('Register')}
+				handleLoginButtonClick={() => console.log('Login')}
+				handleCloseButtonClick={() => console.log('Close')}
+				handleSkillTitleClick={(skill) => console.log('Title', skill)}
+				handleSkillTagClick={(skill) => console.log('Tag', skill)}
 			/>
+
 			<Routes>
 				<Route path='/' element={<CatalogPage />} />
+
+				{/* Профиль и вложенные маршруты */}
 				<Route
 					path='/profile'
 					element={
 						<ProtectedRoute>
-							<></>
+							<ProfileLayout />
 						</ProtectedRoute>
-					}
-				/>
-				<Route
-					path='/profile/requests'
-					element={
-						<ProtectedRoute>
-							<></>
-						</ProtectedRoute>
-					}
-				/>
-				<Route
-					path='/profile/orders'
-					element={
-						<ProtectedRoute>
-							<></>
-						</ProtectedRoute>
-					}
-				/>
-				<Route
-					path='/profile/favorites'
-					element={
-						<ProtectedRoute>
-							<ProfileFavoritesUI />
-						</ProtectedRoute>
-					}
-				/>
-				<Route
-					path='/profile/skills'
-					element={
-						<ProtectedRoute>
-							<></>
-						</ProtectedRoute>
-					}
-				/>
+					}>
+					<Route index element={<Profile />} />
+					<Route path='requests' element={<div>Заявки</div>} />
+					<Route path='orders' element={<div>Мои обмены</div>} />
+					<Route path='favorites' element={<ProfileFavoritesUI />} />
+					<Route path='skills' element={<div>Мои навыки</div>} />
+				</Route>
+
 				<Route
 					path='/register'
 					element={
-						<ProtectedRoute onlyUnAuth>
-							<></>
+						<ProtectedRoute>
+							<Registration />
 						</ProtectedRoute>
 					}
 				/>
@@ -119,11 +90,12 @@ const App = () => {
 					path='/login'
 					element={
 						<ProtectedRoute onlyUnAuth>
-							<></>
+							<div>Вход</div>
 						</ProtectedRoute>
 					}
 				/>
-				<Route path='/user/:id' element={<></>} />
+
+				<Route path='/user/:id' element={<div>Профиль пользователя</div>} />
 				<Route path='/500' element={<Error500 />} />
 				<Route path='*' element={<NotFound404 />} />
 			</Routes>

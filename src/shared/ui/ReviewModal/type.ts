@@ -10,4 +10,5 @@ export type ReviewModalUIProps = {
 	data: SkillData;
 	onSave: (updatedData: SkillData) => void;
 	onClose: () => void;
+	onEdit: () => void;
 };

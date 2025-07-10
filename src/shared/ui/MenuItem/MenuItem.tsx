@@ -6,10 +6,11 @@ import styles from './MenuItem.module.scss';
 export const MenuItemUI: React.FC<MenuItemUIProps> = (
 	props: MenuItemUIProps
 ) => {
-	const { to, logoUrl, svg, text, onClick, isActiveHardCoded } = props;
+	const { to, end, logoUrl, svg, text, onClick, isActiveHardCoded } = props;
 	return (
 		<NavLink
 			to={to}
+			end={end}
 			className={({ isActive }) =>
 				isActive
 					? clsx(styles.menuItemActive, styles.menuItem)

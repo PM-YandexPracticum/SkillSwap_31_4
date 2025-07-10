@@ -28,6 +28,7 @@ export const ProfileTabs = () => (
 			to={'/profile'}
 			text='Личные данные'
 			logoUrl='./src/images/icons/user.svg'
+			end
 		/>
 	</div>
 );

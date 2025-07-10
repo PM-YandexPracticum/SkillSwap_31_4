@@ -16,7 +16,11 @@ export const ModalWithContentUI = ({
 }: ModalWithContentUIProps) => (
 	<div className={styles.modal}>
 		<div className={styles.icon}>
-			<img src={icon} alt='icon' />
+			<img
+				src={icon}
+				alt='icon'
+				style={{ inlineSize: '100px', blockSize: '100px' }}
+			/>
 		</div>
 		<h2 className={styles.title}>{title}</h2>
 		<p className={styles.subtitle}>{subtitle}</p>

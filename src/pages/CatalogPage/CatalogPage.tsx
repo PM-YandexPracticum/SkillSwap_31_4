@@ -1,7 +1,7 @@
 import { FiltersBar } from '../../widgets/FiltersBar/FiltersBar';
 import { SkillCardsListInfinite } from '../../widgets/SkillCardsList/SkillCardsListInfinite/SkillCardsListInfinite';
 import { SkillCardsListDemo } from '../../widgets/SkillCardsList/SkillCardsListDemo/SkillCardsListDemo';
-import { CardPresenter } from '../../features/CardPresenter/CardPresenter';
+import { CardPresenter } from '../../features/Card/CardPresenter';
 import styles from './Catalog.module.scss';
 import { Catalog } from '../../features/Catalog/Catalog';
 import { Preloader } from '../../shared/ui/Preloader';

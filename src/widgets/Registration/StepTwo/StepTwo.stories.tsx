@@ -2,9 +2,11 @@ import { useState, useEffect } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { StepTwoUI } from './StepTwo';
 import type { TUserType } from './type';
+import type { TErrorResponse, TUploadResponse } from '../../../api/type';
 import type { TOption as TCity } from '../../../shared/ui/Dropdown/DropdownCity/type';
 import type { Option as TGender } from '../../../shared/ui/Dropdown/DropdownBase/type';
 import type { Option as TCategory } from '../../../shared/ui/Dropdown/MultiSelectDropdown/type';
+import { uploadPhotos } from '../../../api/api';
 
 const meta: Meta<typeof StepTwoUI> = {
 	title: 'Widgets/Registration/StepTwo',
@@ -139,10 +141,6 @@ export const Default: Story = {
 			useState<TCategory[]>(subCategory);
 		const [isEnabled, setIsEnabled] = useState(false);
 		const [userData, setUserData] = useState<TUserType>(initialUser);
-		const [isOpenCity, setIsOpenCity] = useState(false);
-		const [isOpenGender, setIsOpenGender] = useState(false);
-		const [isOpenCategory, setIsOpenCategory] = useState(false);
-		const [isOpenSubCategory, setIsOpenSubCategory] = useState(false);
 
 		useEffect(() => {
 			const newSubCategory: TCategory[] = subCategory.filter(
@@ -185,6 +183,7 @@ export const Default: Story = {
 			const hasUserName = userData.userName.trim() !== '';
 			const hasCity = userData.city.trim() !== '';
 			const hasGender = userData.gender.trim() !== '';
+			const hasPhoto = userData.photo.trim() !== '';
 			const hasCategory = userData.wantsToLearnCat.length > 0;
 			const hasSubCategory = userData.wantsToLearnSubCat.length > 0;
 
@@ -198,7 +197,8 @@ export const Default: Story = {
 				hasGender &&
 				hasCategory &&
 				hasSubCategory &&
-				isNotToday;
+				isNotToday &&
+				hasPhoto;
 
 			setIsEnabled(isFormValid);
 		}, [userData]);
@@ -208,10 +208,6 @@ export const Default: Story = {
 				...prev,
 				userName: e.target.value,
 			}));
-			setIsOpenCity(false);
-			setIsOpenGender(false);
-			setIsOpenCategory(false);
-			setIsOpenSubCategory(false);
 		};
 
 		const handleDate = (date: Date) => {
@@ -219,40 +215,41 @@ export const Default: Story = {
 				...prev,
 				dateBirthday: date,
 			}));
-			setIsOpenCity(false);
-			setIsOpenGender(false);
-			setIsOpenCategory(false);
-			setIsOpenSubCategory(false);
 		};
 
-		const handleAddPhoto = () => {
-			setIsOpenCity(false);
-			setIsOpenGender(false);
-			setIsOpenCategory(false);
-			setIsOpenSubCategory(false);
-			alert('Add Photo');
+		const handleAddPhoto = (e: React.ChangeEvent<HTMLInputElement>) => {
+			let fileUrl: string = '';
+			if (e.target.files && e.target.files.length > 0) {
+				const newFiles = Array.from(e.target.files).slice(0, 1);
+				uploadPhotos(newFiles)
+					.then((response) => {
+						const urlsTab = response as TUploadResponse;
+						fileUrl = urlsTab?.urls[0];
+					})
+					.catch((error: TErrorResponse) => {
+						if (error) {
+							fileUrl = '';
+						}
+					})
+					.finally(() =>
+						setUserData((prev) => ({
+							...prev,
+							photo: fileUrl,
+						}))
+					);
+			} else {
+				setUserData((prev) => ({
+					...prev,
+					photo: '',
+				}));
+			}
 		};
 
 		const handleNext = () => {
-			setIsOpenCity(false);
-			setIsOpenGender(false);
-			setIsOpenCategory(false);
-			setIsOpenSubCategory(false);
 			alert('Next Button Clicked');
 		};
 		const handleBack = () => {
-			setIsOpenCity(false);
-			setIsOpenGender(false);
-			setIsOpenCategory(false);
-			setIsOpenSubCategory(false);
 			alert('Back Button Clicked');
-		};
-
-		const handleClickCity = () => {
-			setIsOpenCity((prev) => !prev);
-			setIsOpenGender(false);
-			setIsOpenCategory(false);
-			setIsOpenSubCategory(false);
 		};
 
 		const handleClearCity = () => {
@@ -260,10 +257,6 @@ export const Default: Story = {
 				...prev,
 				city: '',
 			}));
-			setIsOpenCity(false);
-			setIsOpenGender(false);
-			setIsOpenCategory(false);
-			setIsOpenSubCategory(false);
 		};
 
 		const handleInputChangeCity = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -271,10 +264,6 @@ export const Default: Story = {
 				...prev,
 				city: e.target.value,
 			}));
-			setIsOpenCity(true);
-			setIsOpenGender(false);
-			setIsOpenCategory(false);
-			setIsOpenSubCategory(false);
 		};
 
 		const handleSelectCity = (value: string) => {
@@ -282,17 +271,6 @@ export const Default: Story = {
 				...prev,
 				city: value,
 			}));
-			setIsOpenCity(false);
-			setIsOpenGender(false);
-			setIsOpenCategory(false);
-			setIsOpenSubCategory(false);
-		};
-
-		const handleToggleGender = () => {
-			setIsOpenGender((prev) => !prev);
-			setIsOpenCity(false);
-			setIsOpenCategory(false);
-			setIsOpenSubCategory(false);
 		};
 
 		const handleSelectGender = (value: string) => {
@@ -300,16 +278,6 @@ export const Default: Story = {
 				...prev,
 				gender: value,
 			}));
-			setIsOpenGender(false);
-			setIsOpenCategory(false);
-			setIsOpenSubCategory(false);
-		};
-
-		const handleToggleCategory = () => {
-			setIsOpenCategory((prev) => !prev);
-			setIsOpenCity(false);
-			setIsOpenGender(false);
-			setIsOpenSubCategory(false);
 		};
 
 		const handleSelectCategory = (value: string) => {
@@ -318,18 +286,6 @@ export const Default: Story = {
 					opt.id === value ? { ...opt, checked: !opt.checked } : opt
 				)
 			);
-			setIsOpenGender(false);
-			setIsOpenCity(false);
-			setIsOpenSubCategory(false);
-		};
-
-		const handleToggleSubCategory = () => {
-			if (optionsCategory.some((opt) => opt.checked)) {
-				setIsOpenSubCategory((prev) => !prev);
-			}
-			setIsOpenCity(false);
-			setIsOpenGender(false);
-			setIsOpenCategory(false);
 		};
 
 		const handleSelectSubCategory = (value: string) => {
@@ -338,9 +294,6 @@ export const Default: Story = {
 					opt.id === value ? { ...opt, checked: !opt.checked } : opt
 				)
 			);
-			setIsOpenGender(false);
-			setIsOpenCity(false);
-			setIsOpenCategory(false);
 		};
 
 		return (
@@ -351,25 +304,17 @@ export const Default: Story = {
 				gender={gender}
 				category={optionsCategory}
 				subCategory={optionsSubCategory}
-				isOpenCity={isOpenCity}
-				isOpenGender={isOpenGender}
-				isOpenCategory={isOpenCategory}
-				isOpenSubCategory={isOpenSubCategory}
-				onAddPhoto={handleAddPhoto}
+				handleFileChange={handleAddPhoto}
 				onChange={handleChange}
 				onNext={handleNext}
 				onBack={handleBack}
 				onClearCity={handleClearCity}
-				onClickCity={handleClickCity}
 				onSelectCity={handleSelectCity}
 				onInputChangeCity={handleInputChangeCity}
-				onToggleGender={handleToggleGender}
 				onSelectGender={handleSelectGender}
 				onInputDate={handleDate}
 				onSelectCategory={handleSelectCategory}
-				onToggleCategory={handleToggleCategory}
 				onSelectSubCategory={handleSelectSubCategory}
-				onToggleSubCategory={handleToggleSubCategory}
 			/>
 		);
 	},
