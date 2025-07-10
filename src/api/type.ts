@@ -9,8 +9,22 @@ export type TCard = {
 export type TSkill = {
 	_id: string;
 	name: string;
-	categoryName: string;
+	categoryName?: string;
 };
+
+export interface ICategory {
+	category: {
+		_id: string;
+		name: string;
+	};
+	skills: TSkill[];
+}
+
+export interface SkillsState {
+	categories: ICategory[];
+	status: 'idle' | 'loading' | 'succeeded' | 'failed';
+	error: string | null;
+}
 
 export type TUser = {
 	_id: string;

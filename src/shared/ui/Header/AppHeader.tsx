@@ -65,7 +65,7 @@ export const AppHeaderUI = ({
 				{isAuth && (
 					<>
 						<NotificationButton hasNotification={isNotification} />
-						<Link to='/favorites'>
+						<Link to='profile/favorites'>
 							<LikeButtonUI />
 						</Link>
 					</>
@@ -74,9 +74,7 @@ export const AppHeaderUI = ({
 
 			{isAuth ? (
 				<div className={styles.profile}>
-					<Link className={styles.name} to='/profile'>
-						{user.name}
-					</Link>
+					<p className={styles.name}>{user.name}</p>
 					<div
 						className={styles.profileButton}
 						onClick={() => {

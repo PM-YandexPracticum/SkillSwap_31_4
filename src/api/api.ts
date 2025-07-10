@@ -1,4 +1,4 @@
-import type { TUser } from './type';
+import type { TSkill, TUser } from './type';
 
 const URL = import.meta.env.VITE_API_URL;
 
@@ -148,3 +148,13 @@ export const uploadPhotos = (files: File[]) => {
 		body: formData,
 	}).then((res) => checkResponse(res));
 };
+
+// Все навыки
+
+export async function fetchSkills(): Promise<TSkill[]> {
+	const response = await fetch(`${URL}/api/skills`);
+	if (!response.ok) {
+		throw new Error('Failed to fetch skills');
+	}
+	return response.json();
+}
