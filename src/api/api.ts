@@ -1,4 +1,4 @@
-import type { TUser } from './type';
+import type { TSkill, TUser } from './type';
 
 const URL = import.meta.env.VITE_API_URL;
 
@@ -36,15 +36,13 @@ type TRegisterStep3AddCard = {
 
 export const getUsersApi = () =>
 	fetch(`${URL}/api/users`)
-		.then((res) => checkResponse<TUsersResponse>(res))
+		.then((res) => checkResponse<TUser[]>(res))
 		.then((data) => data);
 
 // Получения пользователя по id
 
 export const getUsersIdApi = (id: string) =>
-	fetch(`${URL}/api/users/${id}`).then((res) =>
-		checkResponse<TUsersResponse>(res)
-	);
+	fetch(`${URL}/api/users/${id}`).then((res) => checkResponse<TUser>(res));
 
 // Поставить лайк
 
@@ -150,3 +148,13 @@ export const uploadPhotos = (files: File[]) => {
 		body: formData,
 	}).then((res) => checkResponse(res));
 };
+
+// Все навыки
+
+export async function fetchSkills(): Promise<TSkill[]> {
+	const response = await fetch(`${URL}/api/skills`);
+	if (!response.ok) {
+		throw new Error('Failed to fetch skills');
+	}
+	return response.json();
+}

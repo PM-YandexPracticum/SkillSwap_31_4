@@ -5,4 +5,5 @@ export default interface MenuItemUIProps {
 	text: string;
 	onClick?: () => void;
 	isActiveHardCoded?: boolean;
+	end?: boolean;
 }

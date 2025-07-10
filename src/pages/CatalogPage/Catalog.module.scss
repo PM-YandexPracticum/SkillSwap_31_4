@@ -1,0 +1,23 @@
+.container {
+	display: flex;
+	justify-content: center;
+	gap: 24px;
+	min-height: 100vh;
+	padding: 32px 36px 68px;
+}
+
+.filtersPanel {
+	flex-shrink: 0;
+	min-width: 324px;
+}
+
+.cardsContainer {
+	width: 1020px;
+}
+
+.text {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 200px;
+}
