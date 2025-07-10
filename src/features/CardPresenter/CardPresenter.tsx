@@ -1,8 +1,12 @@
 import { Card } from '@ui';
 import { useNavigate } from 'react-router-dom';
-import { deleteLikeUser, likeUser, getUserById } from '../user/thunk';
+import {
+	deleteLikeUser,
+	likeUser,
+	getUserById,
+} from '../../entities/userSlice/thunk';
 import { useDispatch, useSelector } from '../../services/store';
-import { getUserByIdSelector } from '../user/userSlice';
+import { getUserByIdSelector } from '../../entities/userSlice/userSlice';
 import type { TUser } from '../../api/type';
 
 type TCardPresenterProps = {

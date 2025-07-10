@@ -1,122 +1,37 @@
-import { useEffect, useState } from 'react';
 import { SkillFilterUI } from '../../shared/ui/SkillFilter';
 import { CityFilter } from '../../shared/ui/CityFilter';
 import { Radio } from '../../shared/ui/Radio';
 import styles from './FiltersBar.module.scss';
 import crossIcon from '../../images/icons/cross.svg';
 import { roleOptions, optionsGender } from './type';
-import type { FiltersBarProps, SkillOption } from './type';
+import type { FiltersBarProps } from './type';
+import { useFiltersBarLogic } from '../../features/FiltersBar/FiltersBar';
 
-export const FiltersBar = ({ skills, cities }: FiltersBarProps) => {
-	const [selectedRole, setSelectedRole] = useState<string>('all');
-	const [selectedGender, setSelectedGender] = useState<string>('not');
-	const [showAllSkills, setShowAllSkills] = useState<boolean>(false);
-	const [showAllCities, setShowAllCities] = useState<boolean>(false);
-	const [skillsState, setSkillsState] = useState<SkillOption[]>([]);
-	const [checkedCities, setCheckedCities] = useState<Record<string, boolean>>(
-		{}
-	);
-
-	useEffect(() => {
-		if (skills.length > 0) {
-			setSkillsState(
-				skills.map((s) => ({ ...s, checked: false, isOpen: false }))
-			);
-		}
-	}, [skills]);
-
-	useEffect(() => {
-		const initialCheckedCities: Record<string, boolean> = {};
-		cities.forEach((city) => {
-			initialCheckedCities[city.id] = false;
-		});
-		setCheckedCities(initialCheckedCities);
-	}, [cities]);
-
-	const toggleSkillProperty = (id: string, property: 'checked' | 'isOpen') => {
-		setSkillsState((prev) =>
-			prev.map((item) => {
-				if (item.id === id) {
-					if (property === 'isOpen') {
-						const newIsOpen = !item.isOpen;
-
-						// получаем всех детей этой категории
-						const children = prev.filter(
-							(s) => s.parentId === id && s.id !== id
-						);
-
-						// если открываем — всегда выделяем категорию
-						if (newIsOpen) {
-							return { ...item, isOpen: newIsOpen, checked: true };
-						}
-
-						// если закрываем — проверяем: есть ли выбранные дети
-						const hasCheckedChildren = children.some((s) => s.checked);
-						return {
-							...item,
-							isOpen: newIsOpen,
-							checked: hasCheckedChildren,
-						};
-					}
-
-					// Для обычного переключения чекбокса
-					return { ...item, [property]: !item[property] };
-				}
-				return item;
-			})
-		);
-	};
-
-	const handleSkillCheck = (id: string) => toggleSkillProperty(id, 'checked');
-	const handleGroupToggle = (id: string) => toggleSkillProperty(id, 'isOpen');
-
-	const handleCityCheck = (id: string) => {
-		setCheckedCities((prev) => ({
-			...prev,
-			[id]: !prev[id],
-		}));
-	};
-
-	const handleReset = () => {
-		setSelectedRole('all');
-		setSelectedGender('not');
-		setSkillsState((prev) =>
-			prev.map((s) => ({ ...s, checked: false, isOpen: false }))
-		);
-		setCheckedCities((prev) =>
-			Object.fromEntries(Object.keys(prev).map((k) => [k, false]))
-		);
-		setShowAllSkills(false);
-		setShowAllCities(false);
-	};
-
-	const countSelectedOptions = () => {
-		const selectedSkillsCount = skillsState.reduce((acc, skill) => {
-			// Считаем только поднавыки (не группы)
-			if (skill.checked && skill.id !== skill.parentId) {
-				return acc + 1;
-			}
-			return acc;
-		}, 0);
-		const selectedCitiesCount =
-			Object.values(checkedCities).filter(Boolean).length;
-		const selectedGenderCount = selectedGender !== 'not' ? 1 : 0;
-		const selectedRoleCount = selectedRole !== 'all' ? 1 : 0;
-		return (
-			selectedSkillsCount +
-			selectedCitiesCount +
-			selectedGenderCount +
-			selectedRoleCount
-		);
-	};
-
-	const number = countSelectedOptions();
+export const FiltersBar = (props: FiltersBarProps) => {
+	const {
+		showAllSkills,
+		setShowAllSkills,
+		handleGroupToggle,
+		handleSkillCheck,
+		handleCityCheck,
+		handleReset,
+		skillOptions,
+		countSelectedOptions,
+		checkedCityItems,
+		showAllCities,
+		setShowAllCities,
+		filters,
+		setGenderFilter,
+		setModeFilter,
+	} = useFiltersBarLogic(props);
 
 	return (
 		<div className={styles.filterBar}>
 			<div className={styles.title}>
-				<h2>Фильтры {number > 0 && `(${number})`}</h2>
-				{number > 0 && (
+				<h2>
+					Фильтры {countSelectedOptions > 0 && `(${countSelectedOptions})`}
+				</h2>
+				{countSelectedOptions > 0 && (
 					<button className={styles.reset} onClick={handleReset}>
 						<span>Сбросить</span>
 						<img
@@ -131,9 +46,9 @@ export const FiltersBar = ({ skills, cities }: FiltersBarProps) => {
 			<div className={styles.radioRole}>
 				<Radio
 					options={roleOptions}
-					value={selectedRole}
+					value={filters.mode}
 					name='role'
-					onChange={setSelectedRole}
+					onChange={setModeFilter}
 				/>
 			</div>
 
@@ -143,7 +58,7 @@ export const FiltersBar = ({ skills, cities }: FiltersBarProps) => {
 					isAllOpen={showAllSkills}
 					textAllOpen='Все категории'
 					textAllCLose='Свернуть'
-					options={skillsState}
+					options={skillOptions}
 					onChangeSingle={handleSkillCheck}
 					onChangeGroup={handleGroupToggle}
 					onOpenAll={() => setShowAllSkills((prev) => !prev)}
@@ -151,20 +66,20 @@ export const FiltersBar = ({ skills, cities }: FiltersBarProps) => {
 			</div>
 
 			<div className={styles.radioGender}>
-				<h3>Пол</h3>
+				<h3>Пол автора</h3>
 				<Radio
 					options={optionsGender}
-					value={selectedGender}
+					value={filters.gender || 'not'}
 					name='gender'
-					onChange={setSelectedGender}
+					onChange={setGenderFilter}
 				/>
 			</div>
 
 			<div className={styles.cityFilter}>
 				<h3>Город</h3>
 				<CityFilter
-					items={cities}
-					checkedItems={checkedCities}
+					items={props.cities}
+					checkedItems={checkedCityItems}
 					onChange={handleCityCheck}
 					isAllOpen={showAllCities}
 					onOpenAll={() => setShowAllCities((prev) => !prev)}

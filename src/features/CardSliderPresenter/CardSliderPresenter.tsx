@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react';
 import type { TUser } from 'src/api/type';
 import { useSelector } from '../../services/store';
 import { CardSliderUI } from '../../widgets/CardSlider/CardSlider';
-import { getUsersSelector } from '../user/userSlice';
+import { getUsersSelector } from '../../entities/userSlice/userSlice';
 
 type CardSliderPresenterProps = {
 	id: string;

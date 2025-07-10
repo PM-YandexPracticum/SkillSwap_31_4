@@ -35,17 +35,14 @@ const notificationsSlice = createSlice({
 		builder
 			// загрузка входящих заявок
 			.addCase(getNewExchanges.pending, (state) => {
-				console.log('getNewExchanges — pending');
 				state.loading = true;
 				state.error = null;
 			})
 			.addCase(getNewExchanges.rejected, (state, action) => {
-				console.error('getNewExchanges — rejected:', action.error.message);
 				state.loading = false;
 				state.error = action.error.message ?? 'Ошибка загрузки входящих';
 			})
 			.addCase(getNewExchanges.fulfilled, (state, action) => {
-				console.log('getNewExchanges — fulfilled:', action.payload);
 				state.loading = false;
 				state.incoming = action.payload;
 			})
