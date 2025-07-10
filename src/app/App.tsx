@@ -13,6 +13,7 @@ import { AppHeaderUI } from '../shared/ui/Header';
 import { getUserByIdSelector } from '../entities/userSlice/userSlice';
 import { getSkills } from '../entities/skillsSlice/thunk';
 import { Preloader } from '../shared/ui/Preloader';
+import './App.css';
 
 const App = () => {
 	const dispatch = useDispatch();
@@ -64,7 +65,6 @@ const App = () => {
 				handleSkillTitleClick={handleSkillTitleClick}
 				handleSkillTagClick={handleSkillTagClick}
 			/>
-
 			<Routes>
 				<Route path='/' element={<CatalogPage />} />
 				<Route
