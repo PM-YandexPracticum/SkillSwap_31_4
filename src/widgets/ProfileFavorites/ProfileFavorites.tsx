@@ -5,10 +5,9 @@ import {
 	getUsersSelector,
 } from '../../entities/userSlice/userSlice';
 import { CardPresenter } from '../../features/CardPresenter/CardPresenter';
-import type { TUser } from '../../api/type';
 
 export const ProfileFavoritesUI = () => {
-	const currentUser = useSelector<TUser>(getUserByIdSelector);
+	const currentUser = useSelector(getUserByIdSelector);
 	const users = useSelector(getUsersSelector);
 	const likedUsers = users.filter((user) =>
 		currentUser?.likes.includes(user._id)

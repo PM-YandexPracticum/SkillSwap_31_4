@@ -8,6 +8,7 @@ import { Error500 } from '../pages/Error500/Error500';
 import styles from './App.module.css';
 import { NotFound404 } from '../pages/NotFound404/NotFound404';
 import { ProfileFavoritesUI } from '../widgets/ProfileFavorites/ProfileFavorites';
+import { Footer } from '../shared/ui/Footer';
 
 const App = () => {
 	const dispatch = useDispatch();
@@ -81,6 +82,7 @@ const App = () => {
 				<Route path='*' element={<NotFound404 />} />
 				<Route path='/500' element={<Error500 />} />
 			</Routes>
+			<Footer />
 		</div>
 	);
 };

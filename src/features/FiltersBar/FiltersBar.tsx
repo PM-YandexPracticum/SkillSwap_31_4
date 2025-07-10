@@ -7,12 +7,8 @@ import {
 	toggleSkillId,
 	resetFilters,
 } from '../../entities/filtersSlice/filterSlice';
-// import type { FiltersBarProps } from './type';
 import type { TOption } from '../../shared/ui/SkillFilter/type';
-import type {
-	TGroupedSkill,
-	UseFiltersBarLogicProps,
-} from './FiltersBarProps.ts';
+import type { TGroupedSkill, UseFiltersBarLogicProps } from './FiltersBarProps';
 
 export const useFiltersBarLogic = ({
 	skills,
@@ -78,14 +74,14 @@ export const useFiltersBarLogic = ({
 		return options;
 	}, [skills, filters.skillIds, openGroups]);
 
-	const countSelectedOptions = useMemo(() => {
-		return (
+	const countSelectedOptions = useMemo(
+		() =>
 			filters.skillIds.length +
 			filters.cityIds.length +
 			Number(!!filters.gender) +
-			Number(filters.mode !== 'all')
-		);
-	}, [filters]);
+			Number(filters.mode !== 'all'),
+		[filters]
+	);
 
 	const checkedCityItems = useMemo(() => {
 		const checkedSet = new Set(filters.cityIds);
