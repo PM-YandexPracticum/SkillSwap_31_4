@@ -1,0 +1,15 @@
+.container {
+	position: relative;
+	width: max-content;
+	margin: 0 auto;
+	padding: 40px 20px;
+	overflow: hidden;
+	background-color: var(--color-background);
+}
+
+.card-slider {
+	display: flex;
+	gap: 16px;
+	padding: 0 16px;
+	overflow: hidden;
+}
