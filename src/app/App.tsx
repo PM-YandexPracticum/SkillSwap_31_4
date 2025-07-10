@@ -15,6 +15,7 @@ import { Preloader } from '../shared/ui/Preloader';
 import { ProfileFavoritesUI } from '../widgets/ProfileFavorites/ProfileFavorites';
 import { Profile } from '../features/Profile/Profile';
 import { ProfileLayout } from '../pages/ProfileLayout/ProfileLayout';
+import { Registration } from '../presenters/Registration/Registration';
 
 const App = () => {
 	const dispatch = useDispatch();
@@ -81,7 +82,7 @@ const App = () => {
 					path='/register'
 					element={
 						<ProtectedRoute onlyUnAuth>
-							<div>Регистрация</div>
+							<Registration />
 						</ProtectedRoute>
 					}
 				/>

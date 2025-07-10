@@ -3,7 +3,10 @@
 import { useState } from 'react';
 import styles from './FileUploader.module.scss';
 
-export const FileUploader = () => {
+export const FileUploader = (props: {
+	onChangeFiles?: (files: File[]) => void;
+}) => {
+	const { onChangeFiles } = props;
 	const [files, setFiles] = useState<File[]>([]);
 	const MAX_FILES = 6;
 
@@ -15,9 +18,8 @@ export const FileUploader = () => {
 				alert(`Можно загрузить не более ${MAX_FILES} файлов`);
 				return;
 			}
-
+			onChangeFiles?.(newFiles);
 			setFiles((prevFiles) => [...prevFiles, ...newFiles]);
-			e.target.value = '';
 		}
 	};
 

@@ -159,7 +159,8 @@ export const StepOne: React.FC<StepOneProps> = ({
 					color='primary'
 					width='100%'
 					className={styles.nextButton}
-					isDisabled={!isFormValid}>
+					isDisabled={!isFormValid}
+					htmlType='submit'>
 					Далее
 				</ButtonUI>
 			</form>

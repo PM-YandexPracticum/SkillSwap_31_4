@@ -1,6 +1,7 @@
 import clsx from 'clsx';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import UserCircleModalIcon from '@images/icons/user-circleModal.svg';
+
 import {
 	Input,
 	DropdownCityUI,
@@ -20,27 +21,52 @@ export const StepTwoUI = ({
 	gender,
 	category,
 	subCategory,
-	isOpenCity,
-	isOpenGender,
-	isOpenCategory,
-	isOpenSubCategory,
 	handleFileChange,
 	onChange,
 	onNext,
 	onBack,
-	onClickCity,
 	onClearCity,
 	onInputChangeCity,
 	onSelectCity,
-	onToggleGender,
 	onSelectGender,
 	onInputDate,
-	onToggleCategory,
 	onSelectCategory,
-	onToggleSubCategory,
 	onSelectSubCategory,
 }: TStepTwoUIProps) => {
 	const imageFile = useRef<HTMLInputElement>(null);
+
+	const [isOpenCity, setIsOpenCity] = useState(false);
+	const [isOpenGender, setIsOpenGender] = useState(false);
+	const [isOpenCategory, setIsOpenCategory] = useState(false);
+	const [isOpenSubCategory, setIsOpenSubCategory] = useState(false);
+
+	const onToggleGender = () => {
+		setIsOpenGender(!isOpenGender);
+		setIsOpenCity(false);
+		setIsOpenCategory(false);
+		setIsOpenSubCategory(false);
+	};
+
+	const onClickCity = () => {
+		setIsOpenCity(!isOpenCity);
+		setIsOpenGender(false);
+		setIsOpenCategory(false);
+		setIsOpenSubCategory(false);
+	};
+
+	const onToggleCategory = () => {
+		setIsOpenCategory(!isOpenCategory);
+		setIsOpenGender(false);
+		setIsOpenCity(false);
+		setIsOpenSubCategory(false);
+	};
+
+	const onToggleSubCategory = () => {
+		setIsOpenSubCategory(!isOpenSubCategory);
+		setIsOpenGender(false);
+		setIsOpenCity(false);
+		setIsOpenCategory(false);
+	};
 
 	const handleImageClick = () => {
 		imageFile.current?.click();
@@ -92,7 +118,10 @@ export const StepTwoUI = ({
 					displayText={gender.find((opt) => opt.value === user.gender)?.text}
 					isOpen={isOpenGender}
 					onToggle={onToggleGender}
-					onSelect={onSelectGender}
+					onSelect={(value: string) => {
+						setIsOpenGender(false);
+						onSelectGender(value);
+					}}
 				/>
 			</div>
 			<DropdownCityUI
@@ -103,7 +132,10 @@ export const StepTwoUI = ({
 				selectedOption={user.city}
 				onClear={onClearCity}
 				onInputChange={onInputChangeCity}
-				onSelect={onSelectCity}
+				onSelect={(value: string) => {
+					setIsOpenCity(false);
+					onSelectCity?.(value);
+				}}
 				onClick={onClickCity}
 			/>
 			<MultiSelectDropdownUI
@@ -115,7 +147,9 @@ export const StepTwoUI = ({
 				isOpen={isOpenCategory}
 				options={category}
 				onToggle={onToggleCategory}
-				onSelect={onSelectCategory}
+				onSelect={(value: string) => {
+					onSelectCategory(value);
+				}}
 				displayText={
 					category.filter((opt) => opt.checked).length > 0
 						? `Выбрано: ${category.filter((opt) => opt.checked).length}`
@@ -131,7 +165,9 @@ export const StepTwoUI = ({
 				isOpen={isOpenSubCategory}
 				options={subCategory}
 				onToggle={onToggleSubCategory}
-				onSelect={onSelectSubCategory}
+				onSelect={(value: string) => {
+					onSelectSubCategory(value);
+				}}
 				displayText={
 					subCategory.filter((opt) => opt.checked).length > 0
 						? `Выбрано: ${subCategory.filter((opt) => opt.checked).length}`

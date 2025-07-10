@@ -5,10 +5,6 @@ import type { Option as TCategory } from '../../../shared/ui/Dropdown/MultiSelec
 export type TStepTwoUIProps = {
 	user: TUserType;
 	isEnabled: boolean;
-	isOpenCity: boolean;
-	isOpenGender: boolean;
-	isOpenCategory: boolean;
-	isOpenSubCategory: boolean;
 	city: TCity[];
 	gender: TGender[];
 	category: TCategory[];
@@ -17,16 +13,12 @@ export type TStepTwoUIProps = {
 	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 	onNext: () => void;
 	onBack: () => void;
-	onClickCity: () => void;
 	onClearCity: () => void;
 	onInputChangeCity: (e: React.ChangeEvent<HTMLInputElement>) => void;
 	onSelectCity?: (value: string) => void;
-	onToggleGender: () => void;
 	onSelectGender: (value: string) => void;
 	onInputDate: (date: Date) => void;
-	onToggleCategory: () => void;
 	onSelectCategory: (value: string) => void;
-	onToggleSubCategory: () => void;
 	onSelectSubCategory: (value: string) => void;
 };
 

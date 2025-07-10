@@ -15,8 +15,6 @@ export default meta;
 
 export const StepThreeDefault = {
 	render: () => {
-		const [isOpenCategory, setIsOpenCategory] = useState(false);
-		const [isOpenSubcategory, setIsOpenSubcategory] = useState(false);
 		const [selectedCategory, setSelectedCategory] = useState<
 			string | undefined
 		>();
@@ -87,22 +85,16 @@ export const StepThreeDefault = {
 
 		return (
 			<StepThree
-				isOpenCategory={isOpenCategory}
-				onToggleCategory={() => setIsOpenCategory((prev) => !prev)}
 				categories={categories}
 				selectedCategoryText={selectedCategoryText}
 				onSelectCategory={(value) => {
 					setSelectedCategory(value);
-					setIsOpenCategory(false);
 					setSelectedSubcategory(undefined);
 				}}
-				isOpenSubcategory={isOpenSubcategory}
-				onToggleSubcategory={() => setIsOpenSubcategory((prev) => !prev)}
 				subcategories={filteredSubcategories}
 				selectedSubcategoryText={selectedSubcategoryText}
 				onSelectSubcategory={(value) => {
 					setSelectedSubcategory(value);
-					setIsOpenSubcategory(false);
 				}}
 				isDisabledSubmitForm={isDisabledSubmitForm}
 				skillName={skillName}
