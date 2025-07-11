@@ -3,7 +3,7 @@ import { useState } from 'react';
 import shareIcon from '../../images/icons/share.svg';
 import moreIcon from '../../images/icons/more-square.svg';
 import styles from './CardDetails.module.scss';
-import { PhotoGalleryUI } from '../../shared/ui/PhotoFallery';
+import { PhotoGalleryUI } from '../../shared/ui/PhotoGallery';
 import type { TCardDetailsProps } from './type';
 
 export const CardDetailsUI = ({
