@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { SwiperArrows } from '../SwiperArrows/SwiperArrows';
 import { Card } from '../Card';
-import type { TUser } from '../../lib/types/user';
+import type { TUser } from '../../../api/type.ts';
 
 export default {
 	title: 'Shared/UI/SwiperArrows',
@@ -11,13 +11,21 @@ export default {
 export const CardSlider = () => {
 	const visibleCount = 3;
 	const [index, setIndex] = useState(0);
-	const [users, setUser] = useState<TUser[]>([]);
+	const [users, setUsers] = useState<TUser[]>([]);
 
 	useEffect(() => {
-		fetch('https://skills-api.lukumka-dev.ru/api/users/')
+		fetch('https://backend-skillswap.onrender.com/api/users/')
 			.then((res) => res.json())
 			.then((data) => {
-				setUser(data.users);
+				if (Array.isArray(data?.users)) {
+					setUsers(data.users);
+				} else {
+					setUsers([]); // fallback на пустой массив
+				}
+			})
+			.catch((err) => {
+				console.error('Fetch error:', err);
+				setUsers([]); // fallback при ошибке запроса
 			});
 	}, []);
 
@@ -26,7 +34,9 @@ export const CardSlider = () => {
 	};
 
 	const handleNext = () => {
-		setIndex((prev) => Math.min(users.length - visibleCount, prev + 3));
+		setIndex((prev) =>
+			Math.min(Math.max(0, users.length - visibleCount), prev + 3)
+		);
 	};
 
 	const visibleCards = users.slice(index, index + visibleCount);
@@ -46,7 +56,7 @@ export const CardSlider = () => {
 				onPrev={handlePrev}
 				onNext={handleNext}
 				disabledPrev={index === 0}
-				disabledNext={index >= users.length - visibleCount}
+				disabledNext={index >= Math.max(0, users.length - visibleCount)}
 			/>
 
 			<div
@@ -80,15 +90,6 @@ const visibleSmallCount = 3;
 
 const PhotoGallery = ({ photos }: { photos: string[] }) => {
 	const [currentIndex, setCurrentIndex] = useState(0);
-	const [user, setUser] = useState<TUser | null>(null);
-
-	useEffect(() => {
-		fetch('https://skills-api.lukumka-dev.ru/api/users/')
-			.then((res) => res.json())
-			.then((data) => {
-				setUser(data.users[4]);
-			});
-	}, []);
 
 	const handlePrev = () => {
 		setCurrentIndex((prev) => (prev - 1 + photos.length) % photos.length);
@@ -106,13 +107,16 @@ const PhotoGallery = ({ photos }: { photos: string[] }) => {
 		return result;
 	};
 
+	if (!photos || photos.length === 0) {
+		return <div>No photos available</div>;
+	}
+
 	const bigPhoto = photos[currentIndex];
 	const smallPhotos = getCircularPhotos(currentIndex, visibleSmallCount);
 	const totalVisible = 1 + visibleSmallCount;
 	const remainingCount =
 		photos.length > totalVisible ? photos.length - totalVisible : 0;
 
-	if (!user) return <div>Loading...</div>;
 	return (
 		<div
 			style={{
@@ -121,7 +125,6 @@ const PhotoGallery = ({ photos }: { photos: string[] }) => {
 				alignItems: 'center',
 				justifyContent: 'center',
 			}}>
-			{/* Большая фотография + стрелки поверх */}
 			<div
 				style={{
 					position: 'relative',
@@ -135,7 +138,6 @@ const PhotoGallery = ({ photos }: { photos: string[] }) => {
 					alt='Большое фото'
 					style={{ width: '100%', height: '100%', objectFit: 'cover' }}
 				/>
-				{/* Стрелки UI-компонентом */}
 				<SwiperArrows
 					onPrev={handlePrev}
 					onNext={handleNext}
@@ -144,7 +146,6 @@ const PhotoGallery = ({ photos }: { photos: string[] }) => {
 				/>
 			</div>
 
-			{/* Маленькие фото */}
 			<div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
 				{smallPhotos.map((photo, i) => {
 					const isLast = i === smallPhotos.length - 1;
@@ -196,17 +197,27 @@ const PhotoGallery = ({ photos }: { photos: string[] }) => {
 	);
 };
 
+// ======================= GallerySlider ========================
+
 export const GallerySlider = () => {
 	const [user, setUser] = useState<TUser | null>(null);
 
 	useEffect(() => {
-		fetch('https://skills-api.lukumka-dev.ru/api/users/')
+		fetch('https://backend-skillswap.onrender.com/api/users/')
 			.then((res) => res.json())
 			.then((data) => {
-				setUser(data.users[4]);
+				setUser(data[4]);
+			})
+			.catch((err) => {
+				console.error('Fetch error:', err);
+				setUser(null);
 			});
 	}, []);
-	if (!user) return <div>Loading...</div>;
+
+	const photos = user?.cards[0].photo ?? [];
+	if (!Array.isArray(photos) || photos.length === 0) {
+		return <div>No photos available</div>;
+	}
 
 	return (
 		<div
@@ -216,7 +227,7 @@ export const GallerySlider = () => {
 				margin: '0 auto',
 				background: '#F9FAF7',
 			}}>
-			<PhotoGallery photos={user?.skillPhotos ?? []} />
+			<PhotoGallery photos={photos} />
 		</div>
 	);
 };

@@ -5,22 +5,22 @@ import styles from './ProfileTabs.module.scss';
 export const ProfileTabs = () => (
 	<div className={styles.sidebar}>
 		<MenuItemUI
-			to={'/profile/requests'}
+			to={'/requests'}
 			text='Заявки'
 			logoUrl='./src/images/icons/request.svg'
 		/>
 		<MenuItemUI
-			to={'/profile/orders'}
+			to={'/orders'}
 			text='Мои обмены'
 			logoUrl='./src/images/icons/message-text.svg'
 		/>
 		<MenuItemUI
-			to={'/profile/favorites'}
+			to={'/favorites'}
 			text='Избранное'
 			logoUrl='./src/images/icons/like-empty.svg'
 		/>
 		<MenuItemUI
-			to={'/profile/skills'}
+			to={'/skills'}
 			text='Мои навыки'
 			logoUrl='./src/images/icons/idea.svg'
 		/>

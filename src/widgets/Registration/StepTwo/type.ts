@@ -9,7 +9,7 @@ export type TStepTwoUIProps = {
 	gender: TGender[];
 	category: TCategory[];
 	subCategory: TCategory[];
-	handleFileChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+	onAddPhoto: () => void;
 	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 	onNext: () => void;
 	onBack: () => void;

@@ -8,7 +8,7 @@ import { roleOptions, optionsGender } from './type';
 import type { FiltersBarProps } from './type';
 import { useFiltersBarLogic } from '../../features/FiltersBar/FiltersBar';
 
-export const FiltersBar = (props: FiltersBarProps) => {
+export const FiltersBar = ({ cities, ...props }: FiltersBarProps) => {
 	const {
 		showAllSkills,
 		setShowAllSkills,
@@ -24,7 +24,7 @@ export const FiltersBar = (props: FiltersBarProps) => {
 		filters,
 		setGenderFilter,
 		setModeFilter,
-	} = useFiltersBarLogic(props);
+	} = useFiltersBarLogic({ ...props, cities });
 
 	return (
 		<div className={styles.filterBar}>
@@ -79,7 +79,7 @@ export const FiltersBar = (props: FiltersBarProps) => {
 			<div className={styles.cityFilter}>
 				<h3>Город</h3>
 				<CityFilter
-					items={props.cities}
+					items={cities}
 					checkedItems={checkedCityItems}
 					onChange={handleCityCheck}
 					isAllOpen={showAllCities}

@@ -1,15 +1,13 @@
-import type { TUserSkill } from '../../lib/types/user';
+import type { TSkill } from '../../../api/type';
 
 export type TUICardProps = {
 	photo: string;
 	userName: string;
-	aboutMe: string;
 	userLocation: string;
 	userAge: number;
 	isLiked: boolean;
-	withDescription: boolean;
-	teachSkills: TUserSkill[];
-	learnSkills: TUserSkill[];
+	teachSkills: TSkill[];
+	learnSkills: TSkill[];
 	onClickDetails: () => void;
 	onClickLike: () => void;
 };

@@ -1,4 +1,4 @@
-import type { TSkill } from './skill';
+import type { TCategories, TSkill } from './skill';
 
 export type TResponse = {
 	success: boolean;
@@ -24,7 +24,5 @@ export type TUser = {
 };
 
 export type TUserSkill = TSkill & {
-	_id: string;
-	name: string;
-	categoryName: string;
+	categoryName: TCategories;
 };
