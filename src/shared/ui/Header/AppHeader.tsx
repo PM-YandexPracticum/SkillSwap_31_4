@@ -8,7 +8,7 @@ import { ButtonUI } from '../Button';
 import { Logo } from '../Logo';
 import { Search } from '../Search';
 import { ThemeToggleButton } from '../ThemeToggleButton';
-import { NotificationButton } from '../Notification';
+import { NotificationButton } from '../NotificationButton';
 import { LikeButtonUI } from '../LikeButton';
 import { DropdownSkillsUI } from '../Dropdown/DropdownSkills';
 

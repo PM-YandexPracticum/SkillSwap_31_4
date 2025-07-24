@@ -7,7 +7,7 @@ export * from './CheckboxCategory';
 export * from './Dropdown';
 export * from './CheckboxSubcategory';
 export * from './ThemeToggleButton';
-export * from './Notification';
+export * from './NotificationButton';
 export * from './CheckboxFilterCategory';
 export * from './ModalWithContent';
 export * from './SwiperArrows';

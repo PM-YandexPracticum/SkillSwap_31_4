@@ -1,0 +1,42 @@
+.notification {
+	display: flex;
+	align-items: flex-start;
+	width: 436px;
+	margin-bottom: 16px;
+}
+
+.titleText {
+	margin: 0;
+	font-weight: 400;
+	font-size: 16px;
+	font-family: var(--font-roboto);
+	line-height: 1.2;
+}
+
+.text {
+	padding-top: 4px;
+	font-size: 12px;
+}
+
+.textBlock {
+	flex: 1;
+}
+
+.icon {
+	width: 40px;
+	height: 40px;
+	margin-right: 8px;
+}
+
+.date {
+	margin-left: 20px;
+	color: var(--color-text-caption);
+	white-space: nowrap;
+}
+
+.headerLine {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	margin-bottom: 4px;
+}
